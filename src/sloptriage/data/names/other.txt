@@ -1,0 +1,15 @@
+# JavaScript/TypeScript, Go and Rust keywords and standard-library names.
+abstract arguments await boolean byte debugger eval function implements import instanceof interface let
+package super synchronized throws transient typeof var yield async of get set readonly declare keyof infer
+never unknown any undefined NaN Infinity globalThis window document console process require module exports
+Object Array String Number Boolean Symbol BigInt Math JSON Date RegExp Error TypeError RangeError Promise Map
+Set WeakMap WeakSet Proxy Reflect Buffer setTimeout setInterval clearTimeout clearInterval fetch URL
+URLSearchParams TextEncoder TextDecoder Uint8Array ArrayBuffer DataView parseInt parseFloat encodeURIComponent
+decodeURIComponent toString valueOf hasOwnProperty prototype constructor length push pop shift unshift slice
+splice concat join split indexOf includes forEach filter reduce keys values entries assign freeze
+chan defer fallthrough func go map range select struct type nil iota append cap close complex copy imag len
+make panic print println real recover fmt Println Printf Sprintf Errorf strings bytes errors io ioutil os
+bufio strconv context http json sync atomic time unsafe reflect runtime
+as crate dyn enum extern fn impl loop match mod move mut pub ref self Self static trait unsafe use where
+Some None Ok Err Option Result Vec Box Rc Arc RefCell Cell String str usize isize u8 u16 u32 u64 u128 i8 i16
+i32 i64 i128 f32 f64 println eprintln format vec unwrap expect clone into from iter collect

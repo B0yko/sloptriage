@@ -1,0 +1,12 @@
+# Product, platform and protocol names that look like identifiers (matched case-insensitively).
+macOS iOS iPadOS tvOS watchOS iPhone iPad Android Linux Ubuntu Debian Fedora CentOS RHEL Alpine Windows WinXP
+FreeBSD OpenBSD NetBSD Solaris AIX HP-UX MSYS MinGW Cygwin WSL GitHub GitLab Bitbucket HackerOne Bugcrowd
+JavaScript TypeScript PowerShell CMake Autotools Meson Bazel Valgrind AddressSanitizer UndefinedBehaviorSanitizer
+MemorySanitizer ThreadSanitizer LeakSanitizer libFuzzer OSS-Fuzz ClusterFuzz AFL AFLplusplus Coverity CodeQL
+OpenSSL BoringSSL LibreSSL AWS-LC QuicTLS wolfSSL wolfSSH GnuTLS mbedTLS SecureTransport Schannel rustls BearSSL
+nghttp2 nghttp3 ngtcp2 quiche msh3 libssh libssh2 zlib brotli zstd libidn2 libpsl c-ares libuv OpenLDAP
+WebSocket WebSockets HTTPS HTTP2 HTTP3 QUIC TLSv1 SSLv3 IPv4 IPv6 DNS DoH DoT SOCKS4 SOCKS5 SOCKS4a SOCKS5h
+NTLM Kerberos SPNEGO GSSAPI OAuth OAuth2 JWT SAML LDAP LDAPS IMAP IMAPS POP3 SMTP SMTPS FTP FTPS SFTP SCP TFTP
+MQTT RTSP RTMP SMB SMBS DICT TELNET GOPHER HSTS CORS CSRF SSRF XSS RCE DoS PoC CVSS CVE CWE NVD
+YouTube PayPal PyPI npm Docker Kubernetes Podman colima Homebrew vcpkg Conan
+node.js deno.js vue.js react.js next.js express.js

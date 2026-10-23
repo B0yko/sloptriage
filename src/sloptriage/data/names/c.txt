@@ -1,0 +1,58 @@
+# C and C++ keywords, standard C library, POSIX and common compiler builtins.
+# Names listed here are never treated as claims about a project.
+auto break case char const continue default do double else enum extern float for goto if inline int long
+register restrict return short signed sizeof static struct switch typedef union unsigned void volatile while
+_Alignas _Alignof _Atomic _Bool _Complex _Generic _Imaginary _Noreturn _Static_assert _Thread_local
+alignas alignof and and_eq asm bitand bitor bool catch char8_t char16_t char32_t class co_await co_return
+co_yield compl concept const_cast consteval constexpr constinit decltype delete dynamic_cast explicit export
+false friend mutable namespace new noexcept not not_eq nullptr operator or or_eq private protected public
+reinterpret_cast requires static_assert static_cast template this thread_local throw true try typeid typename
+using virtual wchar_t xor xor_eq override final std NULL EOF errno stdin stdout stderr
+size_t ssize_t ptrdiff_t intptr_t uintptr_t intmax_t uintmax_t off_t pid_t uid_t gid_t mode_t time_t clock_t
+int8_t int16_t int32_t int64_t uint8_t uint16_t uint32_t uint64_t socklen_t sa_family_t in_addr_t in_port_t
+FILE DIR va_list jmp_buf sigjmp_buf pthread_t pthread_mutex_t pthread_cond_t pthread_attr_t fd_set wint_t mbstate_t
+INT_MAX INT_MIN UINT_MAX LONG_MAX LONG_MIN ULONG_MAX SIZE_MAX SSIZE_MAX CHAR_BIT CHAR_MAX SHRT_MAX LLONG_MAX
+ULLONG_MAX INT8_MAX INT16_MAX INT32_MAX INT64_MAX UINT8_MAX UINT16_MAX UINT32_MAX UINT64_MAX PATH_MAX BUFSIZ
+EXIT_SUCCESS EXIT_FAILURE SEEK_SET SEEK_CUR SEEK_END O_RDONLY O_WRONLY O_RDWR O_CREAT O_TRUNC O_APPEND O_NONBLOCK
+EINTR EAGAIN EWOULDBLOCK ENOMEM EINVAL ENOENT EACCES EPERM EEXIST EBADF EPIPE ECONNRESET ETIMEDOUT EINPROGRESS
+SIGSEGV SIGABRT SIGBUS SIGPIPE SIGINT SIGTERM SIGKILL SIGFPE SIGILL SIGALRM SIGCHLD SIG_IGN SIG_DFL
+AF_INET AF_INET6 AF_UNIX SOCK_STREAM SOCK_DGRAM IPPROTO_TCP IPPROTO_UDP INADDR_ANY
+malloc calloc realloc free reallocarray aligned_alloc posix_memalign memalign valloc alloca
+memcpy memmove memset memcmp memchr memrchr memmem memccpy mempcpy bzero bcopy bcmp explicit_bzero
+strcpy strncpy strcat strncat strcmp strncmp strcasecmp strncasecmp strlen strnlen strchr strrchr strstr
+strcasestr strtok strtok_r strdup strndup strspn strcspn strpbrk strerror strerror_r strsignal strcoll strxfrm
+strlcpy strlcat stpcpy stpncpy strsep index rindex
+sprintf snprintf vsprintf vsnprintf printf fprintf vprintf vfprintf dprintf asprintf vasprintf
+scanf sscanf fscanf vscanf vsscanf vfscanf
+fopen fdopen freopen fclose fflush fread fwrite fgets fputs fgetc fputc getc putc getchar putchar gets puts
+ungetc fseek ftell rewind fgetpos fsetpos feof ferror clearerr fileno setvbuf setbuf tmpfile tmpnam perror
+remove rename popen pclose getline getdelim
+atoi atol atoll atof strtol strtoul strtoll strtoull strtod strtof strtold strtoimax strtoumax
+abs labs llabs div ldiv rand srand random srandom rand_r drand48 arc4random qsort bsearch
+exit _exit _Exit abort atexit at_quick_exit quick_exit getenv setenv unsetenv putenv system
+isalnum isalpha isdigit isxdigit isspace isupper islower isprint ispunct iscntrl isgraph isblank isascii
+toupper tolower towupper towlower iswspace iswalpha iswdigit
+time ctime ctime_r gmtime gmtime_r localtime localtime_r mktime strftime strptime difftime clock
+gettimeofday clock_gettime nanosleep sleep usleep timegm asctime
+open close read write lseek pread pwrite readv writev fcntl ioctl dup dup2 pipe pipe2 unlink link symlink
+readlink stat fstat lstat fstatat access chmod fchmod chown fchown mkdir rmdir chdir getcwd opendir readdir
+closedir rewinddir truncate ftruncate fsync sync mmap munmap mprotect msync madvise umask mkstemp mkdtemp
+fork vfork execv execve execvp execl execlp waitpid wait kill raise signal sigaction sigemptyset sigaddset
+sigprocmask getpid getppid getuid geteuid getgid getegid setuid setgid isatty ttyname select poll epoll_wait
+epoll_create epoll_ctl
+socket bind listen accept accept4 connect send sendto sendmsg recv recvfrom recvmsg shutdown setsockopt
+getsockopt getsockname getpeername getaddrinfo freeaddrinfo gai_strerror getnameinfo gethostbyname
+gethostbyaddr inet_ntop inet_pton inet_addr inet_ntoa htons htonl ntohs ntohl socketpair
+pthread_create pthread_join pthread_detach pthread_self pthread_exit pthread_mutex_lock pthread_mutex_unlock
+pthread_mutex_init pthread_mutex_destroy pthread_cond_wait pthread_cond_signal pthread_cond_broadcast
+pthread_once pthread_key_create pthread_getspecific pthread_setspecific
+setjmp longjmp sigsetjmp siglongjmp va_start va_end va_arg va_copy
+assert offsetof static_assert errno_t
+sqrt pow fabs floor ceil round log log10 exp sin cos tan fmod
+wcslen wcscpy wcsncpy wcscmp wcscat mbstowcs wcstombs mbrtowc wcrtomb
+dlopen dlsym dlclose dlerror
+__builtin_expect __builtin_memcpy __builtin_object_size __builtin_trap __builtin_unreachable
+__attribute__ __asm__ __inline__ __restrict __typeof__ __func__ __FUNCTION__ __FILE__ __LINE__ __DATE__
+__asan_report_load __asan_report_store __interceptor_memcpy __interceptor_strcpy __interceptor_strlen
+__interceptor_malloc __interceptor_free __interceptor_realloc __interceptor_calloc __libc_start_main
+__libc_start_call_main _start main

@@ -1,0 +1,17 @@
+# Well-known third-party C libraries. A cited name that matches is marked "external"
+# (neutral), never "not_found". Lines ending in '*' are prefixes.
+SSL_* SSL3_* TLS1_* DTLS_* EVP_* BIO_* X509_* X509V3_* PEM_* ERR_* CRYPTO_* OPENSSL_* RAND_* RSA_* EC_* ECDSA_*
+BN_* HMAC_* SHA1_* SHA256_* MD5_* ASN1_* OCSP_* PKCS7_* PKCS12_* ENGINE_* OSSL_* d2i_* i2d_*
+gnutls_* mbedtls_* wolfSSL_* wolfSSL* br_* SecTrust* SecIdentity* CFArray* CFString* CFRelease
+nghttp2_* nghttp3_* ngtcp2_* quiche_* msh3_*
+libssh2_* ssh_* sftp_*
+inflate* deflate* zlibVersion z_stream crc32 adler32 compress compress2 uncompress gzopen gzread gzwrite gzclose
+BrotliDecoder* BrotliEncoder* ZSTD_* LZ4_*
+GSS_* idn2_* psl_* ares_* uv_* event_base* evbuffer_* ldap_* ber_* gss_* krb5_* sasl_* rtmp_* RTMP_* librtmp*
+wolfSSH* kSec* SecTrust* SecCertificate* SecKey* SecPolicy* SecItem* CFArray* CFString* CFData* CFDictionary*
+CFNumber* CFBoolean* CFRelease CFRetain CCCrypt* CC_SHA* CC_MD5* BCrypt* Crypt* CertGet* CertFree* CertOpen*
+AcquireCredentialsHandle* InitializeSecurityContext* QueryContextAttributes* DecryptMessage EncryptMessage
+WSAStartup WSACleanup WSAGetLastError WSA* closesocket ioctlsocket GetLastError CreateFile* ReadFile WriteFile
+O_* S_I* S_IS* AT_* MSG_* SO_* SOL_* TCP_* IPPROTO_* IPV6_* AF_* PF_* F_GETFL F_SETFL F_GETFD F_SETFD FD_CLOEXEC
+POLLIN POLLOUT POLLERR POLLHUP EPOLL* PROT_* MAP_* CLOCK_* RLIMIT_* PTHREAD_* SIGPIPE SIGHUP SIGUSR1 SIGUSR2
+__* _GNU_SOURCE _POSIX_* _XOPEN_* _FILE_OFFSET_BITS

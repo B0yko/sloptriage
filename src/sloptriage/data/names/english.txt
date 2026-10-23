@@ -1,0 +1,40 @@
+# Common English and generic programming words. A bare word from this list is never
+# treated as a claim that the project defines a symbol of that name.
+a about above access account action active actual add added address after again against all allocate
+allocated allocation allow allowed already also always amount an analysis and another any api app
+application are argument arguments array as ask attack attacker attempt auth authentication author
+available back bad base based be because been before begin being below best better between big binary
+bit bits block body boolean both bound bounds bounty break broken buf buffer bug build but by byte bytes
+cache call callback called caller calling calls can cannot case cause caused causes certificate change
+changed char character characters check checked checking checks child chunk class clean cleanup clear
+client close closed code command comment commit common compile compiler complete condition config
+configuration connect connection connections consider const contain contains content context control
+cookie copy copied correct could count crash crashed crashes create created critical current custom
+data date debug default define defined delete denial description destination detail details detect
+different directory disable disabled do does doing domain done double down download due during dynamic
+each easy either element else empty enable enabled encode encoded encoding end endpoint enough entire
+entry environment error errors even event every example exception execute executed execution exist
+exists exit expected exploit exploitation exposure extra fail failed fails failure false field fields file
+filename files find first fix fixed flag flags following for format found frame free freed from full
+function functions further get given global go good got handle handled handler handling hash have header
+headers heap here high host how however http https id if impact implementation important in include
+included includes incorrect increase index info information init initial input inside instance instead
+int integer internal into invalid is issue issues it item its just key keys kind known large last later
+leak leaks length less level library like limit line lines link list load local location lock log logic
+long look loop low main make malicious many max maximum may memory message method might min minimum
+missing mode module more most multiple must name names need needed network new next no node none normal
+not note nothing now null number object of off offset ok old on once one only open option options or
+order other otherwise out output over overflow overwrite own packet page parameter parameters parse parsed
+parser parsing part pass passed password path payload pointer port position possible post potential
+prefix present previous print problem process program protocol proxy pull put query read reading real
+receive received recommend redirect reference remote remove report request requests required response
+result results return returned returns run running safe same scheme second secure security see send sending
+sensitive sent server service session set setting severity should show side sign signal similar since
+single size slot so socket some source special specific stack start state static status step steps still
+storage store stream string strings struct structure such summary support supported sure system table
+take target test tested text than that the their them then there these they thing this those thread
+through time timeout to token too total transfer trigger true try type types under unexpected unknown
+until up update upload url use used user username uses using valid validate validation value values
+variable variables version very via vulnerability vulnerable want was way we web well were what when
+where whether which while who why will with within without work works would write writing written wrong
+yes you your

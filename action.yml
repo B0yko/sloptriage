@@ -1,0 +1,64 @@
+name: sloptriage
+description: Check bug and security reports against the code before a maintainer reads them. No LLM.
+author: Andrii Boiko
+branding:
+  icon: check-square
+  color: blue
+
+inputs:
+  mode:
+    description: "check: write verdict.json for the issue in the triggering event. post: comment and label from a verdict file."
+    required: true
+  verdict:
+    description: Path of the verdict JSON file (written in check mode, read in post mode).
+    required: false
+    default: verdict.json
+  config:
+    description: Path to .sloptriage.yml (check mode). Defaults to .sloptriage.yml in the working directory.
+    required: false
+    default: ""
+  token:
+    description: Token with issues write permission (post mode).
+    required: false
+    default: ""
+
+runs:
+  using: composite
+  steps:
+    - name: Set up uv
+      uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
+      with:
+        enable-cache: false
+
+    - name: Check the report in the event payload
+      if: inputs.mode == 'check'
+      shell: bash
+      env:
+        SLOPTRIAGE_SOURCE: ${{ github.action_path }}
+        SLOPTRIAGE_VERDICT: ${{ inputs.verdict }}
+        SLOPTRIAGE_CONFIG: ${{ inputs.config }}
+      run: |
+        set -euo pipefail
+        args=(check "$GITHUB_EVENT_PATH" --format json --output "$SLOPTRIAGE_VERDICT")
+        if [ -n "$SLOPTRIAGE_CONFIG" ]; then
+          args+=(--config "$SLOPTRIAGE_CONFIG")
+        fi
+        uvx --from "$SLOPTRIAGE_SOURCE" sloptriage "${args[@]}"
+
+    - name: Post the verdict
+      if: inputs.mode == 'post'
+      shell: bash
+      env:
+        SLOPTRIAGE_SOURCE: ${{ github.action_path }}
+        SLOPTRIAGE_VERDICT: ${{ inputs.verdict }}
+        GITHUB_TOKEN: ${{ inputs.token }}
+      run: |
+        set -euo pipefail
+        uvx --from "$SLOPTRIAGE_SOURCE" sloptriage post --verdict "$SLOPTRIAGE_VERDICT" --event "$GITHUB_EVENT_PATH"
+
+    - name: Reject unknown modes
+      if: inputs.mode != 'check' && inputs.mode != 'post'
+      shell: bash
+      run: |
+        echo "sloptriage: mode must be check or post" >&2
+        exit 2

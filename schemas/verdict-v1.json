@@ -4,87 +4,287 @@
   "title": "sloptriage verdict",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema", "tool", "report", "project", "resolution", "references", "claims", "needs", "labels", "comment"],
+  "required": [
+    "schema",
+    "tool",
+    "report",
+    "project",
+    "resolution",
+    "references",
+    "claims",
+    "needs",
+    "labels",
+    "comment",
+    "policy"
+  ],
   "$defs": {
-    "short": {"type": "string", "maxLength": 300},
-    "sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
-    "link": {"type": "string", "maxLength": 600},
+    "short": {
+      "type": "string",
+      "maxLength": 300
+    },
+    "sha": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "link": {
+      "type": "string",
+      "maxLength": 600
+    },
     "finding": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["check", "status", "severity"],
+      "required": [
+        "check",
+        "status",
+        "severity"
+      ],
       "properties": {
-        "check": {"enum": ["path", "symbol", "line", "frame", "frame_chain", "quote", "poc", "cve", "cwe"]},
-        "status": {"type": "string", "pattern": "^[a-z_]{2,40}$"},
-        "severity": {"enum": ["ok", "hard", "soft", "neutral"]},
+        "check": {
+          "enum": [
+            "path",
+            "symbol",
+            "line",
+            "frame",
+            "frame_chain",
+            "quote",
+            "poc",
+            "cve",
+            "cwe"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "pattern": "^[a-z_]{2,40}$"
+        },
+        "severity": {
+          "enum": [
+            "ok",
+            "hard",
+            "soft",
+            "neutral"
+          ]
+        },
         "detail": {
           "type": "object",
           "maxProperties": 24,
           "additionalProperties": {
             "anyOf": [
-              {"type": "string", "maxLength": 300},
-              {"type": "integer"},
-              {"type": "number"},
-              {"type": "boolean"},
-              {"type": "null"},
-              {"type": "array", "maxItems": 12, "items": {"anyOf": [{"type": "string", "maxLength": 300}, {"type": "integer"}, {"type": "object", "maxProperties": 8}]}},
-              {"type": "object", "maxProperties": 8}
+              {
+                "type": "string",
+                "maxLength": 300
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              },
+              {
+                "type": "array",
+                "maxItems": 12,
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "maxLength": 300
+                    },
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "object",
+                      "maxProperties": 8
+                    }
+                  ]
+                }
+              },
+              {
+                "type": "object",
+                "maxProperties": 8
+              }
             ]
           }
         },
-        "evidence": {"type": "array", "maxItems": 4, "items": {"$ref": "#/$defs/link"}}
+        "evidence": {
+          "type": "array",
+          "maxItems": 4,
+          "items": {
+            "$ref": "#/$defs/link"
+          }
+        }
       }
     }
   },
   "properties": {
-    "schema": {"const": "sloptriage-verdict/1"},
+    "schema": {
+      "const": "sloptriage-verdict/1"
+    },
     "tool": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["name", "version"],
-      "properties": {"name": {"const": "sloptriage"}, "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+.*$", "maxLength": 40}}
+      "required": [
+        "name",
+        "version"
+      ],
+      "properties": {
+        "name": {
+          "const": "sloptriage"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+.*$",
+          "maxLength": 40
+        }
+      }
     },
     "report": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["source", "id"],
+      "required": [
+        "source",
+        "id"
+      ],
       "properties": {
-        "source": {"enum": ["file", "stdin", "eml", "github", "github-event", "hackerone", "advisory"]},
-        "id": {"$ref": "#/$defs/short"},
-        "url": {"anyOf": [{"$ref": "#/$defs/link"}, {"type": "null"}]},
-        "created_at": {"anyOf": [{"type": "string", "maxLength": 40}, {"type": "null"}]}
+        "source": {
+          "enum": [
+            "file",
+            "stdin",
+            "eml",
+            "github",
+            "github-event",
+            "hackerone",
+            "advisory"
+          ]
+        },
+        "id": {
+          "$ref": "#/$defs/short"
+        },
+        "url": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/link"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "created_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "maxLength": 40
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
       }
     },
     "project": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["name"],
+      "required": [
+        "name"
+      ],
       "properties": {
-        "name": {"type": "string", "maxLength": 100},
-        "repository": {"anyOf": [{"type": "string", "maxLength": 300}, {"type": "null"}]}
+        "name": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "repository": {
+          "anyOf": [
+            {
+              "type": "string",
+              "maxLength": 300
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
       }
     },
     "resolution": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["ref", "commit", "assumed", "reason", "versions"],
+      "required": [
+        "ref",
+        "commit",
+        "assumed",
+        "reason",
+        "versions"
+      ],
       "properties": {
-        "ref": {"type": "string", "maxLength": 120},
-        "commit": {"$ref": "#/$defs/sha"},
-        "assumed": {"type": "boolean"},
-        "reason": {"enum": ["claimed", "explicit", "sha", "dev_version", "no_version", "version_not_found", "latest"]},
+        "ref": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "commit": {
+          "$ref": "#/$defs/sha"
+        },
+        "assumed": {
+          "type": "boolean"
+        },
+        "reason": {
+          "enum": [
+            "claimed",
+            "explicit",
+            "sha",
+            "dev_version",
+            "no_version",
+            "version_not_found",
+            "latest"
+          ]
+        },
         "versions": {
           "type": "array",
           "maxItems": 20,
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["claimed", "status"],
+            "required": [
+              "claimed",
+              "status"
+            ],
             "properties": {
-              "claimed": {"type": "string", "maxLength": 80},
-              "status": {"enum": ["found", "not_found", "assumed"]},
-              "ref": {"anyOf": [{"type": "string", "maxLength": 120}, {"type": "null"}]},
-              "nearest": {"type": "array", "maxItems": 5, "items": {"type": "string", "maxLength": 120}}
+              "claimed": {
+                "type": "string",
+                "maxLength": 80
+              },
+              "status": {
+                "enum": [
+                  "found",
+                  "not_found",
+                  "assumed"
+                ]
+              },
+              "ref": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "maxLength": 120
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "nearest": {
+                "type": "array",
+                "maxItems": 5,
+                "items": {
+                  "type": "string",
+                  "maxLength": 120
+                }
+              }
             }
           }
         }
@@ -93,22 +293,70 @@
     "references": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["class", "hard", "soft", "verified", "checked", "thresholds"],
+      "required": [
+        "class",
+        "hard",
+        "soft",
+        "verified",
+        "checked",
+        "thresholds"
+      ],
       "properties": {
-        "class": {"enum": ["refs_verified", "refs_thin", "refs_mixed", "refs_failed", "refs_none"]},
-        "hard": {"type": "integer", "minimum": 0},
-        "soft": {"type": "integer", "minimum": 0},
-        "verified": {"type": "integer", "minimum": 0},
-        "checked": {"type": "integer", "minimum": 0},
-        "verified_share": {"anyOf": [{"type": "number", "minimum": 0, "maximum": 1}, {"type": "null"}]},
+        "class": {
+          "enum": [
+            "refs_verified",
+            "refs_thin",
+            "refs_mixed",
+            "refs_failed",
+            "refs_none"
+          ]
+        },
+        "hard": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "soft": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "verified": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "checked": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "verified_share": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "thresholds": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["hard_fail_min", "min_verified_share", "min_verified_claims"],
+          "required": [
+            "hard_fail_min",
+            "min_verified_share",
+            "min_verified_claims"
+          ],
           "properties": {
-            "hard_fail_min": {"type": "integer"},
-            "min_verified_share": {"type": "number"},
-            "min_verified_claims": {"type": "integer"}
+            "hard_fail_min": {
+              "type": "integer"
+            },
+            "min_verified_share": {
+              "type": "number"
+            },
+            "min_verified_claims": {
+              "type": "integer"
+            }
           }
         }
       }
@@ -119,37 +367,183 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["kind", "confidence", "value", "findings"],
+        "required": [
+          "kind",
+          "confidence",
+          "value",
+          "findings"
+        ],
         "properties": {
-          "kind": {"enum": ["path", "symbol", "line", "version", "frame", "quote", "poc", "cve", "cwe", "sanitizer_claim"]},
-          "confidence": {"enum": ["high", "medium"]},
-          "value": {"type": "string", "maxLength": 300},
-          "source": {"type": "string", "maxLength": 40},
-          "path": {"anyOf": [{"type": "string", "maxLength": 300}, {"type": "null"}]},
-          "line": {"anyOf": [{"type": "integer"}, {"type": "null"}]},
-          "line_end": {"anyOf": [{"type": "integer"}, {"type": "null"}]},
-          "function": {"anyOf": [{"type": "string", "maxLength": 200}, {"type": "null"}]},
-          "frame_index": {"anyOf": [{"type": "integer"}, {"type": "null"}]},
-          "trace": {"anyOf": [{"type": "integer"}, {"type": "null"}]},
-          "lang": {"anyOf": [{"type": "string", "maxLength": 20}, {"type": "null"}]},
-          "lines": {"anyOf": [{"type": "integer"}, {"type": "null"}]},
-          "span": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "integer", "minimum": 0}},
-          "findings": {"type": "array", "maxItems": 8, "items": {"$ref": "#/$defs/finding"}}
+          "kind": {
+            "enum": [
+              "path",
+              "symbol",
+              "line",
+              "version",
+              "frame",
+              "quote",
+              "poc",
+              "cve",
+              "cwe",
+              "sanitizer_claim"
+            ]
+          },
+          "confidence": {
+            "enum": [
+              "high",
+              "medium"
+            ]
+          },
+          "value": {
+            "type": "string",
+            "maxLength": 300
+          },
+          "source": {
+            "type": "string",
+            "maxLength": 40
+          },
+          "path": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 300
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "line": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "line_end": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "function": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 200
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "frame_index": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "trace": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "lang": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 20
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "lines": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "span": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "findings": {
+            "type": "array",
+            "maxItems": 8,
+            "items": {
+              "$ref": "#/$defs/finding"
+            }
+          }
         }
       }
     },
-    "chain": {"type": "array", "maxItems": 100, "items": {"$ref": "#/$defs/finding"}},
+    "chain": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "$ref": "#/$defs/finding"
+      }
+    },
     "reproduction": {
       "anyOf": [
-        {"type": "null"},
+        {
+          "type": "null"
+        },
         {
           "type": "object",
           "additionalProperties": false,
-          "required": ["verdict"],
+          "required": [
+            "verdict"
+          ],
           "properties": {
-            "verdict": {"enum": ["reproduced", "crashed_elsewhere", "not_reproduced", "poc_build_failed", "poc_missing", "poc_unsupported", "build_failed", "timeout", "flaky"]},
-            "reason": {"type": "string", "maxLength": 300},
-            "runner": {"type": "string", "maxLength": 20},
+            "verdict": {
+              "enum": [
+                "reproduced",
+                "crashed_elsewhere",
+                "not_reproduced",
+                "poc_build_failed",
+                "poc_missing",
+                "poc_unsupported",
+                "build_failed",
+                "timeout",
+                "flaky"
+              ]
+            },
+            "reason": {
+              "type": "string",
+              "maxLength": 300
+            },
+            "runner": {
+              "type": "string",
+              "maxLength": 20
+            },
             "runs": {
               "type": "array",
               "maxItems": 30,
@@ -157,30 +551,142 @@
                 "type": "object",
                 "additionalProperties": false,
                 "properties": {
-                  "candidate": {"type": "integer"},
-                  "outcome": {"type": "string", "maxLength": 40},
-                  "error_type": {"anyOf": [{"type": "string", "maxLength": 80}, {"type": "null"}]},
-                  "top_frame": {"anyOf": [{"type": "string", "maxLength": 200}, {"type": "null"}]},
-                  "top_path": {"anyOf": [{"type": "string", "maxLength": 300}, {"type": "null"}]},
-                  "exit_code": {"anyOf": [{"type": "integer"}, {"type": "null"}]},
-                  "signal": {"anyOf": [{"type": "string", "maxLength": 20}, {"type": "null"}]},
-                  "seconds": {"type": "number"}
+                  "candidate": {
+                    "type": "integer"
+                  },
+                  "outcome": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "error_type": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "maxLength": 80
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "top_frame": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "top_path": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "maxLength": 300
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "exit_code": {
+                    "anyOf": [
+                      {
+                        "type": "integer"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "signal": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "maxLength": 20
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "seconds": {
+                    "type": "number"
+                  }
                 }
               }
             },
-            "output_excerpt": {"type": "string", "maxLength": 8000},
-            "image": {"type": "string", "maxLength": 200}
+            "output_excerpt": {
+              "type": "string",
+              "maxLength": 8000
+            },
+            "image": {
+              "type": "string",
+              "maxLength": 200
+            }
           }
         }
       ]
     },
-    "needs": {"type": "array", "maxItems": 4, "items": {"enum": ["needs_version", "needs_poc"]}},
-    "labels": {"type": "array", "maxItems": 10, "items": {"type": "string", "pattern": "^[^\\n\\r]{1,50}$"}},
-    "comment": {"type": "boolean"},
+    "needs": {
+      "type": "array",
+      "maxItems": 4,
+      "items": {
+        "enum": [
+          "needs_version",
+          "needs_poc"
+        ]
+      }
+    },
+    "labels": {
+      "type": "array",
+      "maxItems": 10,
+      "items": {
+        "type": "string",
+        "pattern": "^[^\\n\\r]{1,50}$"
+      }
+    },
+    "comment": {
+      "type": "boolean"
+    },
     "timing": {
       "type": "object",
       "additionalProperties": false,
-      "properties": {"seconds": {"type": "number"}, "index_cached": {"type": "boolean"}}
+      "properties": {
+        "seconds": {
+          "type": "number"
+        },
+        "index_cached": {
+          "type": "boolean"
+        }
+      }
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "managed_labels"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "label",
+            "comment",
+            "both"
+          ]
+        },
+        "managed_labels": {
+          "type": "array",
+          "maxItems": 20,
+          "items": {
+            "type": "string",
+            "pattern": "^[^\\n\\r]{1,50}$"
+          }
+        }
+      }
     }
   }
 }

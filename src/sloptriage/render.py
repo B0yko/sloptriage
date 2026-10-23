@@ -156,6 +156,7 @@ def build_verdict(
         "needs": need,
         "labels": [],
         "comment": False,
+        "policy": {"mode": cfg.comment.mode, "managed_labels": sorted(set(cfg.labels.values()))},
         "timing": {
             "seconds": round(result.timings["total"], 3),
             "index_cached": result.index_cached,

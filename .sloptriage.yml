@@ -1,0 +1,10 @@
+# sloptriage checks reports filed against this repository with its own code.
+version: 1
+project:
+  name: sloptriage
+  repository: https://github.com/B0yko/sloptriage
+  binaries: [sloptriage]
+version_tags: [v]
+languages: [python]
+paths:
+  ignore: ["demo/**", "bench/**", "fixtures/**"]

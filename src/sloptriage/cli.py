@@ -145,15 +145,18 @@ def cmd_preflight(args: argparse.Namespace) -> int:
 def cmd_post(args: argparse.Namespace) -> int:
     import jsonschema
 
-    from sloptriage.post import PostError, post_verdict
+    from sloptriage.post import PostError, issue_from_event, post_verdict
 
-    cfg = _load_cfg(args, None)
+    try:
+        issue = args.issue or issue_from_event(args.event)
+    except (OSError, ValueError) as exc:
+        raise UsageError(str(exc)) from exc
     try:
         verdict = json.loads(Path(args.verdict).read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
         raise UsageError(f"{args.verdict}: {exc}") from exc
     try:
-        post_verdict(verdict, args.issue, cfg, dry_run=args.dry_run)
+        post_verdict(verdict, issue, dry_run=args.dry_run)
     except jsonschema.ValidationError as exc:
         raise UsageError(f"{args.verdict}: not a valid verdict: {exc.message}") from exc
     except ValueError as exc:
@@ -256,8 +259,11 @@ def build_parser() -> argparse.ArgumentParser:
     po.add_argument(
         "--verdict", required=True, help="verdict JSON written by 'check --format json'"
     )
-    po.add_argument("--issue", required=True, help="OWNER/REPO#N")
-    po.add_argument("--config", help="path to .sloptriage.yml (labels and comment policy)")
+    target = po.add_mutually_exclusive_group(required=True)
+    target.add_argument("--issue", help="OWNER/REPO#N")
+    target.add_argument(
+        "--event", help="read the issue number from a workflow event payload ($GITHUB_EVENT_PATH)"
+    )
     po.add_argument(
         "--dry-run", action="store_true", help="print the request bodies instead of sending them"
     )

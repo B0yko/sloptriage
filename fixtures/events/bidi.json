@@ -1,0 +1,1 @@
+{"action": "opened", "issue": {"number": 42, "title": "Report ‮gnp.exe‬", "body": "Crash in `missing_function_one()` and `missing_function_two()` in lib/a.c:2\n\n‮`fn_txt()`‬ ⁦isolate⁩", "created_at": "2024-06-01T00:00:00Z", "html_url": "https://github.com/example/proj/issues/42"}, "repository": {"full_name": "example/proj"}}

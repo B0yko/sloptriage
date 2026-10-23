@@ -11,10 +11,10 @@ import json
 import sys
 from collections.abc import Callable
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Any
 
 from sloptriage import __version__
-from sloptriage.config import Config
 from sloptriage.ingest.github import API, github_token, parse_issue_ref
 from sloptriage.render import MARKER, render_markdown, validate_verdict
 
@@ -34,18 +34,20 @@ Sender = Callable[[Request], Any]
 
 
 def plan(
-    verdict: dict[str, Any], cfg: Config, existing_comment: int | None, current_labels: list[str]
+    verdict: dict[str, Any], existing_comment: int | None, current_labels: list[str]
 ) -> list[Request]:
     """The REST calls that bring the issue in line with the verdict (owner/repo are filled in later)."""
     reqs: list[Request] = []
+    policy = verdict["policy"]
+    mode = policy["mode"]
     body = render_markdown(verdict)
-    want_comment = verdict.get("comment", False) and cfg.comment.mode in ("comment", "both")
+    want_comment = verdict.get("comment", False) and mode in ("comment", "both")
     if existing_comment is not None:
         reqs.append(Request("PATCH", f"/issues/comments/{existing_comment}", {"body": body}))
     elif want_comment:
         reqs.append(Request("POST", "/issues/{number}/comments", {"body": body}))
-    if cfg.comment.mode in ("label", "both"):
-        ours = set(cfg.labels.values())
+    if mode in ("label", "both"):
+        ours = set(policy["managed_labels"])
         wanted = [lab for lab in verdict.get("labels", []) if lab in ours]
         for stale in sorted(set(current_labels) & ours - set(wanted)):
             reqs.append(Request("DELETE", "/issues/{number}/labels/" + _quote(stale)))
@@ -61,10 +63,19 @@ def _quote(label: str) -> str:
     return quote(label, safe="")
 
 
+def issue_from_event(path: str) -> str:
+    """``OWNER/REPO#N`` from a workflow event payload (only the number and repository name are read)."""
+    doc = json.loads(Path(path).read_text(encoding="utf-8"))
+    number = (doc.get("issue") or {}).get("number")
+    repo = (doc.get("repository") or {}).get("full_name")
+    if not isinstance(number, int) or not isinstance(repo, str):
+        raise ValueError(f"{path}: not an issues event payload")
+    return f"{repo}#{number}"
+
+
 def post_verdict(
     verdict: dict[str, Any],
     issue: str,
-    cfg: Config,
     *,
     dry_run: bool = False,
     out: Callable[[str], None] = lambda s: print(s, file=sys.stdout),
@@ -74,7 +85,7 @@ def post_verdict(
     owner, repo, number = parse_issue_ref(issue)
     base = f"/repos/{owner}/{repo}"
     if dry_run:
-        reqs = plan(verdict, cfg, None, [])
+        reqs = plan(verdict, None, [])
         for r in reqs:
             path = base + r.path.replace("{number}", str(number))
             out(json.dumps({"method": r.method, "path": path, "body": r.body}, ensure_ascii=False))
@@ -100,7 +111,7 @@ def post_verdict(
         labels_resp = http.get(f"{base}/issues/{number}/labels", params={"per_page": 100})
         labels_resp.raise_for_status()
         current = [item["name"] for item in labels_resp.json()]
-        reqs = plan(verdict, cfg, existing, current)
+        reqs = plan(verdict, existing, current)
         for r in reqs:
             path = base + r.path.replace("{number}", str(number))
             resp = (

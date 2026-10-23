@@ -27,7 +27,8 @@ reports of at most 1%. With 60 valid dev reports, 1% allows no false flag at all
 ## Sweep on the dev split (curl, 260 reports: 60 valid, 200 invalid, 17 slop-listed)
 
 `min_verified_claims` stays at 3 (it separates `refs_verified` from `refs_thin` and never fails a report).
-Run with `uv run sloptriage bench run --split dev` on a Mac Studio M4 Max, 128 GB (final run 2026-10-24).
+Run with `uv run sloptriage bench run --split dev` on a Mac Studio M4 Max, 128 GB, with the code at commit
+`2b38a84` (2026-10-23), which is when the thresholds were chosen.
 
 | hard_fail_min | min_verified_share | valid flagged (of 60) | invalid flagged (of 200) | slop-listed flagged (of 17) |
 |---|---|---|---|---|
@@ -56,8 +57,9 @@ Run with `uv run sloptriage bench run --split dev` on a Mac Studio M4 Max, 128 G
 | 3 | 0.90 | 2 | 29 | 6 |
 | 3 | 1.00 | 3 | 37 | 6 |
 
-The sweep was repeated after fixes to the extractor that were found on the dev split and the synthetic
-set (a parenthetical in prose read as a call, file paths of installed packages); the optimum did not move.
+Before that run the sweep was repeated after fixes to the extractor found on the dev split and the
+synthetic set (a parenthetical in prose read as a call, file paths of installed packages); the optimum did
+not move.
 
 ## Decision
 
@@ -65,6 +67,42 @@ set (a parenthetical in prose read as a call, file paths of installed packages);
 
 This is the setting with the highest invalid recall (19 of 200, 9.5%; 5 of 17 slop-listed) that flags no
 valid dev report. Raising the share to 0.75 adds no invalid report and flags one valid report.
+
+## After the second held-out evaluation
+
+The first held-out run flagged 10 of 90 valid reports. Without changing the thresholds, commit `e036d44`
+fixed defect classes already seen on the dev split (see the README). The same sweep on the final dev rows
+(`bench/results/rows-dev-2026-10-24.json`):
+
+| hard_fail_min | min_verified_share | valid flagged (of 60) | invalid flagged (of 200) | slop-listed flagged (of 17) |
+|---|---|---|---|---|
+| 1 | 0.00 | 3 | 25 | 6 |
+| 1 | 0.50 | 3 | 25 | 6 |
+| 1 | 0.60 | 3 | 25 | 6 |
+| 1 | 0.70 | 3 | 25 | 6 |
+| 1 | 0.75 | 3 | 25 | 6 |
+| 1 | 0.80 | 3 | 25 | 6 |
+| 1 | 0.90 | 3 | 25 | 6 |
+| 1 | 1.00 | 3 | 25 | 6 |
+| 2 | 0.00 | 0 | 5 | 2 |
+| 2 | 0.50 | 0 | 8 | 2 |
+| 2 | 0.60 | 0 | 12 | 4 |
+| 2 | 0.70 | 0 | 16 | 6 |
+| 2 | 0.75 | 1 | 16 | 6 |
+| 2 | 0.80 | 1 | 18 | 6 |
+| 2 | 0.90 | 3 | 23 | 6 |
+| 2 | 1.00 | 3 | 25 | 6 |
+| 3 | 0.00 | 0 | 3 | 1 |
+| 3 | 0.50 | 0 | 7 | 2 |
+| 3 | 0.60 | 0 | 11 | 4 |
+| 3 | 0.70 | 0 | 16 | 6 |
+| 3 | 0.75 | 1 | 16 | 6 |
+| 3 | 0.80 | 1 | 18 | 6 |
+| 3 | 0.90 | 3 | 23 | 6 |
+| 3 | 1.00 | 3 | 25 | 6 |
+
+`hard_fail_min` 2 and 3 now tie at `min_verified_share` 0.70 (16 of 200 invalid, no valid report); the
+values chosen above were kept.
 
 ## Consequences
 

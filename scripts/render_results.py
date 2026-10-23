@@ -66,7 +66,8 @@ def headline(res: dict[str, Any]) -> str:
     rec, ff, prec = h["recall_invalid"], h["false_flag_rate_valid"], h["precision_invalid"]
     return (
         f"On {rec['n']} held-out curl reports that were closed as not applicable, informative or spam, sloptriage "
-        f"found cited references that do not exist at the stated version in {rec['k']} "
+        f"found cited references that do not exist in curl's code (at the version the report names, or the default "
+        f"branch on the report date when it names none) in {rec['k']} "
         f"({100 * rec['rate']:.1f}%, 95% CI {100 * rec['ci95'][0]:.1f}–{100 * rec['ci95'][1]:.1f}%); it flagged "
         f"{ff['k']} of {ff['n']} resolved reports. When it flags a report, the report was closed as not valid "
         f"{prec['k']} times out of {prec['n']}."
@@ -99,7 +100,9 @@ def section(res: dict[str, Any], lat: dict[str, Any], syn: dict[str, Any]) -> st
         f"Precision for invalid: {pct(h['precision_invalid'])}. Coverage (at least one checkable high-confidence "
         f"claim): {pct(h['coverage']['invalid'])} of invalid and {pct(h['coverage']['valid'])} of valid reports. "
         f"Dev split for comparison: {pct(d['false_flag_rate_valid'])} valid and {pct(d['recall_invalid'])} invalid "
-        "reports classed `refs_failed`.",
+        "reports classed `refs_failed`. Reports that named no usable version were checked at the default branch as "
+        f"of the report date: {pct(h['ref_assumed'])} of held-out reports, and {pct(h['ref_assumed_flagged'])} of the "
+        "flagged ones.",
         "",
         "**Per check, held-out split: share of reports with at least one high-confidence citation of**",
         "",
@@ -127,7 +130,7 @@ def section(res: dict[str, Any], lat: dict[str, Any], syn: dict[str, Any]) -> st
         "**Latency**",
         "",
         f"Cold index of `{lat['cold_index']['tag']}`: {lat['cold_index']['seconds']:.1f} s. Checking each of the "
-        f"{lat['warm_check']['reports']} held-out reports against an indexed ref: p50 "
+        f"{lat['warm_check']['reports']} held-out reports one at a time against an indexed ref: p50 "
         f"{lat['warm_check']['p50_seconds']:.2f} s, p95 {lat['warm_check']['p95_seconds']:.2f} s "
         f"({lat['hardware']}, {lat['date']}).",
         "",

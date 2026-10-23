@@ -1,13 +1,13 @@
 # Configuration reference: `.sloptriage.yml`
 
-Looked up in the working directory, then in the repository passed with `--repo`; `--config FILE`
+Looked up in the repository passed with `--repo`, then in the working directory; `--config FILE`
 overrides both. Validation is hand-written: every error names the file and the key path, and unknown
 keys are errors.
 
 | Key | Type | Default | Meaning |
 |---|---|---|---|
 | `version` | integer | `1` | schema version; only 1 exists |
-| `project.name` | string | repository directory name | used to find versions ("curl 8.10.1") and in the card |
+| `project.name` | string | repository directory name (or the last part of the URL) | used to find versions ("curl 8.10.1") and in the card |
 | `project.aliases` | list of strings | `[]` | other names versions appear next to (`libcurl`) |
 | `project.repository` | URL | git remote `origin` | clone source for `--repo`-less runs and base of permalinks (GitHub only) |
 | `project.binaries` | list | `[name]` | command names that mark a shell block as a PoC |

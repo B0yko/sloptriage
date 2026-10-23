@@ -17,7 +17,8 @@ form of a cache.
 
 ## Consequences
 
-- Bare clones work, and the GitHub Action can use the checked-out repository as is.
+- Bare clones work, and the GitHub Action reads the checked-out repository (`--repo "$GITHUB_WORKSPACE"`)
+  without any extra step.
 - Indexing a second tag only parses changed files; curl's newest tag of every minor release (about 110
   tags) fits in one cache.
 - Content is read on demand for quotes and blank-line checks, so the cache stays small.

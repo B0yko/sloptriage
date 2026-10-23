@@ -9,7 +9,7 @@ coverage are especially welcome.
 git clone https://github.com/B0yko/sloptriage && cd sloptriage
 uv sync
 uv run pytest -q              # tests never open network connections (a fixture blocks sockets)
-uv run ruff check src tests && uv run ruff format --check src tests
+uv run ruff check src tests scripts eval && uv run ruff format --check src tests
 uv run mypy                   # strict on src/
 uv run sloptriage demo
 ```

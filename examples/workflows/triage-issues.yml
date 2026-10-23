@@ -2,8 +2,9 @@
 #
 # The check job reads the issue only from the event payload file, has read-only
 # repository access and no secrets, and renders nothing. The report job gets
-# issues:write, downloads the verdict, validates it against the schema, renders
-# the card from its fields and never checks out or runs anything.
+# issues:write, downloads the verdict, validates it against the schema and
+# renders the card from its fields; it does not check out the repository and
+# never runs anything from the issue.
 name: Triage issues
 
 on:

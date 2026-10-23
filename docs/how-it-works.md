@@ -70,7 +70,12 @@ lenient.
 | frame | `consistent`, `consistent_at_other_version`, `outside_function`, `function_not_in_file`, `outside_project` | `outside_function`, `function_not_in_file` |
 | frame chain | `call_seen`, `call_not_seen` | never |
 | quote | `exact`, `approximate`, `found_at_other_version`, `not_found`, `too_short` | `not_found` |
-| PoC | `calls_project`, `no_project_reference` | never |
+| PoC | `calls_project`, `no_project_reference`, `not_checked` | never |
+
+`referenced_only` (a name used in the project but defined elsewhere, such as a libc or library function)
+counts as verified. `found_moved` covers a file found at another path in the same version or at the cited
+path in another version. "Another version" findings are soft: they are shown and lower the verified share,
+but are never hard failures.
 
 Frames in sanitizer runtimes, libc, system paths, the reporter's own harness (unresolved frames below
 the deepest resolved project frame) and files named like reproducers (`poc.c`, `exploit.py`) are

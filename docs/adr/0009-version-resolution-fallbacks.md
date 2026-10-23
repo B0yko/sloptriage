@@ -18,7 +18,8 @@ such report into a list of failures.
   the default branch as of the report date.
 - A citation that fails at the primary ref is re-checked at the default branch as of the report date,
   the newest release tag before it, the default branch head, and any other indexed release. A match
-  there is "another version" (informational), never a failure.
+  there is "another version": a soft finding, shown and counted against the verified share, never a hard
+  failure.
 
 ## Consequences
 

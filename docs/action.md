@@ -6,11 +6,13 @@
 |---|---|---|---|
 | `mode` | all | required | `check` or `post` |
 | `verdict` | all | `verdict.json` | file written by `check`, read by `post` |
-| `config` | check | `.sloptriage.yml` | configuration file |
+| `config` | check | empty: `.sloptriage.yml` in the checked-out repository | configuration file |
 | `token` | post | none | a token with `issues: write` (`github.token` in the workflow) |
 
-The action installs sloptriage from its own source at the referenced commit (`uvx --from
-"$GITHUB_ACTION_PATH"`), so pinning the action pins the tool.
+The action runs sloptriage from its own source at the referenced commit with the dependency versions in
+its `uv.lock` (`uv run --locked --project "$GITHUB_ACTION_PATH"`), so pinning the action pins the tool and
+its dependencies. The check step passes `--repo "$GITHUB_WORKSPACE"`, so it reads the checked-out
+repository and never clones `project.repository`.
 
 ## Job split
 
@@ -29,8 +31,9 @@ Why it is safe with hostile issue text:
   in CI.
 - The check job holds no write permission and no secret; the report job never checks out or runs code
   from the issue and only reads the verdict's structured fields.
-- The comment is found by its `<!-- sloptriage -->` marker and author (`github-actions[bot]`), so a
-  user comment that copies the marker is never overwritten.
+- The comment is found by its `<!-- sloptriage -->` marker and author (`github-actions[bot]`, plus any
+  logins listed in the `SLOPTRIAGE_COMMENT_AUTHOR` environment variable, for example when `post` runs
+  locally with a personal token), so a user comment that copies the marker is never overwritten.
 - Tests feed issues with `$(touch …)`, backticks, literal `${{ }}`, `"; curl … | sh`, Unicode bidi
   controls and a 1 MB body through the action's own shell steps and assert a correct verdict and no
   canary file.

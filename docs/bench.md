@@ -20,8 +20,13 @@
 
 `bench/manifest/reports.json` holds, per report: id, URL, substate, label, slop-list flag, disclosure
 date, era, SHA-256 of the fetched JSON and SHA-256 of the body. `bench fetch` compares the body hash to
-detect reports edited since the freeze. `bench/results/rows-*.json` hold derived fields per report: the
-resolved ref, claim counts, status counts, flags, class and timing. Nothing else.
+detect reports edited since the freeze. `bench/results/rows-*.json` hold, per report: the id, label,
+substate, era and slop-list flag from the manifest, whether the body changed since the freeze, the
+resolved ref and why it was chosen, claim and status counts, flags, the class, the check time and whether
+the index was already cached. No text, titles or names.
+
+The `seconds` in the rows come from the parallel benchmark run (8 workers); the latency figures in the
+README come from `eval/latency.py`, which checks the reports one at a time.
 
 ## Commands
 
@@ -48,7 +53,8 @@ release, then checks the reports in parallel.
 
 ## History of held-out evaluations
 
-1. Code at `2b38a84`: 10 of 90 valid reports classed `refs_failed`. Thresholds unchanged.
+1. Code at `2b38a84`: 10 of 90 valid reports classed `refs_failed`
+   (`bench/results/rows-heldout-run1-2026-10-24.json`). Thresholds unchanged.
 2. Code at `e036d44`, after one fix for defect classes found on the dev split (bare backticked
    identifiers treated as high confidence, a system path mapped onto a project directory, frames from an
    older release): 1 of 90. These are the published numbers.

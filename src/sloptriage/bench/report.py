@@ -54,6 +54,11 @@ def _metrics(rows: list[dict[str, Any]]) -> dict[str, Any]:
         },
         "per_check": per_check,
         "classes": classes,
+        # reports that named no usable version were checked at the default branch as of the report date
+        "ref_assumed": proportion(sum(1 for r in rows if r.get("ref_assumed")), len(rows)),
+        "ref_assumed_flagged": proportion(
+            sum(1 for r in flagged if r.get("ref_assumed")), len(flagged)
+        ),
     }
 
 

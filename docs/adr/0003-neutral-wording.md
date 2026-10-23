@@ -12,8 +12,9 @@ machine-written would be a guess about intent, and sloptriage cannot know it.
 
 - The card states what was checked and what was found, with the version and a permalink: "`foo()` is not
   defined anywhere in curl at `curl-8_10_1`", "line 812 is past the end of `lib/http.c` (640 lines)".
-- It never uses the words "slop", "AI", "LLM", "fake", "hallucinated", "spam" or "invalid". A test
-  renders every fixture card and checks this, ignoring the product name and URLs.
+- Its own wording never uses the words "slop", "AI", "LLM", "fake", "hallucinated", "spam" or "invalid".
+  A test renders every fixture card and checks this, ignoring the product name and URLs. (A name quoted
+  from a report, shown as code, can still contain such a word.)
 - It always says that verified references do not mean the issue is real, and it offers what would help:
   a version, a reproducer, a short template.
 - The tool never closes, locks or deletes anything and never contacts reporters.

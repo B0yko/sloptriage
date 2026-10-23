@@ -9,7 +9,7 @@ CLI and GitHub Action.
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
 
 <!-- headline:start -->
-On 299 held-out curl reports that were closed as not applicable, informative or spam, sloptriage found cited references that do not exist at the stated version in 18 (6.0%, 95% CI 3.8–9.3%); it flagged 1 of 90 resolved reports. When it flags a report, the report was closed as not valid 18 times out of 19.
+On 299 held-out curl reports that were closed as not applicable, informative or spam, sloptriage found cited references that do not exist in curl's code (at the version the report names, or the default branch on the report date when it names none) in 18 (6.0%, 95% CI 3.8–9.3%); it flagged 1 of 90 resolved reports. When it flags a report, the report was closed as not valid 18 times out of 19.
 <!-- headline:end -->
 ([How this was measured](#results).)
 
@@ -124,7 +124,9 @@ jobs:
 - **`report`** has `issues: write` and nothing else. It validates the downloaded verdict against the
   schema, renders the card from its fields with every report-derived string escaped, and posts or
   updates one comment marked `<!-- sloptriage -->`, so edits never duplicate it. It does not check out
-  or run anything.
+  the repository and never runs anything from the issue.
+- The action runs sloptriage from its own source at the pinned commit with the locked dependencies
+  (`uv run --locked`).
 - **Labels** (configurable): `triage:refs-verified`, `triage:refs-thin`, `triage:refs-mixed`,
   `triage:refs-failed`, `triage:needs-version`, `triage:needs-poc`.
 - **Comment policy:** by default sloptriage always labels and comments only for `refs_failed`,
@@ -188,7 +190,8 @@ flowchart LR
    - quotes: exact, approximate (at least 85% of lines found in order), not found.
 
    A citation that fails at the stated version but matches another indexed release counts as "another
-   version", never as a failure.
+   version": a soft finding that is shown and lowers the verified share, never a hard failure. A name that
+   is used in the project but defined elsewhere (a system or library function) counts as verified.
 6. **Classify.** `refs_failed` when at least 2 high-confidence citations fail, or 1 fails and fewer than
    70% of the checked citations verify. Padding a report with real references cannot rescue fabricated
    ones. `refs_verified` (everything checks out, at least 3 citations), `refs_thin` (everything checks
@@ -201,7 +204,8 @@ More in [docs/how-it-works.md](docs/how-it-works.md).
 
 ## Configuration
 
-`.sloptriage.yml` in the repository root (`sloptriage init` writes a starter file):
+`.sloptriage.yml` in the repository root (`sloptriage init` writes a starter file). An example with
+every section (the benchmark's own curl config is [`examples/curl/.sloptriage.yml`](examples/curl/.sloptriage.yml)):
 
 ```yaml
 version: 1
@@ -252,7 +256,8 @@ thresholds.
 split: bare backticked identifiers that are reporters' own labels or third-party constants, a system
 path (`/usr/include/...`) mapped onto a project directory, and frames from an older release. One fix
 (`e036d44`) addressed them; the dev split stayed at 0 of 60 false flags, and the second held-out run
-produced the numbers below. They are therefore not a pristine first-look estimate.
+produced the numbers below. They are therefore not a pristine first-look estimate. The rows of the first
+run are in [`bench/results/rows-heldout-run1-2026-10-24.json`](bench/results/rows-heldout-run1-2026-10-24.json).
 
 <details>
 <summary>All result tables</summary>
@@ -266,14 +271,14 @@ Measured on 2026-10-24 on a Mac Studio M4 Max, 128 GB with `sloptriage 0.1.0`; s
 |---|---|
 | Resolved (valid) | 1/90 (1.1%, 0.2–6.0%) |
 | Not applicable, informative or spam (invalid) | 18/299 (6.0%, 3.8–9.3%) |
-| Invalid, listed in the curl slop gist | 2/32 (6.2%, 1.7–20.2%) |
+| Invalid, listed in the curl slop gist | 2/32 (6.2%, 1.7–20.1%) |
 | Invalid, not listed | 16/267 (6.0%, 3.7–9.5%) |
 | Valid, disclosed before 2023 | 0/27 (0.0%, 0.0–12.5%) |
 | Invalid, disclosed before 2023 | 1/34 (2.9%, 0.5–14.9%) |
 | Valid, disclosed 2023 or later | 1/63 (1.6%, 0.3–8.5%) |
 | Invalid, disclosed 2023 or later | 17/265 (6.4%, 4.0–10.0%) |
 
-Precision for invalid: 18/19 (94.7%, 75.4–99.1%). Coverage (at least one checkable high-confidence claim): 232/299 (77.6%, 72.5–82.0%) of invalid and 59/90 (65.6%, 55.3–74.6%) of valid reports. Dev split for comparison: 0/60 (0.0%, 0.0–6.0%) valid and 16/200 (8.0%, 5.0–12.6%) invalid reports classed `refs_failed`.
+Precision for invalid: 18/19 (94.7%, 75.4–99.1%). Coverage (at least one checkable high-confidence claim): 232/299 (77.6%, 72.5–82.0%) of invalid and 59/90 (65.6%, 55.3–74.6%) of valid reports. Dev split for comparison: 0/60 (0.0%, 0.0–6.0%) valid and 16/200 (8.0%, 5.0–12.6%) invalid reports classed `refs_failed`. Reports that named no usable version were checked at the default branch as of the report date: 238/389 (61.2%, 56.3–65.9%) of held-out reports, and 9/19 (47.4%, 27.3–68.3%) of the flagged ones.
 
 **Per check, held-out split: share of reports with at least one high-confidence citation of**
 
@@ -313,7 +318,7 @@ input) cite code that exists, so the reference check does not flag them; PoCs ar
 
 **Latency**
 
-Cold index of `curl-8_17_0`: 3.3 s. Checking each of the 389 held-out reports against an indexed ref: p50 0.30 s, p95 3.21 s (Mac Studio M4 Max, 128 GB, 2026-10-24).
+Cold index of `curl-8_17_0`: 3.3 s. Checking each of the 389 held-out reports one at a time against an indexed ref: p50 0.30 s, p95 3.21 s (Mac Studio M4 Max, 128 GB, 2026-10-24).
 
 **Every valid held-out report classed `refs_failed`**
 
@@ -343,7 +348,9 @@ low-quality curl reports cite code that does exist, which is why recall is low.
 - The benchmark stores report IDs and URLs, the HackerOne substate, slop-list membership, the
   disclosure date, SHA-256 hashes of each fetched JSON and its body, and derived counts and classes. It
   never stores report text, titles, reporter names or excerpts; a test checks that the manifest schema
-  has no free-text field. `bench fetch` downloads the reports to your own machine.
+  has no free-text field. `bench fetch` downloads the reports to your own machine. The per-report rows
+  list what the tool found for each public report ID; they are not a judgement of the people who wrote
+  the reports.
 
 More in [docs/security-model.md](docs/security-model.md).
 
@@ -368,6 +375,10 @@ More in [docs/security-model.md](docs/security-model.md).
 - **PoCs are not run.** v0.1.0 checks references only. A PoC that overflows its own buffer or never calls
   the library is not detected. The verdict schema keeps a `reproduction` field for later.
 - **Macros, inlining and function pointers** make frame chains unreliable, so chains are informational.
+- **Many reports name no version.** 61% of the held-out curl reports named no usable version and were
+  checked at the default branch as of the report date (9 of the 19 flagged ones). A report that read
+  code from another version can then look wrong; citations that match any indexed release are not counted
+  as failures, which limits but does not remove this.
 - **One benchmark project.** No second project with publicly disclosed, outcome-labelled reports was
   found in time.
 - **Recall is low on real reports**, because most of them cite code that exists.
@@ -380,7 +391,8 @@ Described from their own READMEs or pages, checked 2026-10-23:
 - [SlopGuard](https://github.com/foudreeeee/SlopGuard) (MIT): static file, line and symbol existence
   checks, duplicate and CWE checks, a confidence score and an optional LLM pass.
 - [Substantiate](https://github.com/Dgotlieb/substantiate) (Apache-2.0): checks that files, lines,
-  functions, tags, commits and CVE ids cited in an issue or report exist; deterministic, no model.
+  functions, tags and commits cited in an issue or report exist, deterministically and without a model;
+  CVE ids are checked in an opt-in online tier.
 - [triage0](https://github.com/nomanSanjari/triage0): extracts claims and checks them in a container
   against git, AST and compiler output; early stage.
 - [SlopGate](https://github.com/sleepy-ujjawal/slopgate): an agent that tries to reproduce a report in a

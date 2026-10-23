@@ -23,6 +23,6 @@ def proportion(k: int, n: int) -> dict[str, Any]:
     return {
         "k": k,
         "n": n,
-        "rate": round(k / n, 4) if n else None,
-        "ci95": [round(lo, 4), round(hi, 4)],
+        "rate": round(k / n, 6) if n else None,
+        "ci95": [round(lo, 6), round(hi, 6)],
     }

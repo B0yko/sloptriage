@@ -26,7 +26,7 @@ fields sloptriage reads:
 | `id` | integer | report id |
 | `title` | string | title |
 | `vulnerability_information` | string (Markdown) | the body |
-| `submitted_at`, `created_at` | ISO 8601 string | `created_at` of the report (used to pick the default branch commit when no version is given) |
+| `submitted_at`, `created_at` | ISO 8601 string | the report date (`submitted_at`, else `created_at`), used to pick the default branch commit when no version is given |
 | `substate` | `resolved`, `not-applicable`, `informative`, `spam`, `duplicate`, … | benchmark label (only in the manifest) |
 | `disclosed_at` | ISO 8601 string | benchmark era (only in the manifest) |
 

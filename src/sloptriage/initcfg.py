@@ -44,7 +44,7 @@ def write_config(root: Path) -> str:
         if lang:
             langs["typescript" if lang == "tsx" else lang] += 1
     top = [lang for lang, n in langs.most_common() if n >= max(3, 0.05 * sum(langs.values()))] or [
-        l for l, _ in langs.most_common(1)
+        name for name, _ in langs.most_common(1)
     ]
     name = root.name
     remote = subprocess.run(

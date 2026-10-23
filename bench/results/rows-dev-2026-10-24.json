@@ -1,0 +1,8867 @@
+[
+ {
+  "id": 547630,
+  "label": "valid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "master@2019-04-24",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_thin",
+  "hard": 0,
+  "soft": 0,
+  "verified": 2,
+  "checked": 2,
+  "claims_high": {
+   "cve": 2,
+   "path": 2
+  },
+  "statuses_high": {
+   "path:found": 2
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.7121,
+  "index_cached": true
+ },
+ {
+  "id": 591770,
+  "label": "invalid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "8144ba38c383",
+  "ref_assumed": false,
+  "ref_reason": "sha",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 21,
+  "checked": 21,
+  "claims_high": {
+   "symbol": 1,
+   "line": 2,
+   "sanitizer_claim": 1,
+   "frame": 20
+  },
+  "statuses_high": {
+   "symbol:defined": 1,
+   "line:in_range": 2,
+   "frame:consistent": 18,
+   "frame_chain:call_not_seen": 2,
+   "frame_chain:call_seen": 14
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.6023,
+  "index_cached": true
+ },
+ {
+  "id": 640530,
+  "label": "invalid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2019-07-11",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {},
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4365,
+  "index_cached": true
+ },
+ {
+  "id": 661847,
+  "label": "invalid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2019-07-27",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_thin",
+  "hard": 0,
+  "soft": 0,
+  "verified": 1,
+  "checked": 1,
+  "claims_high": {
+   "line": 1
+  },
+  "statuses_high": {
+   "line:in_range": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.5125,
+  "index_cached": true
+ },
+ {
+  "id": 684603,
+  "label": "valid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "master@2019-08-29",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "cve": 2
+  },
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3825,
+  "index_cached": true
+ },
+ {
+  "id": 687734,
+  "label": "invalid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2019-09-04",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_thin",
+  "hard": 0,
+  "soft": 0,
+  "verified": 1,
+  "checked": 1,
+  "claims_high": {
+   "symbol": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4343,
+  "index_cached": true
+ },
+ {
+  "id": 694449,
+  "label": "invalid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2019-09-13",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 6,
+  "checked": 6,
+  "claims_high": {
+   "symbol": 1,
+   "line": 3,
+   "path": 2
+  },
+  "statuses_high": {
+   "symbol:defined": 1,
+   "line:in_range": 3,
+   "path:found": 2
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4882,
+  "index_cached": true
+ },
+ {
+  "id": 704621,
+  "label": "invalid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2019-10-01",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "cve": 1
+  },
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4431,
+  "index_cached": true
+ },
+ {
+  "id": 707006,
+  "label": "invalid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2019-10-03",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 8,
+  "checked": 8,
+  "claims_high": {
+   "path": 1,
+   "poc": 1,
+   "sanitizer_claim": 1,
+   "frame": 13
+  },
+  "statuses_high": {
+   "path:other_repository": 1,
+   "poc:calls_project": 1,
+   "frame:consistent": 8,
+   "path:outside_project": 1,
+   "symbol:outside_project": 1,
+   "frame:outside_project": 4,
+   "frame_chain:call_seen": 5,
+   "frame_chain:call_not_seen": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 2.7644,
+  "index_cached": true
+ },
+ {
+  "id": 713975,
+  "label": "invalid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2019-10-14",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_thin",
+  "hard": 0,
+  "soft": 0,
+  "verified": 1,
+  "checked": 1,
+  "claims_high": {
+   "path": 1
+  },
+  "statuses_high": {
+   "path:found": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4256,
+  "index_cached": true
+ },
+ {
+  "id": 724134,
+  "label": "invalid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2019-10-28",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 3,
+  "checked": 3,
+  "claims_high": {
+   "line": 2,
+   "path": 1
+  },
+  "statuses_high": {
+   "line:in_range": 2,
+   "path:found": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.5249,
+  "index_cached": true
+ },
+ {
+  "id": 726117,
+  "label": "invalid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "curl-7_62_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "version": 1,
+   "poc": 1
+  },
+  "statuses_high": {
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3444,
+  "index_cached": true
+ },
+ {
+  "id": 770190,
+  "label": "invalid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2020-01-08",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 3,
+  "checked": 3,
+  "claims_high": {
+   "symbol": 1,
+   "line": 1,
+   "path": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 1,
+   "line:in_range": 1,
+   "path:found": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4288,
+  "index_cached": true
+ },
+ {
+  "id": 773313,
+  "label": "invalid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2020-01-13",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "poc": 1
+  },
+  "statuses_high": {
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4279,
+  "index_cached": true
+ },
+ {
+  "id": 926638,
+  "label": "invalid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2020-07-18",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_thin",
+  "hard": 0,
+  "soft": 0,
+  "verified": 1,
+  "checked": 1,
+  "claims_high": {
+   "cve": 1,
+   "symbol": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4078,
+  "index_cached": true
+ },
+ {
+  "id": 1024749,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2020-11-02",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {},
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3936,
+  "index_cached": true
+ },
+ {
+  "id": 1045844,
+  "label": "valid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "master@2020-11-27",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 18,
+  "checked": 18,
+  "claims_high": {
+   "cve": 1,
+   "frame": 18
+  },
+  "statuses_high": {
+   "frame:consistent": 18,
+   "frame_chain:call_seen": 14,
+   "frame_chain:call_not_seen": 3
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.6695,
+  "index_cached": true
+ },
+ {
+  "id": 1049624,
+  "label": "invalid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2020-12-03",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {},
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.404,
+  "index_cached": true
+ },
+ {
+  "id": 1086259,
+  "label": "invalid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "curl-7_64_1",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "version": 1,
+   "cve": 1
+  },
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3255,
+  "index_cached": true
+ },
+ {
+  "id": 1176461,
+  "label": "valid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "master@2021-04-27",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_thin",
+  "hard": 0,
+  "soft": 0,
+  "verified": 1,
+  "checked": 1,
+  "claims_high": {
+   "cve": 1,
+   "path": 1,
+   "poc": 1
+  },
+  "statuses_high": {
+   "path:found": 1,
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 2.5455,
+  "index_cached": true
+ },
+ {
+  "id": 1213175,
+  "label": "valid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "master@2021-05-30",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "cve": 1
+  },
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3627,
+  "index_cached": true
+ },
+ {
+  "id": 1223565,
+  "label": "valid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "master@2021-06-11",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "cve": 1,
+   "cwe": 2
+  },
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4279,
+  "index_cached": true
+ },
+ {
+  "id": 1223882,
+  "label": "valid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "curl-7_77_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 5,
+  "checked": 5,
+  "claims_high": {
+   "cve": 2,
+   "version": 1,
+   "poc": 1,
+   "symbol": 2,
+   "line": 2,
+   "path": 1
+  },
+  "statuses_high": {
+   "poc:not_checked": 1,
+   "symbol:defined": 2,
+   "line:in_range": 2,
+   "path:found": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3758,
+  "index_cached": true
+ },
+ {
+  "id": 1334111,
+  "label": "valid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "master@2021-09-09",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "cve": 1
+  },
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3897,
+  "index_cached": true
+ },
+ {
+  "id": 1334763,
+  "label": "valid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "master@2021-09-09",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "cve": 1
+  },
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3145,
+  "index_cached": true
+ },
+ {
+  "id": 1444539,
+  "label": "invalid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2022-01-09",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_thin",
+  "hard": 0,
+  "soft": 0,
+  "verified": 1,
+  "checked": 1,
+  "claims_high": {
+   "quote": 1,
+   "poc": 1
+  },
+  "statuses_high": {
+   "quote:exact": 1,
+   "poc:calls_project": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.6324,
+  "index_cached": true
+ },
+ {
+  "id": 1463013,
+  "label": "invalid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "curl-7_81_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 5,
+  "checked": 5,
+  "claims_high": {
+   "version": 1,
+   "symbol": 2,
+   "line": 2,
+   "path": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 2,
+   "line:in_range": 2,
+   "path:found": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3864,
+  "index_cached": true
+ },
+ {
+  "id": 1468962,
+  "label": "invalid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2022-02-03",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {},
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3912,
+  "index_cached": true
+ },
+ {
+  "id": 1521610,
+  "label": "invalid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2022-03-24",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 3,
+  "checked": 3,
+  "claims_high": {
+   "poc": 1,
+   "path": 1,
+   "line": 1,
+   "quote": 1
+  },
+  "statuses_high": {
+   "poc:not_checked": 1,
+   "path:found": 1,
+   "line:in_range": 1,
+   "quote:exact": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3683,
+  "index_cached": true
+ },
+ {
+  "id": 1542881,
+  "label": "invalid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "curl-7_82_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "version": 1
+  },
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3591,
+  "index_cached": true
+ },
+ {
+  "id": 1546268,
+  "label": "valid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "master@2022-04-21",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "cve": 1
+  },
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4003,
+  "index_cached": true
+ },
+ {
+  "id": 1547048,
+  "label": "valid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "master@2022-04-21",
+  "ref_assumed": true,
+  "ref_reason": "dev_version",
+  "class": "refs_thin",
+  "hard": 0,
+  "soft": 0,
+  "verified": 2,
+  "checked": 2,
+  "claims_high": {
+   "cve": 1,
+   "version": 1,
+   "line": 1,
+   "path": 1
+  },
+  "statuses_high": {
+   "line:in_range": 1,
+   "path:found": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4275,
+  "index_cached": true
+ },
+ {
+  "id": 1549435,
+  "label": "invalid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2022-04-24",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {},
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3345,
+  "index_cached": true
+ },
+ {
+  "id": 1553301,
+  "label": "valid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "master@2022-04-28",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "cve": 2,
+   "poc": 1
+  },
+  "statuses_high": {
+   "poc:no_project_reference": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3992,
+  "index_cached": true
+ },
+ {
+  "id": 1555441,
+  "label": "valid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "master@2022-04-30",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_mixed",
+  "hard": 1,
+  "soft": 1,
+  "verified": 5,
+  "checked": 7,
+  "claims_high": {
+   "cve": 1,
+   "line": 2,
+   "path": 2,
+   "quote": 1,
+   "symbol": 2
+  },
+  "statuses_high": {
+   "line:blank_or_comment": 1,
+   "path:found": 2,
+   "quote:exact": 1,
+   "symbol:defined": 1,
+   "line:in_range": 1,
+   "symbol:not_found": 1
+  },
+  "flags": {
+   "symbol_not_found": 1,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 2.4212,
+  "index_cached": true
+ },
+ {
+  "id": 1555796,
+  "label": "valid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "master@2022-05-01",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "cve": 1
+  },
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4488,
+  "index_cached": true
+ },
+ {
+  "id": 1564922,
+  "label": "invalid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2022-05-10",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_thin",
+  "hard": 0,
+  "soft": 0,
+  "verified": 2,
+  "checked": 2,
+  "claims_high": {
+   "cve": 1,
+   "poc": 1,
+   "path": 1,
+   "symbol": 1
+  },
+  "statuses_high": {
+   "poc:no_project_reference": 1,
+   "path:found": 1,
+   "symbol:defined": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 3.2461,
+  "index_cached": true
+ },
+ {
+  "id": 1570651,
+  "label": "valid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "master@2022-05-15",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "cve": 1
+  },
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4399,
+  "index_cached": true
+ },
+ {
+  "id": 1572120,
+  "label": "invalid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2022-05-16",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {},
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4037,
+  "index_cached": true
+ },
+ {
+  "id": 1573634,
+  "label": "valid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "master@2022-05-17",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "cve": 1,
+   "cwe": 1
+  },
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 1.1715,
+  "index_cached": true
+ },
+ {
+  "id": 1590071,
+  "label": "valid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "master@2022-06-02",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "cve": 1
+  },
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4133,
+  "index_cached": true
+ },
+ {
+  "id": 1730660,
+  "label": "valid",
+  "era": "pre2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "master@2022-10-11",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "cve": 1
+  },
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3896,
+  "index_cached": true
+ },
+ {
+  "id": 1813864,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "master@2022-12-21",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "cve": 1
+  },
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3796,
+  "index_cached": true
+ },
+ {
+  "id": 1814824,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2022-12-22",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "path": 1
+  },
+  "statuses_high": {
+   "path:outside_project": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.377,
+  "index_cached": true
+ },
+ {
+  "id": 1825377,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2023-01-07",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_thin",
+  "hard": 0,
+  "soft": 0,
+  "verified": 1,
+  "checked": 1,
+  "claims_high": {
+   "path": 1
+  },
+  "statuses_high": {
+   "path:found": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.2997,
+  "index_cached": true
+ },
+ {
+  "id": 1826392,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2023-01-09",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {},
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.394,
+  "index_cached": true
+ },
+ {
+  "id": 1891474,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "master@2023-03-03",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "cve": 1
+  },
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4026,
+  "index_cached": true
+ },
+ {
+  "id": 1892780,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "master@2023-03-05",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "cve": 1
+  },
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 2.4477,
+  "index_cached": true
+ },
+ {
+  "id": 1898475,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "master@2023-03-09",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "cve": 1
+  },
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4015,
+  "index_cached": true
+ },
+ {
+  "id": 1950627,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "master@2023-04-17",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 4,
+  "checked": 4,
+  "claims_high": {
+   "cve": 1,
+   "path": 1,
+   "line": 1,
+   "quote": 1,
+   "symbol": 1
+  },
+  "statuses_high": {
+   "path:found": 1,
+   "line:in_range": 1,
+   "quote:exact": 1,
+   "symbol:defined": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4763,
+  "index_cached": true
+ },
+ {
+  "id": 2039870,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "master@2023-06-27",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_thin",
+  "hard": 0,
+  "soft": 0,
+  "verified": 2,
+  "checked": 2,
+  "claims_high": {
+   "cve": 1,
+   "path": 2,
+   "quote": 1,
+   "poc": 2
+  },
+  "statuses_high": {
+   "path:found": 1,
+   "quote:exact": 1,
+   "poc:calls_project": 1,
+   "path:other_repository": 1,
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4589,
+  "index_cached": true
+ },
+ {
+  "id": 2199174,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": true,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "curl-8_4_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_failed",
+  "hard": 2,
+  "soft": 0,
+  "verified": 1,
+  "checked": 3,
+  "claims_high": {
+   "cve": 1,
+   "symbol": 3,
+   "version": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 1,
+   "symbol:not_found": 2
+  },
+  "flags": {
+   "symbol_not_found": 2,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 5.0636,
+  "index_cached": true
+ },
+ {
+  "id": 2252307,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2023-11-15",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 7,
+  "checked": 7,
+  "claims_high": {
+   "path": 2,
+   "symbol": 5
+  },
+  "statuses_high": {
+   "path:found": 2,
+   "symbol:defined": 5
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4035,
+  "index_cached": true
+ },
+ {
+  "id": 2298307,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": true,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2023-12-28",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_thin",
+  "hard": 0,
+  "soft": 0,
+  "verified": 2,
+  "checked": 2,
+  "claims_high": {
+   "line": 1,
+   "path": 1
+  },
+  "statuses_high": {
+   "line:in_range": 1,
+   "path:found": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4041,
+  "index_cached": true
+ },
+ {
+  "id": 2352676,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2024-02-02",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "poc": 1
+  },
+  "statuses_high": {
+   "poc:no_project_reference": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3834,
+  "index_cached": true
+ },
+ {
+  "id": 2550951,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2024-06-13",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {},
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 3.2467,
+  "index_cached": true
+ },
+ {
+  "id": 2629968,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "curl-8_9_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 9,
+  "checked": 9,
+  "claims_high": {
+   "cve": 1,
+   "path": 1,
+   "quote": 1,
+   "version": 1,
+   "sanitizer_claim": 1,
+   "frame": 11
+  },
+  "statuses_high": {
+   "path:found": 1,
+   "quote:exact": 1,
+   "frame:consistent": 7,
+   "frame:outside_project": 4,
+   "frame_chain:call_seen": 6
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4733,
+  "index_cached": true
+ },
+ {
+  "id": 2669852,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "master@2024-08-19",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "cve": 1,
+   "symbol": 2
+  },
+  "statuses_high": {
+   "symbol:external": 2
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.5156,
+  "index_cached": true
+ },
+ {
+  "id": 2764830,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "curl-8_10_1",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "cve": 1,
+   "version": 2
+  },
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3073,
+  "index_cached": true
+ },
+ {
+  "id": 2823554,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": true,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2024-11-06",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "frame": 2
+  },
+  "statuses_high": {
+   "frame:outside_project": 2
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 2.6274,
+  "index_cached": true
+ },
+ {
+  "id": 2859735,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2024-11-22",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {},
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3514,
+  "index_cached": true
+ },
+ {
+  "id": 2861797,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2024-11-23",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "cve": 1
+  },
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3462,
+  "index_cached": true
+ },
+ {
+  "id": 2864414,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2024-11-25",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 3,
+  "checked": 3,
+  "claims_high": {
+   "path": 3,
+   "cwe": 5
+  },
+  "statuses_high": {
+   "path:found": 3
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3468,
+  "index_cached": true
+ },
+ {
+  "id": 2904921,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2024-12-17",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {},
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3361,
+  "index_cached": true
+ },
+ {
+  "id": 2912277,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": true,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2024-12-23",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {},
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.338,
+  "index_cached": true
+ },
+ {
+  "id": 2915426,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2024-12-27",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {},
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3455,
+  "index_cached": true
+ },
+ {
+  "id": 2954286,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "curl-8_11_1",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "cve": 1,
+   "version": 1
+  },
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3015,
+  "index_cached": true
+ },
+ {
+  "id": 2956023,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "master@2025-01-23",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 6,
+  "checked": 6,
+  "claims_high": {
+   "cve": 1,
+   "line": 3,
+   "path": 1,
+   "symbol": 2,
+   "poc": 2
+  },
+  "statuses_high": {
+   "line:in_range": 3,
+   "path:found": 1,
+   "symbol:defined": 2,
+   "poc:calls_project": 2
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.5354,
+  "index_cached": true
+ },
+ {
+  "id": 2961050,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2025-01-27",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "poc": 2
+  },
+  "statuses_high": {
+   "poc:not_checked": 1,
+   "poc:calls_project": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.5166,
+  "index_cached": true
+ },
+ {
+  "id": 2981245,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": true,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2025-02-07",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_failed",
+  "hard": 1,
+  "soft": 0,
+  "verified": 1,
+  "checked": 2,
+  "claims_high": {
+   "symbol": 2
+  },
+  "statuses_high": {
+   "symbol:defined": 1,
+   "symbol:not_found": 1
+  },
+  "flags": {
+   "symbol_not_found": 1,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 2.598,
+  "index_cached": true
+ },
+ {
+  "id": 2981303,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2025-02-07",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "poc": 1
+  },
+  "statuses_high": {
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3458,
+  "index_cached": true
+ },
+ {
+  "id": 3023139,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2025-03-05",
+  "ref_assumed": true,
+  "ref_reason": "dev_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 9,
+  "checked": 9,
+  "claims_high": {
+   "version": 1,
+   "sanitizer_claim": 1,
+   "frame": 12
+  },
+  "statuses_high": {
+   "frame:outside_project": 2,
+   "frame:consistent": 9,
+   "path:outside_project": 1,
+   "symbol:outside_project": 1,
+   "frame_chain:call_seen": 6,
+   "frame_chain:call_not_seen": 2
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 3.0204,
+  "index_cached": true
+ },
+ {
+  "id": 3037326,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2025-03-13",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 5,
+  "checked": 5,
+  "claims_high": {
+   "symbol": 3,
+   "path": 1,
+   "line": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 2,
+   "path:found": 1,
+   "line:in_range": 1,
+   "symbol:referenced_only": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.6449,
+  "index_cached": true
+ },
+ {
+  "id": 3045390,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2025-03-18",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 8,
+  "checked": 8,
+  "claims_high": {
+   "symbol": 6,
+   "path": 1,
+   "line": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 6,
+   "path:found": 1,
+   "line:in_range": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4621,
+  "index_cached": true
+ },
+ {
+  "id": 3089595,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2025-04-11",
+  "ref_assumed": true,
+  "ref_reason": "dev_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 18,
+  "checked": 18,
+  "claims_high": {
+   "version": 1,
+   "sanitizer_claim": 1,
+   "frame": 21
+  },
+  "statuses_high": {
+   "frame:outside_project": 2,
+   "frame:consistent": 18,
+   "path:outside_project": 1,
+   "symbol:outside_project": 1,
+   "frame_chain:call_not_seen": 7,
+   "frame_chain:call_seen": 10
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 3.0387,
+  "index_cached": true
+ },
+ {
+  "id": 3094406,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "curl-8_13_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 17,
+  "checked": 17,
+  "claims_high": {
+   "symbol": 4,
+   "version": 1,
+   "sanitizer_claim": 1,
+   "frame": 16,
+   "line": 3,
+   "path": 2,
+   "cwe": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 4,
+   "frame:outside_project": 4,
+   "frame:consistent": 10,
+   "path:outside_project": 1,
+   "line:in_range": 2,
+   "path:found": 1,
+   "frame_chain:call_seen": 6
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.9159,
+  "index_cached": true
+ },
+ {
+  "id": 3100073,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": true,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "curl-8_13_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "version": 1,
+   "poc": 1
+  },
+  "statuses_high": {
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3371,
+  "index_cached": true
+ },
+ {
+  "id": 3116935,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": true,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2025-04-29",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_thin",
+  "hard": 0,
+  "soft": 0,
+  "verified": 1,
+  "checked": 1,
+  "claims_high": {
+   "cwe": 1,
+   "path": 1
+  },
+  "statuses_high": {
+   "path:found": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 2.6816,
+  "index_cached": true
+ },
+ {
+  "id": 3118915,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2025-04-30",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_thin",
+  "hard": 0,
+  "soft": 0,
+  "verified": 1,
+  "checked": 1,
+  "claims_high": {
+   "symbol": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3445,
+  "index_cached": true
+ },
+ {
+  "id": 3120969,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "curl-7_85_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "cwe": 1,
+   "version": 1,
+   "cve": 1
+  },
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3208,
+  "index_cached": true
+ },
+ {
+  "id": 3124490,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "curl-7_12_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_failed",
+  "hard": 1,
+  "soft": 0,
+  "verified": 2,
+  "checked": 3,
+  "claims_high": {
+   "version": 1,
+   "path": 1,
+   "quote": 1,
+   "symbol": 2,
+   "poc": 1
+  },
+  "statuses_high": {
+   "path:found": 1,
+   "quote:not_found": 1,
+   "symbol:defined": 1,
+   "symbol:external": 1,
+   "poc:calls_project": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 1,
+   "path_not_found": 0
+  },
+  "seconds": 1.2082,
+  "index_cached": true
+ },
+ {
+  "id": 3125820,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": true,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2025-05-04",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "poc": 2
+  },
+  "statuses_high": {
+   "poc:calls_project": 1,
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4655,
+  "index_cached": true
+ },
+ {
+  "id": 3135673,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2025-05-08",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {},
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 1.2367,
+  "index_cached": true
+ },
+ {
+  "id": 3153497,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "master@2025-05-19",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_thin",
+  "hard": 0,
+  "soft": 0,
+  "verified": 1,
+  "checked": 1,
+  "claims_high": {
+   "cve": 1,
+   "symbol": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.362,
+  "index_cached": true
+ },
+ {
+  "id": 3153971,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2025-05-20",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 6,
+  "checked": 6,
+  "claims_high": {
+   "symbol": 3,
+   "path": 1,
+   "line": 1,
+   "quote": 1,
+   "poc": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 3,
+   "path:found": 1,
+   "line:in_range": 1,
+   "quote:exact": 1,
+   "poc:calls_project": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.5235,
+  "index_cached": true
+ },
+ {
+  "id": 3156384,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2025-05-21",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {},
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3709,
+  "index_cached": true
+ },
+ {
+  "id": 3158093,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": true,
+  "substate": "spam",
+  "edited_since_freeze": false,
+  "ref": "master@2025-05-22",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 6,
+  "checked": 6,
+  "claims_high": {
+   "cwe": 1,
+   "poc": 2,
+   "path": 3,
+   "symbol": 3
+  },
+  "statuses_high": {
+   "poc:not_checked": 1,
+   "poc:calls_project": 1,
+   "path:found": 3,
+   "symbol:defined": 3
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.5101,
+  "index_cached": true
+ },
+ {
+  "id": 3183957,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2025-06-09",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {},
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3318,
+  "index_cached": true
+ },
+ {
+  "id": 3211126,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2025-06-19",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 3,
+  "checked": 3,
+  "claims_high": {
+   "path": 1,
+   "symbol": 1,
+   "quote": 1,
+   "poc": 3
+  },
+  "statuses_high": {
+   "path:found": 1,
+   "symbol:defined": 1,
+   "quote:approximate": 1,
+   "poc:not_checked": 1,
+   "poc:calls_project": 2
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.747,
+  "index_cached": true
+ },
+ {
+  "id": 3226502,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2025-06-27",
+  "ref_assumed": true,
+  "ref_reason": "dev_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "version": 1
+  },
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3581,
+  "index_cached": true
+ },
+ {
+  "id": 3242087,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2025-07-09",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {},
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3002,
+  "index_cached": true
+ },
+ {
+  "id": 3258022,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2025-07-17",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "poc": 1
+  },
+  "statuses_high": {
+   "poc:calls_project": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.5346,
+  "index_cached": true
+ },
+ {
+  "id": 3261310,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "curl-8_14_1",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "version": 1,
+   "poc": 1,
+   "sanitizer_claim": 1,
+   "frame": 4
+  },
+  "statuses_high": {
+   "poc:calls_project": 1,
+   "frame:outside_project": 4
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.5109,
+  "index_cached": true
+ },
+ {
+  "id": 3262848,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2025-07-21",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {},
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3339,
+  "index_cached": true
+ },
+ {
+  "id": 3264469,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "48c6927f3b70",
+  "ref_assumed": false,
+  "ref_reason": "sha",
+  "class": "refs_failed",
+  "hard": 52,
+  "soft": 0,
+  "verified": 76,
+  "checked": 128,
+  "claims_high": {
+   "frame": 206,
+   "sanitizer_claim": 1
+  },
+  "statuses_high": {
+   "frame:outside_project": 71,
+   "path:not_found": 48,
+   "symbol:not_found": 52,
+   "path:found_moved": 4,
+   "frame:consistent": 76,
+   "path:outside_project": 7,
+   "symbol:outside_project": 7,
+   "frame_chain:call_seen": 57,
+   "frame_chain:call_not_seen": 12
+  },
+  "flags": {
+   "symbol_not_found": 52,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 48
+  },
+  "seconds": 103.9808,
+  "index_cached": true
+ },
+ {
+  "id": 3269761,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2025-07-24",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {},
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.201,
+  "index_cached": true
+ },
+ {
+  "id": 3283232,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "curl-8_13_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 9,
+  "checked": 9,
+  "claims_high": {
+   "version": 3,
+   "sanitizer_claim": 1,
+   "symbol": 9
+  },
+  "statuses_high": {
+   "symbol:defined": 8,
+   "symbol:referenced_only": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.7386,
+  "index_cached": true
+ },
+ {
+  "id": 3293801,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2025-08-10",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_failed",
+  "hard": 1,
+  "soft": 0,
+  "verified": 0,
+  "checked": 1,
+  "claims_high": {
+   "poc": 1,
+   "symbol": 1
+  },
+  "statuses_high": {
+   "poc:not_checked": 1,
+   "symbol:not_found": 1
+  },
+  "flags": {
+   "symbol_not_found": 1,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 2.6896,
+  "index_cached": true
+ },
+ {
+  "id": 3294999,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "89490b16c736",
+  "ref_assumed": false,
+  "ref_reason": "sha",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 44,
+  "checked": 44,
+  "claims_high": {
+   "cve": 1,
+   "quote": 1,
+   "poc": 2,
+   "sanitizer_claim": 1,
+   "frame": 48
+  },
+  "statuses_high": {
+   "quote:exact": 1,
+   "poc:calls_project": 1,
+   "poc:not_checked": 1,
+   "frame:consistent": 43,
+   "frame:outside_project": 3,
+   "frame_chain:call_seen": 38,
+   "frame_chain:call_not_seen": 3
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 1.2698,
+  "index_cached": true
+ },
+ {
+  "id": 3295650,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": true,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "curl-8_1_2",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "cwe": 1,
+   "version": 1
+  },
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3301,
+  "index_cached": true
+ },
+ {
+  "id": 3295656,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "curl-8_1_2",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_failed",
+  "hard": 1,
+  "soft": 0,
+  "verified": 0,
+  "checked": 1,
+  "claims_high": {
+   "cwe": 2,
+   "path": 1,
+   "version": 1
+  },
+  "statuses_high": {
+   "path:not_found": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 1
+  },
+  "seconds": 0.3201,
+  "index_cached": true
+ },
+ {
+  "id": 3303765,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2025-08-18",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "poc": 2,
+   "cwe": 1
+  },
+  "statuses_high": {
+   "poc:calls_project": 1,
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.576,
+  "index_cached": true
+ },
+ {
+  "id": 3306456,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2025-08-20",
+  "ref_assumed": true,
+  "ref_reason": "dev_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "version": 1
+  },
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3749,
+  "index_cached": true
+ },
+ {
+  "id": 3306475,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "curl-7_88_1",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_failed",
+  "hard": 1,
+  "soft": 0,
+  "verified": 0,
+  "checked": 1,
+  "claims_high": {
+   "version": 1,
+   "path": 1,
+   "symbol": 1
+  },
+  "statuses_high": {
+   "path:outside_project": 1,
+   "symbol:not_found": 1
+  },
+  "flags": {
+   "symbol_not_found": 1,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 2.7133,
+  "index_cached": true
+ },
+ {
+  "id": 3310318,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2025-08-22",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "poc": 1
+  },
+  "statuses_high": {
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3225,
+  "index_cached": true
+ },
+ {
+  "id": 3330839,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "master@2025-09-08",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 4,
+  "checked": 4,
+  "claims_high": {
+   "cve": 1,
+   "line": 3,
+   "path": 1
+  },
+  "statuses_high": {
+   "line:in_range": 3,
+   "path:found": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4069,
+  "index_cached": true
+ },
+ {
+  "id": 3337561,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2025-09-13",
+  "ref_assumed": true,
+  "ref_reason": "dev_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 6,
+  "checked": 6,
+  "claims_high": {
+   "version": 1,
+   "line": 3,
+   "path": 3,
+   "cwe": 1,
+   "poc": 1
+  },
+  "statuses_high": {
+   "line:in_range": 3,
+   "path:found": 3,
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.5893,
+  "index_cached": true
+ },
+ {
+  "id": 3344663,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2025-09-17",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "poc": 2
+  },
+  "statuses_high": {
+   "poc:calls_project": 2
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.5308,
+  "index_cached": true
+ },
+ {
+  "id": 3355218,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "master@2025-09-23",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_thin",
+  "hard": 0,
+  "soft": 0,
+  "verified": 2,
+  "checked": 2,
+  "claims_high": {
+   "cve": 1,
+   "path": 2,
+   "poc": 1,
+   "symbol": 1
+  },
+  "statuses_high": {
+   "path:found": 2,
+   "poc:not_checked": 1,
+   "symbol:external": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4427,
+  "index_cached": true
+ },
+ {
+  "id": 3357960,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2025-09-25",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "poc": 1
+  },
+  "statuses_high": {
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3878,
+  "index_cached": true
+ },
+ {
+  "id": 3379102,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "curl-8_16_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_thin",
+  "hard": 0,
+  "soft": 0,
+  "verified": 2,
+  "checked": 2,
+  "claims_high": {
+   "version": 1,
+   "path": 2
+  },
+  "statuses_high": {
+   "path:found": 2
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.325,
+  "index_cached": true
+ },
+ {
+  "id": 3387499,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "curl-8_16_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 3,
+  "checked": 3,
+  "claims_high": {
+   "version": 1,
+   "path": 1,
+   "cwe": 2,
+   "line": 1,
+   "quote": 1,
+   "poc": 3
+  },
+  "statuses_high": {
+   "path:found": 1,
+   "line:in_range": 1,
+   "quote:exact": 1,
+   "poc:not_checked": 1,
+   "poc:calls_project": 2
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.8177,
+  "index_cached": true
+ },
+ {
+  "id": 3404025,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "curl-8_3_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_thin",
+  "hard": 0,
+  "soft": 0,
+  "verified": 1,
+  "checked": 1,
+  "claims_high": {
+   "version": 1,
+   "poc": 1,
+   "path": 1
+  },
+  "statuses_high": {
+   "poc:not_checked": 1,
+   "path:found": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3024,
+  "index_cached": true
+ },
+ {
+  "id": 3409186,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2025-11-03",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {},
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3631,
+  "index_cached": true
+ },
+ {
+  "id": 3418528,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": true,
+  "substate": "spam",
+  "edited_since_freeze": false,
+  "ref": "master@2025-11-10",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_failed",
+  "hard": 1,
+  "soft": 2,
+  "verified": 4,
+  "checked": 7,
+  "claims_high": {
+   "path": 2,
+   "symbol": 1,
+   "line": 4,
+   "sanitizer_claim": 1
+  },
+  "statuses_high": {
+   "path:found": 2,
+   "symbol:not_found": 1,
+   "line:blank_or_comment": 2,
+   "line:in_range": 2
+  },
+  "flags": {
+   "symbol_not_found": 1,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 2.7945,
+  "index_cached": true
+ },
+ {
+  "id": 3418776,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "curl-8_15_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_thin",
+  "hard": 0,
+  "soft": 0,
+  "verified": 1,
+  "checked": 1,
+  "claims_high": {
+   "version": 1,
+   "cwe": 1,
+   "path": 1
+  },
+  "statuses_high": {
+   "path:found": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 3.7262,
+  "index_cached": true
+ },
+ {
+  "id": 3427343,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2025-11-15",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_thin",
+  "hard": 0,
+  "soft": 0,
+  "verified": 2,
+  "checked": 2,
+  "claims_high": {
+   "path": 1,
+   "symbol": 1,
+   "poc": 1
+  },
+  "statuses_high": {
+   "path:found": 1,
+   "symbol:defined": 1,
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 1.2023,
+  "index_cached": true
+ },
+ {
+  "id": 3432833,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2025-11-19",
+  "ref_assumed": true,
+  "ref_reason": "dev_version",
+  "class": "refs_thin",
+  "hard": 0,
+  "soft": 0,
+  "verified": 2,
+  "checked": 2,
+  "claims_high": {
+   "version": 1,
+   "path": 2,
+   "symbol": 2
+  },
+  "statuses_high": {
+   "path:found": 2,
+   "symbol:external": 2
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3705,
+  "index_cached": true
+ },
+ {
+  "id": 3434510,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2025-11-20",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "poc": 1
+  },
+  "statuses_high": {
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.344,
+  "index_cached": true
+ },
+ {
+  "id": 3455037,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "curl-8_17_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_thin",
+  "hard": 0,
+  "soft": 0,
+  "verified": 2,
+  "checked": 2,
+  "claims_high": {
+   "version": 1,
+   "poc": 1,
+   "line": 1,
+   "path": 1
+  },
+  "statuses_high": {
+   "poc:not_checked": 1,
+   "line:in_range": 1,
+   "path:found": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3778,
+  "index_cached": true
+ },
+ {
+  "id": 3459636,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": true,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2025-12-09",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 5,
+  "checked": 5,
+  "claims_high": {
+   "path": 1,
+   "frame": 1,
+   "line": 2,
+   "symbol": 1
+  },
+  "statuses_high": {
+   "path:found": 1,
+   "frame:consistent": 1,
+   "line:in_range": 2,
+   "symbol:defined": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3946,
+  "index_cached": true
+ },
+ {
+  "id": 3463619,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "spam",
+  "edited_since_freeze": false,
+  "ref": "master@2025-12-13",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {},
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3494,
+  "index_cached": true
+ },
+ {
+  "id": 3466883,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": true,
+  "substate": "spam",
+  "edited_since_freeze": false,
+  "ref": "curl-7_64_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_failed",
+  "hard": 3,
+  "soft": 0,
+  "verified": 0,
+  "checked": 3,
+  "claims_high": {
+   "version": 2,
+   "cwe": 1,
+   "symbol": 3
+  },
+  "statuses_high": {
+   "symbol:not_found": 3
+  },
+  "flags": {
+   "symbol_not_found": 3,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 9.7396,
+  "index_cached": true
+ },
+ {
+  "id": 3466896,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": true,
+  "substate": "spam",
+  "edited_since_freeze": false,
+  "ref": "master@2025-12-16",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_failed",
+  "hard": 1,
+  "soft": 0,
+  "verified": 2,
+  "checked": 3,
+  "claims_high": {
+   "path": 2,
+   "cwe": 1,
+   "symbol": 1,
+   "poc": 2
+  },
+  "statuses_high": {
+   "path:found": 2,
+   "symbol:not_found": 1,
+   "poc:not_checked": 1,
+   "poc:calls_project": 1
+  },
+  "flags": {
+   "symbol_not_found": 1,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 5.5738,
+  "index_cached": true
+ },
+ {
+  "id": 3468410,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": true,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2025-12-17",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_thin",
+  "hard": 0,
+  "soft": 0,
+  "verified": 2,
+  "checked": 2,
+  "claims_high": {
+   "path": 1,
+   "symbol": 1
+  },
+  "statuses_high": {
+   "path:found": 1,
+   "symbol:referenced_only": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3632,
+  "index_cached": true
+ },
+ {
+  "id": 3473182,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": true,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2025-12-20",
+  "ref_assumed": true,
+  "ref_reason": "dev_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 3,
+  "checked": 3,
+  "claims_high": {
+   "path": 2,
+   "version": 1,
+   "line": 1
+  },
+  "statuses_high": {
+   "path:found": 2,
+   "line:in_range": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3818,
+  "index_cached": true
+ },
+ {
+  "id": 3475472,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2025-12-22",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {},
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3064,
+  "index_cached": true
+ },
+ {
+  "id": 3476928,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "7e064d0756",
+  "ref_assumed": false,
+  "ref_reason": "sha",
+  "class": "refs_mixed",
+  "hard": 0,
+  "soft": 1,
+  "verified": 7,
+  "checked": 8,
+  "claims_high": {
+   "path": 2,
+   "line": 3,
+   "quote": 1,
+   "symbol": 2,
+   "poc": 1,
+   "frame": 2
+  },
+  "statuses_high": {
+   "path:found": 2,
+   "line:in_range": 2,
+   "line:blank_or_comment": 1,
+   "quote:exact": 1,
+   "symbol:defined": 2,
+   "poc:calls_project": 1,
+   "frame:outside_project": 2
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 14.664,
+  "index_cached": true
+ },
+ {
+  "id": 3477023,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2025-12-24",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {},
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3391,
+  "index_cached": true
+ },
+ {
+  "id": 3479984,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2025-12-27",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 8,
+  "checked": 8,
+  "claims_high": {
+   "path": 2,
+   "symbol": 6
+  },
+  "statuses_high": {
+   "path:found": 2,
+   "symbol:defined": 6
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 3.229,
+  "index_cached": true
+ },
+ {
+  "id": 3480078,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2025-12-27",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_failed",
+  "hard": 1,
+  "soft": 0,
+  "verified": 1,
+  "checked": 2,
+  "claims_high": {
+   "path": 1,
+   "quote": 1
+  },
+  "statuses_high": {
+   "path:found": 1,
+   "quote:not_found": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 1,
+   "path_not_found": 0
+  },
+  "seconds": 1.7912,
+  "index_cached": true
+ },
+ {
+  "id": 3480925,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "master@2025-12-28",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_thin",
+  "hard": 0,
+  "soft": 0,
+  "verified": 2,
+  "checked": 2,
+  "claims_high": {
+   "cve": 1,
+   "poc": 1,
+   "line": 2,
+   "path": 2
+  },
+  "statuses_high": {
+   "poc:calls_project": 1,
+   "line:in_range": 1,
+   "path:found": 1,
+   "path:other_repository": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4638,
+  "index_cached": true
+ },
+ {
+  "id": 3481595,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2025-12-29",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 6,
+  "checked": 6,
+  "claims_high": {
+   "path": 2,
+   "line": 4,
+   "poc": 1
+  },
+  "statuses_high": {
+   "path:found": 2,
+   "line:in_range": 4,
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4382,
+  "index_cached": true
+ },
+ {
+  "id": 3483225,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "spam",
+  "edited_since_freeze": false,
+  "ref": "master@2025-12-31",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {},
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3408,
+  "index_cached": true
+ },
+ {
+  "id": 3483902,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "curl-8_17_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_thin",
+  "hard": 0,
+  "soft": 0,
+  "verified": 1,
+  "checked": 1,
+  "claims_high": {
+   "version": 1,
+   "path": 1
+  },
+  "statuses_high": {
+   "path:found": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3293,
+  "index_cached": true
+ },
+ {
+  "id": 3484319,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2026-01-01",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_failed",
+  "hard": 1,
+  "soft": 0,
+  "verified": 1,
+  "checked": 2,
+  "claims_high": {
+   "cwe": 1,
+   "path": 1,
+   "quote": 1
+  },
+  "statuses_high": {
+   "path:found": 1,
+   "quote:not_found": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 1,
+   "path_not_found": 0
+  },
+  "seconds": 0.4433,
+  "index_cached": true
+ },
+ {
+  "id": 3484506,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2026-01-02",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_thin",
+  "hard": 0,
+  "soft": 0,
+  "verified": 1,
+  "checked": 1,
+  "claims_high": {
+   "path": 1,
+   "poc": 1
+  },
+  "statuses_high": {
+   "path:found": 1,
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.366,
+  "index_cached": true
+ },
+ {
+  "id": 3485930,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "curl-8_13_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_failed",
+  "hard": 1,
+  "soft": 0,
+  "verified": 2,
+  "checked": 3,
+  "claims_high": {
+   "version": 1,
+   "path": 1,
+   "line": 1,
+   "quote": 1
+  },
+  "statuses_high": {
+   "path:found": 1,
+   "line:in_range": 1,
+   "quote:not_found": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 1,
+   "path_not_found": 0
+  },
+  "seconds": 1.4837,
+  "index_cached": true
+ },
+ {
+  "id": 3493602,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2026-01-07",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_thin",
+  "hard": 0,
+  "soft": 0,
+  "verified": 2,
+  "checked": 2,
+  "claims_high": {
+   "symbol": 1,
+   "path": 1,
+   "poc": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 1,
+   "path:found": 1,
+   "poc:calls_project": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3042,
+  "index_cached": true
+ },
+ {
+  "id": 3508321,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "3ee1d3b573e6",
+  "ref_assumed": false,
+  "ref_reason": "sha",
+  "class": "refs_mixed",
+  "hard": 1,
+  "soft": 0,
+  "verified": 3,
+  "checked": 4,
+  "claims_high": {
+   "path": 1,
+   "symbol": 1,
+   "line": 1,
+   "quote": 1
+  },
+  "statuses_high": {
+   "path:found": 1,
+   "symbol:defined": 1,
+   "line:in_range": 1,
+   "quote:not_found": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 1,
+   "path_not_found": 0
+  },
+  "seconds": 0.9243,
+  "index_cached": true
+ },
+ {
+  "id": 3508785,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2026-01-13",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_thin",
+  "hard": 0,
+  "soft": 0,
+  "verified": 2,
+  "checked": 2,
+  "claims_high": {
+   "path": 1,
+   "quote": 1,
+   "poc": 2
+  },
+  "statuses_high": {
+   "path:found": 1,
+   "quote:exact": 1,
+   "poc:not_checked": 1,
+   "poc:no_project_reference": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 6.4016,
+  "index_cached": true
+ },
+ {
+  "id": 3508799,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2026-01-13",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 4,
+  "checked": 4,
+  "claims_high": {
+   "symbol": 1,
+   "path": 1,
+   "quote": 1,
+   "line": 1,
+   "poc": 2
+  },
+  "statuses_high": {
+   "symbol:defined": 1,
+   "path:found": 1,
+   "quote:exact": 1,
+   "line:in_range": 1,
+   "poc:no_project_reference": 1,
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 1.7347,
+  "index_cached": true
+ },
+ {
+  "id": 3508854,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "curl-8_18_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_thin",
+  "hard": 0,
+  "soft": 0,
+  "verified": 2,
+  "checked": 2,
+  "claims_high": {
+   "version": 1,
+   "symbol": 2
+  },
+  "statuses_high": {
+   "symbol:defined": 2
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.2038,
+  "index_cached": true
+ },
+ {
+  "id": 3509437,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2026-01-13",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {},
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.2953,
+  "index_cached": true
+ },
+ {
+  "id": 3516202,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": true,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2026-01-19",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_failed",
+  "hard": 1,
+  "soft": 0,
+  "verified": 2,
+  "checked": 3,
+  "claims_high": {
+   "path": 1,
+   "symbol": 1,
+   "quote": 1,
+   "poc": 2,
+   "sanitizer_claim": 1,
+   "cwe": 1
+  },
+  "statuses_high": {
+   "path:found": 1,
+   "symbol:defined": 1,
+   "quote:not_found": 1,
+   "poc:not_checked": 1,
+   "poc:calls_project": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 1,
+   "path_not_found": 0
+  },
+  "seconds": 1.3322,
+  "index_cached": true
+ },
+ {
+  "id": 3516878,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "curl-8_18_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "version": 1
+  },
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.8401,
+  "index_cached": true
+ },
+ {
+  "id": 3516974,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "2d5a06312120",
+  "ref_assumed": false,
+  "ref_reason": "sha",
+  "class": "refs_thin",
+  "hard": 0,
+  "soft": 0,
+  "verified": 1,
+  "checked": 1,
+  "claims_high": {
+   "symbol": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 3.5344,
+  "index_cached": true
+ },
+ {
+  "id": 3523953,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2026-01-25",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {},
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3253,
+  "index_cached": true
+ },
+ {
+  "id": 3574928,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2026-02-26",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "poc": 1
+  },
+  "statuses_high": {
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3602,
+  "index_cached": true
+ },
+ {
+  "id": 3575245,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2026-02-26",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_thin",
+  "hard": 0,
+  "soft": 0,
+  "verified": 1,
+  "checked": 1,
+  "claims_high": {
+   "path": 1,
+   "poc": 3,
+   "cwe": 1
+  },
+  "statuses_high": {
+   "path:found": 1,
+   "poc:not_checked": 1,
+   "poc:no_project_reference": 1,
+   "poc:calls_project": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4558,
+  "index_cached": true
+ },
+ {
+  "id": 3575250,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2026-02-26",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 11,
+  "checked": 11,
+  "claims_high": {
+   "line": 1,
+   "path": 1,
+   "sanitizer_claim": 1,
+   "frame": 14,
+   "symbol": 1
+  },
+  "statuses_high": {
+   "line:in_range": 1,
+   "path:found": 1,
+   "frame:consistent": 8,
+   "path:outside_project": 1,
+   "symbol:outside_project": 1,
+   "frame:outside_project": 5,
+   "symbol:defined": 1,
+   "frame_chain:call_seen": 6,
+   "frame_chain:call_not_seen": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 3.7596,
+  "index_cached": true
+ },
+ {
+  "id": 3584149,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "curl-7_55_1",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "version": 1,
+   "poc": 1
+  },
+  "statuses_high": {
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3243,
+  "index_cached": true
+ },
+ {
+  "id": 3584491,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "1b35c9e1e3",
+  "ref_assumed": false,
+  "ref_reason": "sha",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 4,
+  "checked": 4,
+  "claims_high": {
+   "path": 1,
+   "symbol": 2,
+   "quote": 1,
+   "poc": 1
+  },
+  "statuses_high": {
+   "path:found": 1,
+   "symbol:defined": 2,
+   "quote:exact": 1,
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 3.6273,
+  "index_cached": true
+ },
+ {
+  "id": 3584865,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "curl-8_18_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "version": 1,
+   "poc": 1
+  },
+  "statuses_high": {
+   "poc:no_project_reference": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4212,
+  "index_cached": true
+ },
+ {
+  "id": 3597359,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "curl-8_18_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_mixed",
+  "hard": 0,
+  "soft": 1,
+  "verified": 3,
+  "checked": 4,
+  "claims_high": {
+   "path": 1,
+   "line": 3,
+   "version": 1
+  },
+  "statuses_high": {
+   "path:found": 1,
+   "line:in_range": 2,
+   "line:blank_or_comment": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3754,
+  "index_cached": true
+ },
+ {
+  "id": 3598444,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2026-03-11",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 4,
+  "checked": 4,
+  "claims_high": {
+   "symbol": 1,
+   "path": 1,
+   "line": 1,
+   "quote": 1,
+   "poc": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 1,
+   "path:found": 1,
+   "line:in_range": 1,
+   "quote:exact": 1,
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4315,
+  "index_cached": true
+ },
+ {
+  "id": 3603300,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2026-03-13",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_thin",
+  "hard": 0,
+  "soft": 0,
+  "verified": 1,
+  "checked": 1,
+  "claims_high": {
+   "symbol": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 11.2597,
+  "index_cached": true
+ },
+ {
+  "id": 3609505,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "25b445e",
+  "ref_assumed": false,
+  "ref_reason": "sha",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "poc": 1
+  },
+  "statuses_high": {
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4008,
+  "index_cached": true
+ },
+ {
+  "id": 3612891,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2026-03-18",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "poc": 1
+  },
+  "statuses_high": {
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4092,
+  "index_cached": true
+ },
+ {
+  "id": 3617719,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2026-03-20",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_thin",
+  "hard": 0,
+  "soft": 0,
+  "verified": 2,
+  "checked": 2,
+  "claims_high": {
+   "symbol": 1,
+   "path": 1,
+   "poc": 1,
+   "sanitizer_claim": 1,
+   "cwe": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 1,
+   "path:found": 1,
+   "poc:calls_project": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.7449,
+  "index_cached": true
+ },
+ {
+  "id": 3621851,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "master@2026-03-22",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "cve": 1,
+   "poc": 1
+  },
+  "statuses_high": {
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.2456,
+  "index_cached": true
+ },
+ {
+  "id": 3623064,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "80b6cd92af18",
+  "ref_assumed": false,
+  "ref_reason": "sha",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {},
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.1812,
+  "index_cached": true
+ },
+ {
+  "id": 3630310,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "curl-8_19_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 12,
+  "checked": 12,
+  "claims_high": {
+   "version": 1,
+   "path": 3,
+   "symbol": 1,
+   "line": 8
+  },
+  "statuses_high": {
+   "path:found": 3,
+   "symbol:defined": 1,
+   "line:in_range": 8
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.346,
+  "index_cached": true
+ },
+ {
+  "id": 3636044,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "2e8c922a89",
+  "ref_assumed": false,
+  "ref_reason": "sha",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 4,
+  "checked": 4,
+  "claims_high": {
+   "line": 2,
+   "path": 1,
+   "poc": 1,
+   "symbol": 1
+  },
+  "statuses_high": {
+   "line:in_range": 2,
+   "path:found": 1,
+   "poc:calls_project": 1,
+   "symbol:defined": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4722,
+  "index_cached": true
+ },
+ {
+  "id": 3636244,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2026-03-29",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 5,
+  "checked": 5,
+  "claims_high": {
+   "path": 2,
+   "line": 3
+  },
+  "statuses_high": {
+   "path:found": 2,
+   "line:in_range": 3
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4478,
+  "index_cached": true
+ },
+ {
+  "id": 3638715,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "curl-8_19_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 10,
+  "checked": 10,
+  "claims_high": {
+   "symbol": 9,
+   "path": 1,
+   "version": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 8,
+   "path:found": 1,
+   "symbol:referenced_only": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4868,
+  "index_cached": true
+ },
+ {
+  "id": 3640932,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2026-03-31",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 3,
+  "checked": 3,
+  "claims_high": {
+   "symbol": 1,
+   "path": 1,
+   "cve": 2,
+   "quote": 1,
+   "poc": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 1,
+   "path:found": 1,
+   "quote:exact": 1,
+   "poc:calls_project": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 2.4726,
+  "index_cached": true
+ },
+ {
+  "id": 3641893,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "curl-8_18_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_mixed",
+  "hard": 1,
+  "soft": 0,
+  "verified": 5,
+  "checked": 6,
+  "claims_high": {
+   "path": 1,
+   "symbol": 4,
+   "cwe": 1,
+   "cve": 1,
+   "version": 2,
+   "quote": 1,
+   "poc": 2
+  },
+  "statuses_high": {
+   "path:found": 1,
+   "symbol:defined": 4,
+   "quote:not_found": 1,
+   "poc:calls_project": 1,
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 1,
+   "path_not_found": 0
+  },
+  "seconds": 16.7976,
+  "index_cached": true
+ },
+ {
+  "id": 3648199,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2026-04-03",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {},
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3506,
+  "index_cached": true
+ },
+ {
+  "id": 3658049,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "curl-8_19_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 9,
+  "checked": 9,
+  "claims_high": {
+   "symbol": 6,
+   "line": 1,
+   "path": 2,
+   "version": 1,
+   "poc": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 6,
+   "line:in_range": 1,
+   "path:found": 2,
+   "poc:calls_project": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.8535,
+  "index_cached": true
+ },
+ {
+  "id": 3671818,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "curl-8_19_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "cve": 1,
+   "version": 1
+  },
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4033,
+  "index_cached": true
+ },
+ {
+  "id": 3674275,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "curl-8_19_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_mixed",
+  "hard": 0,
+  "soft": 1,
+  "verified": 17,
+  "checked": 18,
+  "claims_high": {
+   "symbol": 13,
+   "path": 2,
+   "line": 3,
+   "version": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 12,
+   "path:found": 2,
+   "line:in_range": 2,
+   "line:blank_or_comment": 1,
+   "symbol:referenced_only": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.5779,
+  "index_cached": true
+ },
+ {
+  "id": 3684603,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "curl-8_19_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 6,
+  "checked": 6,
+  "claims_high": {
+   "symbol": 5,
+   "version": 2,
+   "path": 1,
+   "poc": 1,
+   "sanitizer_claim": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 5,
+   "path:found": 1,
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.425,
+  "index_cached": true
+ },
+ {
+  "id": 3694390,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "curl-8_17_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 4,
+  "checked": 4,
+  "claims_high": {
+   "cve": 3,
+   "path": 1,
+   "symbol": 4,
+   "quote": 1,
+   "version": 1,
+   "poc": 1
+  },
+  "statuses_high": {
+   "path:found": 1,
+   "symbol:defined": 2,
+   "quote:approximate": 1,
+   "symbol:external": 2,
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 8.1147,
+  "index_cached": true
+ },
+ {
+  "id": 3697719,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "curl-8_19_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 3,
+  "checked": 3,
+  "claims_high": {
+   "cve": 1,
+   "version": 1,
+   "symbol": 1,
+   "line": 1,
+   "path": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 1,
+   "line:in_range": 1,
+   "path:found": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 7.8879,
+  "index_cached": true
+ },
+ {
+  "id": 3707747,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "curl-8_20_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 11,
+  "checked": 11,
+  "claims_high": {
+   "version": 3,
+   "cve": 1,
+   "line": 7,
+   "path": 4
+  },
+  "statuses_high": {
+   "line:in_range": 7,
+   "path:found": 4
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 22.2149,
+  "index_cached": true
+ },
+ {
+  "id": 3717552,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2026-05-06",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 7,
+  "checked": 7,
+  "claims_high": {
+   "line": 4,
+   "path": 1,
+   "symbol": 2,
+   "cve": 3
+  },
+  "statuses_high": {
+   "line:in_range": 4,
+   "path:found": 1,
+   "symbol:defined": 2
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.6106,
+  "index_cached": true
+ },
+ {
+  "id": 3733984,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2026-05-13",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_failed",
+  "hard": 2,
+  "soft": 0,
+  "verified": 3,
+  "checked": 5,
+  "claims_high": {
+   "cve": 1,
+   "symbol": 2,
+   "path": 3,
+   "poc": 1,
+   "line": 1
+  },
+  "statuses_high": {
+   "symbol:not_found": 2,
+   "path:other_repository": 1,
+   "poc:not_checked": 1,
+   "line:in_range": 1,
+   "path:found": 2
+  },
+  "flags": {
+   "symbol_not_found": 2,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 15.3519,
+  "index_cached": true
+ },
+ {
+  "id": 3734020,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "4ae2d9f24d",
+  "ref_assumed": false,
+  "ref_reason": "sha",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "cve": 1,
+   "poc": 1
+  },
+  "statuses_high": {
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.418,
+  "index_cached": true
+ },
+ {
+  "id": 3734921,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2026-05-14",
+  "ref_assumed": true,
+  "ref_reason": "dev_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 16,
+  "checked": 16,
+  "claims_high": {
+   "cve": 1,
+   "path": 6,
+   "symbol": 8,
+   "line": 3,
+   "version": 1,
+   "poc": 1
+  },
+  "statuses_high": {
+   "path:found": 5,
+   "symbol:defined": 8,
+   "line:in_range": 3,
+   "poc:not_checked": 1,
+   "path:outside_project": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4653,
+  "index_cached": true
+ },
+ {
+  "id": 3734947,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2026-05-14",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_mixed",
+  "hard": 0,
+  "soft": 1,
+  "verified": 10,
+  "checked": 11,
+  "claims_high": {
+   "path": 3,
+   "line": 8,
+   "symbol": 1,
+   "poc": 1
+  },
+  "statuses_high": {
+   "path:found": 3,
+   "line:blank_or_comment": 1,
+   "line:in_range": 7,
+   "symbol:external": 1,
+   "poc:calls_project": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.8216,
+  "index_cached": true
+ },
+ {
+  "id": 3735080,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2026-05-14",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 6,
+  "checked": 6,
+  "claims_high": {
+   "path": 2,
+   "line": 3,
+   "symbol": 2,
+   "quote": 1,
+   "poc": 2
+  },
+  "statuses_high": {
+   "path:found": 2,
+   "line:in_range": 3,
+   "symbol:external": 2,
+   "quote:exact": 1,
+   "poc:calls_project": 1,
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 13.0898,
+  "index_cached": true
+ },
+ {
+  "id": 3735179,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2026-05-14",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_mixed",
+  "hard": 1,
+  "soft": 0,
+  "verified": 8,
+  "checked": 9,
+  "claims_high": {
+   "path": 3,
+   "quote": 2,
+   "symbol": 2,
+   "line": 2,
+   "poc": 1
+  },
+  "statuses_high": {
+   "path:found": 3,
+   "quote:not_found": 1,
+   "symbol:defined": 2,
+   "line:in_range": 2,
+   "quote:exact": 1,
+   "poc:calls_project": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 1,
+   "path_not_found": 0
+  },
+  "seconds": 1.4565,
+  "index_cached": true
+ },
+ {
+  "id": 3741744,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2026-05-17",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 9,
+  "checked": 9,
+  "claims_high": {
+   "symbol": 7,
+   "path": 2
+  },
+  "statuses_high": {
+   "symbol:defined": 7,
+   "path:found": 2
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4333,
+  "index_cached": true
+ },
+ {
+  "id": 3747959,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2026-05-19",
+  "ref_assumed": true,
+  "ref_reason": "dev_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 5,
+  "checked": 5,
+  "claims_high": {
+   "version": 1,
+   "path": 2,
+   "symbol": 3
+  },
+  "statuses_high": {
+   "path:found": 2,
+   "symbol:defined": 3
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3615,
+  "index_cached": true
+ },
+ {
+  "id": 3751697,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "71b7e01610",
+  "ref_assumed": false,
+  "ref_reason": "sha",
+  "class": "refs_mixed",
+  "hard": 0,
+  "soft": 1,
+  "verified": 7,
+  "checked": 8,
+  "claims_high": {
+   "cve": 1,
+   "symbol": 4,
+   "path": 2,
+   "quote": 1,
+   "poc": 2,
+   "sanitizer_claim": 1,
+   "line": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 3,
+   "path:found": 2,
+   "symbol:defined_at_other_version": 1,
+   "quote:approximate": 1,
+   "poc:not_checked": 1,
+   "poc:calls_project": 1,
+   "line:in_range": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.6419,
+  "index_cached": true
+ },
+ {
+  "id": 3751715,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "f9b9d3b141",
+  "ref_assumed": false,
+  "ref_reason": "sha",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 6,
+  "checked": 6,
+  "claims_high": {
+   "symbol": 3,
+   "path": 1,
+   "line": 1,
+   "quote": 1,
+   "poc": 1,
+   "sanitizer_claim": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 3,
+   "path:found": 1,
+   "line:in_range": 1,
+   "quote:exact": 1,
+   "poc:calls_project": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 12.2084,
+  "index_cached": true
+ },
+ {
+  "id": 3752567,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2026-05-21",
+  "ref_assumed": true,
+  "ref_reason": "dev_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 4,
+  "checked": 4,
+  "claims_high": {
+   "version": 1,
+   "symbol": 4,
+   "path": 1,
+   "quote": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 2,
+   "path:found": 1,
+   "symbol:external": 2,
+   "quote:exact": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 11.9617,
+  "index_cached": true
+ },
+ {
+  "id": 3754343,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "curl-8_20_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 7,
+  "checked": 7,
+  "claims_high": {
+   "cve": 1,
+   "symbol": 3,
+   "version": 1,
+   "poc": 1,
+   "path": 4
+  },
+  "statuses_high": {
+   "symbol:defined": 3,
+   "poc:not_checked": 1,
+   "path:found": 4
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 4.1445,
+  "index_cached": true
+ },
+ {
+  "id": 3761789,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2026-05-26",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 3,
+  "checked": 3,
+  "claims_high": {
+   "cwe": 1,
+   "path": 2,
+   "symbol": 1
+  },
+  "statuses_high": {
+   "path:found": 2,
+   "symbol:defined": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.428,
+  "index_cached": true
+ },
+ {
+  "id": 3773293,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "curl-8_20_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_thin",
+  "hard": 0,
+  "soft": 0,
+  "verified": 2,
+  "checked": 2,
+  "claims_high": {
+   "version": 1,
+   "path": 3
+  },
+  "statuses_high": {
+   "path:outside_project": 1,
+   "path:found": 2
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4909,
+  "index_cached": true
+ },
+ {
+  "id": 3774279,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2026-06-01",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_mixed",
+  "hard": 1,
+  "soft": 0,
+  "verified": 17,
+  "checked": 18,
+  "claims_high": {
+   "symbol": 4,
+   "line": 8,
+   "path": 5,
+   "poc": 2,
+   "sanitizer_claim": 1,
+   "quote": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 4,
+   "line:in_range": 8,
+   "path:found": 5,
+   "poc:not_checked": 1,
+   "poc:calls_project": 1,
+   "quote:not_found": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 1,
+   "path_not_found": 0
+  },
+  "seconds": 5.5997,
+  "index_cached": true
+ },
+ {
+  "id": 3780733,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "curl-8_20_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "line": 1,
+   "version": 1
+  },
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3728,
+  "index_cached": true
+ },
+ {
+  "id": 3783438,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "curl-8_20_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_mixed",
+  "hard": 1,
+  "soft": 0,
+  "verified": 6,
+  "checked": 7,
+  "claims_high": {
+   "cve": 1,
+   "symbol": 5,
+   "version": 4,
+   "poc": 1,
+   "path": 1,
+   "quote": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 4,
+   "poc:not_checked": 1,
+   "path:found": 1,
+   "quote:not_found": 1,
+   "symbol:referenced_only": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 1,
+   "path_not_found": 0
+  },
+  "seconds": 5.2816,
+  "index_cached": true
+ },
+ {
+  "id": 3785919,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "curl-8_20_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_failed",
+  "hard": 6,
+  "soft": 1,
+  "verified": 2,
+  "checked": 9,
+  "claims_high": {
+   "line": 1,
+   "path": 1,
+   "version": 1,
+   "symbol": 7
+  },
+  "statuses_high": {
+   "line:in_range": 1,
+   "path:found": 1,
+   "symbol:not_found": 6,
+   "symbol:defined_at_other_version": 1
+  },
+  "flags": {
+   "symbol_not_found": 6,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 27.4527,
+  "index_cached": true
+ },
+ {
+  "id": 3788506,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2026-06-08",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_thin",
+  "hard": 0,
+  "soft": 0,
+  "verified": 1,
+  "checked": 1,
+  "claims_high": {
+   "symbol": 2,
+   "cve": 2,
+   "poc": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 1,
+   "poc:not_checked": 1,
+   "symbol:external": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 3.2471,
+  "index_cached": true
+ },
+ {
+  "id": 3788984,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "master@2026-06-08",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 5,
+  "checked": 5,
+  "claims_high": {
+   "cve": 1,
+   "path": 5,
+   "symbol": 1,
+   "poc": 2
+  },
+  "statuses_high": {
+   "path:found": 4,
+   "symbol:defined": 1,
+   "poc:calls_project": 1,
+   "poc:not_checked": 1,
+   "path:outside_project": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 2.13,
+  "index_cached": true
+ },
+ {
+  "id": 3791191,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2026-06-09",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 3,
+  "checked": 3,
+  "claims_high": {
+   "symbol": 3,
+   "poc": 1,
+   "cve": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 3,
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.483,
+  "index_cached": true
+ },
+ {
+  "id": 3793260,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "curl-8_7_1",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 3,
+  "checked": 3,
+  "claims_high": {
+   "cve": 1,
+   "symbol": 3,
+   "version": 1,
+   "poc": 2
+  },
+  "statuses_high": {
+   "symbol:defined": 3,
+   "poc:calls_project": 2
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 4.8005,
+  "index_cached": true
+ },
+ {
+  "id": 3793495,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2026-06-10",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_mixed",
+  "hard": 1,
+  "soft": 0,
+  "verified": 3,
+  "checked": 4,
+  "claims_high": {
+   "poc": 1,
+   "path": 1,
+   "symbol": 3
+  },
+  "statuses_high": {
+   "poc:not_checked": 1,
+   "path:found": 1,
+   "symbol:defined": 2,
+   "symbol:not_found": 1
+  },
+  "flags": {
+   "symbol_not_found": 1,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 4.0217,
+  "index_cached": true
+ },
+ {
+  "id": 3795615,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "886899143f",
+  "ref_assumed": false,
+  "ref_reason": "sha",
+  "class": "refs_mixed",
+  "hard": 0,
+  "soft": 1,
+  "verified": 1,
+  "checked": 2,
+  "claims_high": {
+   "symbol": 1,
+   "poc": 1,
+   "quote": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 1,
+   "poc:not_checked": 1,
+   "quote:found_at_other_version": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 1.2177,
+  "index_cached": true
+ },
+ {
+  "id": 3797526,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "curl-8_14_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_mixed",
+  "hard": 0,
+  "soft": 1,
+  "verified": 4,
+  "checked": 5,
+  "claims_high": {
+   "cve": 1,
+   "version": 2,
+   "path": 2,
+   "symbol": 1,
+   "quote": 1,
+   "line": 1,
+   "poc": 1
+  },
+  "statuses_high": {
+   "path:found": 2,
+   "symbol:defined": 1,
+   "quote:found_at_other_version": 1,
+   "line:in_range": 1,
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 4.4095,
+  "index_cached": true
+ },
+ {
+  "id": 3804525,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2026-06-15",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_thin",
+  "hard": 0,
+  "soft": 0,
+  "verified": 1,
+  "checked": 1,
+  "claims_high": {
+   "path": 1,
+   "poc": 1
+  },
+  "statuses_high": {
+   "path:found": 1,
+   "poc:calls_project": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4288,
+  "index_cached": true
+ },
+ {
+  "id": 3823985,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "curl-8_21_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_mixed",
+  "hard": 0,
+  "soft": 1,
+  "verified": 10,
+  "checked": 11,
+  "claims_high": {
+   "symbol": 5,
+   "cve": 1,
+   "path": 1,
+   "line": 4,
+   "version": 1,
+   "quote": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 5,
+   "path:found": 1,
+   "line:in_range": 3,
+   "quote:approximate": 1,
+   "line:blank_or_comment": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 8.5376,
+  "index_cached": true
+ },
+ {
+  "id": 3824303,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "curl-8_21_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 8,
+  "checked": 8,
+  "claims_high": {
+   "cve": 1,
+   "symbol": 8,
+   "version": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 8
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4472,
+  "index_cached": true
+ },
+ {
+  "id": 3826199,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "curl-8_21_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 6,
+  "checked": 6,
+  "claims_high": {
+   "symbol": 1,
+   "poc": 1,
+   "quote": 3,
+   "line": 2,
+   "version": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 1,
+   "poc:not_checked": 1,
+   "quote:exact": 3,
+   "line:in_range": 2
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 4.3223,
+  "index_cached": true
+ },
+ {
+  "id": 3831345,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "curl-8_21_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 4,
+  "checked": 4,
+  "claims_high": {
+   "symbol": 3,
+   "version": 1,
+   "sanitizer_claim": 1,
+   "path": 1,
+   "poc": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 3,
+   "path:found": 1,
+   "poc:calls_project": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 4.9601,
+  "index_cached": true
+ },
+ {
+  "id": 3911605,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "curl-8_18_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "version": 1
+  },
+  "statuses_high": {},
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.372,
+  "index_cached": true
+ },
+ {
+  "id": 3916059,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "curl-8_21_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_mixed",
+  "hard": 0,
+  "soft": 1,
+  "verified": 37,
+  "checked": 38,
+  "claims_high": {
+   "cve": 1,
+   "symbol": 22,
+   "path": 6,
+   "cwe": 1,
+   "version": 2,
+   "line": 10,
+   "poc": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 22,
+   "path:found": 6,
+   "line:in_range": 9,
+   "line:blank_or_comment": 1,
+   "poc:calls_project": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 1.3275,
+  "index_cached": true
+ },
+ {
+  "id": 3917775,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2026-08-05",
+  "ref_assumed": true,
+  "ref_reason": "dev_version",
+  "class": "refs_mixed",
+  "hard": 0,
+  "soft": 1,
+  "verified": 4,
+  "checked": 5,
+  "claims_high": {
+   "symbol": 2,
+   "path": 1,
+   "line": 2,
+   "poc": 1,
+   "version": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 2,
+   "path:found": 1,
+   "line:blank_or_comment": 1,
+   "poc:calls_project": 1,
+   "line:in_range": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.6905,
+  "index_cached": true
+ },
+ {
+  "id": 3938185,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2026-08-13",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 5,
+  "checked": 5,
+  "claims_high": {
+   "symbol": 5
+  },
+  "statuses_high": {
+   "symbol:defined": 5
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.5243,
+  "index_cached": true
+ },
+ {
+  "id": 3966955,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "curl-8_21_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 3,
+  "checked": 3,
+  "claims_high": {
+   "version": 1,
+   "line": 1,
+   "path": 1,
+   "symbol": 1,
+   "cve": 1
+  },
+  "statuses_high": {
+   "line:in_range": 1,
+   "path:found": 1,
+   "symbol:defined": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 4.1378,
+  "index_cached": true
+ },
+ {
+  "id": 3968431,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2026-08-25",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 4,
+  "checked": 4,
+  "claims_high": {
+   "symbol": 4
+  },
+  "statuses_high": {
+   "symbol:defined": 4
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.6525,
+  "index_cached": true
+ },
+ {
+  "id": 3968853,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "7541ae569d",
+  "ref_assumed": false,
+  "ref_reason": "sha",
+  "class": "refs_mixed",
+  "hard": 1,
+  "soft": 0,
+  "verified": 11,
+  "checked": 12,
+  "claims_high": {
+   "cve": 1,
+   "quote": 1,
+   "symbol": 12,
+   "path": 1
+  },
+  "statuses_high": {
+   "quote:not_found": 1,
+   "symbol:defined": 11,
+   "symbol:external": 1,
+   "path:outside_project": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 1,
+   "path_not_found": 0
+  },
+  "seconds": 9.3126,
+  "index_cached": true
+ },
+ {
+  "id": 3969255,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "master@2026-08-25",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 5,
+  "checked": 5,
+  "claims_high": {
+   "cve": 1,
+   "symbol": 8
+  },
+  "statuses_high": {
+   "symbol:defined": 5,
+   "symbol:external": 3
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 4.5024,
+  "index_cached": true
+ },
+ {
+  "id": 3969820,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "curl-8_21_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 3,
+  "checked": 3,
+  "claims_high": {
+   "cve": 2,
+   "line": 1,
+   "path": 1,
+   "version": 1,
+   "symbol": 1
+  },
+  "statuses_high": {
+   "line:in_range": 1,
+   "path:found": 1,
+   "symbol:referenced_only": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3155,
+  "index_cached": true
+ },
+ {
+  "id": 3971496,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "233810bb",
+  "ref_assumed": false,
+  "ref_reason": "sha",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 5,
+  "checked": 5,
+  "claims_high": {
+   "path": 1,
+   "symbol": 4,
+   "poc": 1
+  },
+  "statuses_high": {
+   "path:found": 1,
+   "symbol:defined": 4,
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 4.0871,
+  "index_cached": true
+ },
+ {
+  "id": 3971585,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "c2676bf9e639",
+  "ref_assumed": false,
+  "ref_reason": "sha",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 13,
+  "checked": 13,
+  "claims_high": {
+   "cve": 1,
+   "symbol": 8,
+   "line": 3,
+   "path": 2,
+   "poc": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 8,
+   "line:in_range": 3,
+   "path:found": 2,
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 8.2029,
+  "index_cached": true
+ },
+ {
+  "id": 3972323,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "c2676bf9e639",
+  "ref_assumed": false,
+  "ref_reason": "sha",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 7,
+  "checked": 7,
+  "claims_high": {
+   "symbol": 3,
+   "path": 2,
+   "quote": 2
+  },
+  "statuses_high": {
+   "symbol:defined": 3,
+   "path:found": 2,
+   "quote:exact": 2
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 4.6777,
+  "index_cached": true
+ },
+ {
+  "id": 3972357,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "curl-8_11_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_mixed",
+  "hard": 0,
+  "soft": 3,
+  "verified": 3,
+  "checked": 6,
+  "claims_high": {
+   "cve": 2,
+   "version": 2,
+   "symbol": 3,
+   "path": 1,
+   "line": 2
+  },
+  "statuses_high": {
+   "symbol:defined_at_other_version": 2,
+   "path:found": 1,
+   "line:blank_or_comment": 1,
+   "symbol:defined": 1,
+   "line:in_range": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 8.1106,
+  "index_cached": true
+ },
+ {
+  "id": 3972373,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "curl-8_2_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_mixed",
+  "hard": 0,
+  "soft": 5,
+  "verified": 9,
+  "checked": 14,
+  "claims_high": {
+   "cve": 1,
+   "symbol": 7,
+   "version": 1,
+   "line": 5,
+   "path": 3
+  },
+  "statuses_high": {
+   "symbol:defined": 5,
+   "symbol:defined_at_other_version": 2,
+   "line:blank_or_comment": 2,
+   "path:found": 2,
+   "line:in_range": 2,
+   "path:found_moved": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.5151,
+  "index_cached": true
+ },
+ {
+  "id": 3972385,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "curl-8_21_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 7,
+  "checked": 7,
+  "claims_high": {
+   "cve": 1,
+   "symbol": 6,
+   "version": 1,
+   "path": 1,
+   "quote": 1
+  },
+  "statuses_high": {
+   "symbol:external": 1,
+   "symbol:defined": 5,
+   "path:found": 1,
+   "quote:exact": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 1.0233,
+  "index_cached": true
+ },
+ {
+  "id": 3972403,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "curl-8_6_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_mixed",
+  "hard": 0,
+  "soft": 3,
+  "verified": 3,
+  "checked": 6,
+  "claims_high": {
+   "cve": 1,
+   "symbol": 2,
+   "version": 2,
+   "path": 3,
+   "quote": 1,
+   "poc": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 1,
+   "path:found": 2,
+   "quote:found_at_other_version": 1,
+   "symbol:defined_at_other_version": 1,
+   "path:found_moved": 1,
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 4.2259,
+  "index_cached": true
+ },
+ {
+  "id": 3973090,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "0f2876b2c33f",
+  "ref_assumed": false,
+  "ref_reason": "sha",
+  "class": "refs_mixed",
+  "hard": 0,
+  "soft": 2,
+  "verified": 2,
+  "checked": 4,
+  "claims_high": {
+   "cve": 1,
+   "symbol": 3,
+   "path": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 1,
+   "path:found": 1,
+   "symbol:defined_at_other_version": 2
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 8.8497,
+  "index_cached": true
+ },
+ {
+  "id": 3973111,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "curl-8_20_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_mixed",
+  "hard": 1,
+  "soft": 0,
+  "verified": 6,
+  "checked": 7,
+  "claims_high": {
+   "cve": 1,
+   "symbol": 4,
+   "path": 2,
+   "line": 2,
+   "quote": 1,
+   "version": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 3,
+   "path:found": 1,
+   "symbol:external": 1,
+   "line:in_range": 1,
+   "quote:exact": 1,
+   "path:not_found": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 1
+  },
+  "seconds": 3.9533,
+  "index_cached": true
+ },
+ {
+  "id": 3973152,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2026-08-27",
+  "ref_assumed": true,
+  "ref_reason": "version_not_found",
+  "class": "refs_mixed",
+  "hard": 1,
+  "soft": 0,
+  "verified": 8,
+  "checked": 9,
+  "claims_high": {
+   "symbol": 4,
+   "path": 1,
+   "version": 1,
+   "line": 3,
+   "quote": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 4,
+   "path:found": 1,
+   "line:in_range": 3,
+   "quote:not_found": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 1,
+   "path_not_found": 0
+  },
+  "seconds": 9.2484,
+  "index_cached": true
+ },
+ {
+  "id": 3973158,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2026-08-27",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 5,
+  "checked": 5,
+  "claims_high": {
+   "symbol": 2,
+   "path": 1,
+   "line": 2
+  },
+  "statuses_high": {
+   "symbol:defined": 2,
+   "path:found": 1,
+   "line:in_range": 2
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.5277,
+  "index_cached": true
+ },
+ {
+  "id": 3973176,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "curl-8_21_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 5,
+  "checked": 5,
+  "claims_high": {
+   "cve": 2,
+   "symbol": 2,
+   "path": 1,
+   "version": 1,
+   "line": 1,
+   "quote": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 2,
+   "path:found": 1,
+   "line:in_range": 1,
+   "quote:exact": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 4.2682,
+  "index_cached": true
+ },
+ {
+  "id": 3973201,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "curl-8_18_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_mixed",
+  "hard": 0,
+  "soft": 1,
+  "verified": 7,
+  "checked": 8,
+  "claims_high": {
+   "cve": 1,
+   "symbol": 6,
+   "version": 1,
+   "line": 1,
+   "path": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 6,
+   "line:blank_or_comment": 1,
+   "path:found": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3781,
+  "index_cached": true
+ },
+ {
+  "id": 3973213,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "curl-7_77_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_mixed",
+  "hard": 0,
+  "soft": 2,
+  "verified": 11,
+  "checked": 13,
+  "claims_high": {
+   "symbol": 11,
+   "path": 1,
+   "line": 1,
+   "version": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 9,
+   "path:found": 1,
+   "symbol:defined_at_other_version": 2,
+   "line:in_range": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.5095,
+  "index_cached": true
+ },
+ {
+  "id": 3973228,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "curl-7_38_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_thin",
+  "hard": 0,
+  "soft": 0,
+  "verified": 1,
+  "checked": 1,
+  "claims_high": {
+   "version": 1,
+   "symbol": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4311,
+  "index_cached": true
+ },
+ {
+  "id": 3973249,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "curl-8_3_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 6,
+  "checked": 6,
+  "claims_high": {
+   "symbol": 1,
+   "path": 1,
+   "line": 3,
+   "version": 1,
+   "quote": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 1,
+   "path:found": 1,
+   "line:in_range": 3,
+   "quote:exact": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4587,
+  "index_cached": true
+ },
+ {
+  "id": 3975408,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "curl-8_21_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_thin",
+  "hard": 0,
+  "soft": 0,
+  "verified": 2,
+  "checked": 2,
+  "claims_high": {
+   "cve": 2,
+   "line": 1,
+   "path": 1,
+   "version": 1
+  },
+  "statuses_high": {
+   "line:in_range": 1,
+   "path:found": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.43,
+  "index_cached": true
+ },
+ {
+  "id": 3993973,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2026-09-03",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 14,
+  "checked": 14,
+  "claims_high": {
+   "symbol": 7,
+   "line": 4,
+   "path": 3,
+   "poc": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 7,
+   "line:in_range": 4,
+   "path:found": 3,
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.9541,
+  "index_cached": true
+ },
+ {
+  "id": 4016541,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "7be1e70cb6",
+  "ref_assumed": false,
+  "ref_reason": "sha",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 6,
+  "checked": 6,
+  "claims_high": {
+   "symbol": 1,
+   "line": 1,
+   "path": 2,
+   "quote": 2,
+   "poc": 1,
+   "cve": 3
+  },
+  "statuses_high": {
+   "symbol:defined": 1,
+   "line:in_range": 1,
+   "path:found": 2,
+   "quote:exact": 2,
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.6004,
+  "index_cached": true
+ },
+ {
+  "id": 4021952,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "e5e1c356107e",
+  "ref_assumed": false,
+  "ref_reason": "sha",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 9,
+  "checked": 9,
+  "claims_high": {
+   "symbol": 9,
+   "poc": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 9,
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 16.1111,
+  "index_cached": true
+ },
+ {
+  "id": 4022070,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "curl-8_22_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_mixed",
+  "hard": 1,
+  "soft": 0,
+  "verified": 7,
+  "checked": 8,
+  "claims_high": {
+   "cve": 1,
+   "symbol": 8,
+   "version": 1,
+   "poc": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 7,
+   "symbol:not_found": 1,
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 1,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 4.9129,
+  "index_cached": true
+ },
+ {
+  "id": 4022568,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "curl-8_22_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 6,
+  "checked": 6,
+  "claims_high": {
+   "cve": 1,
+   "symbol": 6,
+   "version": 1,
+   "poc": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 6,
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 4.8548,
+  "index_cached": true
+ },
+ {
+  "id": 4024268,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2026-09-12",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 9,
+  "checked": 9,
+  "claims_high": {
+   "line": 3,
+   "path": 1,
+   "quote": 1,
+   "poc": 1,
+   "sanitizer_claim": 1,
+   "frame": 6
+  },
+  "statuses_high": {
+   "line:in_range": 3,
+   "path:found": 1,
+   "quote:exact": 1,
+   "poc:calls_project": 1,
+   "frame:consistent": 4,
+   "frame:outside_project": 2,
+   "frame_chain:call_seen": 3
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 10.2272,
+  "index_cached": true
+ },
+ {
+  "id": 4040551,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "master@2026-09-18",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 16,
+  "checked": 16,
+  "claims_high": {
+   "cve": 1,
+   "line": 10,
+   "path": 5,
+   "symbol": 1,
+   "poc": 1
+  },
+  "statuses_high": {
+   "line:in_range": 10,
+   "path:found": 5,
+   "symbol:defined": 1,
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.5084,
+  "index_cached": true
+ },
+ {
+  "id": 4041053,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "d1823ebc17",
+  "ref_assumed": false,
+  "ref_reason": "sha",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 19,
+  "checked": 19,
+  "claims_high": {
+   "cve": 1,
+   "line": 6,
+   "path": 4,
+   "symbol": 9
+  },
+  "statuses_high": {
+   "line:in_range": 6,
+   "path:found": 4,
+   "symbol:defined": 9
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.8927,
+  "index_cached": true
+ },
+ {
+  "id": 4057637,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2026-09-24",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 3,
+  "checked": 3,
+  "claims_high": {
+   "cwe": 1,
+   "symbol": 3
+  },
+  "statuses_high": {
+   "symbol:defined": 3
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4939,
+  "index_cached": true
+ },
+ {
+  "id": 4064040,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "curl-8_21_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_mixed",
+  "hard": 0,
+  "soft": 1,
+  "verified": 16,
+  "checked": 17,
+  "claims_high": {
+   "symbol": 11,
+   "cwe": 3,
+   "path": 11,
+   "line": 1,
+   "version": 2,
+   "poc": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 8,
+   "path:found": 4,
+   "line:in_range": 1,
+   "symbol:referenced_only": 3,
+   "path:outside_project": 6,
+   "poc:calls_project": 1,
+   "path:found_moved": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 20.9366,
+  "index_cached": true
+ },
+ {
+  "id": 4093443,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "curl-8_22_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 3,
+  "checked": 3,
+  "claims_high": {
+   "symbol": 1,
+   "line": 1,
+   "path": 1,
+   "cwe": 1,
+   "version": 1,
+   "poc": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 1,
+   "line:in_range": 1,
+   "path:found": 1,
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.197,
+  "index_cached": true
+ },
+ {
+  "id": 4098761,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "curl-8_22_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_mixed",
+  "hard": 0,
+  "soft": 2,
+  "verified": 3,
+  "checked": 5,
+  "claims_high": {
+   "path": 1,
+   "symbol": 1,
+   "line": 3,
+   "version": 1
+  },
+  "statuses_high": {
+   "path:found": 1,
+   "symbol:defined": 1,
+   "line:in_range": 1,
+   "line:blank_or_comment": 2
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.5801,
+  "index_cached": true
+ },
+ {
+  "id": 4099618,
+  "label": "valid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "resolved",
+  "edited_since_freeze": false,
+  "ref": "3060557af702",
+  "ref_assumed": false,
+  "ref_reason": "sha",
+  "class": "refs_mixed",
+  "hard": 0,
+  "soft": 4,
+  "verified": 11,
+  "checked": 15,
+  "claims_high": {
+   "cve": 1,
+   "symbol": 6,
+   "line": 6,
+   "path": 3,
+   "poc": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 5,
+   "line:in_range": 3,
+   "path:found": 3,
+   "line:blank_or_comment": 3,
+   "symbol:defined_at_other_version": 1,
+   "poc:calls_project": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.8669,
+  "index_cached": true
+ },
+ {
+  "id": 4114965,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "curl-8_23_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 4,
+  "checked": 4,
+  "claims_high": {
+   "poc": 1,
+   "version": 1,
+   "symbol": 2,
+   "line": 2
+  },
+  "statuses_high": {
+   "poc:not_checked": 1,
+   "symbol:defined": 2,
+   "line:in_range": 2
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.4784,
+  "index_cached": true
+ },
+ {
+  "id": 4121675,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2026-10-17",
+  "ref_assumed": true,
+  "ref_reason": "dev_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 8,
+  "checked": 8,
+  "claims_high": {
+   "symbol": 5,
+   "path": 3,
+   "version": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 5,
+   "path:found": 3
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.9408,
+  "index_cached": true
+ },
+ {
+  "id": 4121689,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "master@2026-10-17",
+  "ref_assumed": true,
+  "ref_reason": "dev_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 5,
+  "checked": 5,
+  "claims_high": {
+   "symbol": 2,
+   "path": 3,
+   "version": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 2,
+   "path:found": 3
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.921,
+  "index_cached": true
+ },
+ {
+  "id": 4122567,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "curl-8_18_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_mixed",
+  "hard": 0,
+  "soft": 1,
+  "verified": 7,
+  "checked": 8,
+  "claims_high": {
+   "symbol": 4,
+   "line": 2,
+   "path": 2,
+   "version": 3,
+   "cve": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 4,
+   "line:blank_or_comment": 1,
+   "path:found": 2,
+   "line:in_range": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.313,
+  "index_cached": true
+ },
+ {
+  "id": 4123571,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "curl-8_7_1",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_mixed",
+  "hard": 0,
+  "soft": 9,
+  "verified": 11,
+  "checked": 20,
+  "claims_high": {
+   "symbol": 9,
+   "line": 6,
+   "path": 8,
+   "cve": 4,
+   "version": 2
+  },
+  "statuses_high": {
+   "symbol:defined_at_other_version": 4,
+   "line:blank_or_comment": 3,
+   "path:found": 6,
+   "symbol:defined": 3,
+   "symbol:external": 2,
+   "line:in_range": 2,
+   "path:found_moved": 1,
+   "path:not_found": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 1
+  },
+  "seconds": 8.317,
+  "index_cached": true
+ },
+ {
+  "id": 4123646,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "master@2026-10-17",
+  "ref_assumed": true,
+  "ref_reason": "no_version",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 6,
+  "checked": 6,
+  "claims_high": {
+   "cve": 1,
+   "line": 2,
+   "path": 2,
+   "symbol": 2,
+   "cwe": 1
+  },
+  "statuses_high": {
+   "line:in_range": 2,
+   "path:found": 2,
+   "symbol:defined": 2
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 4.7912,
+  "index_cached": true
+ },
+ {
+  "id": 4123654,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "e84f95a",
+  "ref_assumed": false,
+  "ref_reason": "sha",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 8,
+  "checked": 8,
+  "claims_high": {
+   "cve": 1,
+   "line": 4,
+   "path": 3,
+   "symbol": 1
+  },
+  "statuses_high": {
+   "line:in_range": 4,
+   "path:found": 3,
+   "symbol:defined": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3465,
+  "index_cached": true
+ },
+ {
+  "id": 4123749,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "curl-8_23_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 6,
+  "checked": 6,
+  "claims_high": {
+   "line": 1,
+   "path": 1,
+   "symbol": 4,
+   "version": 2,
+   "poc": 1
+  },
+  "statuses_high": {
+   "line:in_range": 1,
+   "path:found": 1,
+   "symbol:defined": 4,
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 4.6363,
+  "index_cached": true
+ },
+ {
+  "id": 4124486,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "e84f95a",
+  "ref_assumed": false,
+  "ref_reason": "sha",
+  "class": "refs_mixed",
+  "hard": 1,
+  "soft": 1,
+  "verified": 9,
+  "checked": 11,
+  "claims_high": {
+   "line": 3,
+   "path": 8,
+   "quote": 1,
+   "cve": 1,
+   "symbol": 2
+  },
+  "statuses_high": {
+   "line:in_range": 2,
+   "path:found": 5,
+   "quote:not_found": 1,
+   "line:blank_or_comment": 1,
+   "symbol:defined": 2,
+   "path:outside_project": 3
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 1,
+   "path_not_found": 0
+  },
+  "seconds": 4.6022,
+  "index_cached": true
+ },
+ {
+  "id": 4126768,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "curl-8_23_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 15,
+  "checked": 15,
+  "claims_high": {
+   "version": 1,
+   "symbol": 10,
+   "cve": 1,
+   "path": 3,
+   "quote": 1,
+   "line": 1
+  },
+  "statuses_high": {
+   "symbol:defined": 10,
+   "path:found": 3,
+   "quote:exact": 1,
+   "line:in_range": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 7.2254,
+  "index_cached": true
+ },
+ {
+  "id": 4129642,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "informative",
+  "edited_since_freeze": false,
+  "ref": "curl-8_20_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_mixed",
+  "hard": 0,
+  "soft": 1,
+  "verified": 6,
+  "checked": 7,
+  "claims_high": {
+   "path": 2,
+   "version": 2,
+   "cwe": 2,
+   "symbol": 5,
+   "poc": 1,
+   "cve": 2
+  },
+  "statuses_high": {
+   "path:found": 2,
+   "symbol:defined": 4,
+   "symbol:defined_at_other_version": 1,
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 5.412,
+  "index_cached": true
+ },
+ {
+  "id": 4132132,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "curl-8_21_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_verified",
+  "hard": 0,
+  "soft": 0,
+  "verified": 5,
+  "checked": 5,
+  "claims_high": {
+   "line": 2,
+   "symbol": 2,
+   "version": 1,
+   "poc": 1,
+   "path": 1
+  },
+  "statuses_high": {
+   "line:in_range": 2,
+   "symbol:defined": 2,
+   "poc:calls_project": 1,
+   "path:found": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.6077,
+  "index_cached": true
+ },
+ {
+  "id": 4135826,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "curl-8_23_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "version": 2,
+   "poc": 1
+  },
+  "statuses_high": {
+   "poc:calls_project": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 1.0392,
+  "index_cached": true
+ },
+ {
+  "id": 4137523,
+  "label": "invalid",
+  "era": "post2023",
+  "slop_list": false,
+  "substate": "not-applicable",
+  "edited_since_freeze": false,
+  "ref": "curl-8_23_0",
+  "ref_assumed": false,
+  "ref_reason": "claimed",
+  "class": "refs_none",
+  "hard": 0,
+  "soft": 0,
+  "verified": 0,
+  "checked": 0,
+  "claims_high": {
+   "version": 1,
+   "poc": 1
+  },
+  "statuses_high": {
+   "poc:not_checked": 1
+  },
+  "flags": {
+   "symbol_not_found": 0,
+   "out_of_range": 0,
+   "frame_inconsistent": 0,
+   "quote_not_found": 0,
+   "path_not_found": 0
+  },
+  "seconds": 0.3502,
+  "index_cached": true
+ }
+]

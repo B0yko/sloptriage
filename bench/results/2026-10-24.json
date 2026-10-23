@@ -1,0 +1,1162 @@
+{
+ "schema": "sloptriage-bench-results/1",
+ "date": "2026-10-24",
+ "tool_version": "0.1.0",
+ "hardware": "Mac Studio M4 Max, 128 GB",
+ "project": "curl",
+ "freeze_commit": "c33cdd95c06913bb2bbf6c90dede70e91726b5a6",
+ "thresholds": {
+  "hard_fail_min": 2,
+  "min_verified_share": 0.7,
+  "min_verified_claims": 3
+ },
+ "splits": {
+  "dev": {
+   "n": 260,
+   "valid": 60,
+   "invalid": 200,
+   "slop_listed": 17,
+   "false_flag_rate_valid": {
+    "k": 0,
+    "n": 60,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.0602
+    ]
+   },
+   "precision_invalid": {
+    "k": 16,
+    "n": 16,
+    "rate": 1.0,
+    "ci95": [
+     0.8064,
+     1.0
+    ]
+   },
+   "recall_invalid": {
+    "k": 16,
+    "n": 200,
+    "rate": 0.08,
+    "ci95": [
+     0.0498,
+     0.126
+    ]
+   },
+   "recall_invalid_slop_listed": {
+    "k": 6,
+    "n": 17,
+    "rate": 0.3529,
+    "ci95": [
+     0.1731,
+     0.587
+    ]
+   },
+   "recall_invalid_not_slop_listed": {
+    "k": 10,
+    "n": 183,
+    "rate": 0.0546,
+    "ci95": [
+     0.0299,
+     0.0977
+    ]
+   },
+   "coverage": {
+    "valid": {
+     "k": 39,
+     "n": 60,
+     "rate": 0.65,
+     "ci95": [
+      0.5236,
+      0.7583
+     ]
+    },
+    "invalid": {
+     "k": 138,
+     "n": 200,
+     "rate": 0.69,
+     "ci95": [
+      0.6228,
+      0.75
+     ]
+    }
+   },
+   "per_check": {
+    "symbol_not_found": {
+     "invalid": {
+      "k": 11,
+      "n": 200,
+      "rate": 0.055,
+      "ci95": [
+       0.031,
+       0.0958
+      ]
+     },
+     "valid": {
+      "k": 2,
+      "n": 60,
+      "rate": 0.0333,
+      "ci95": [
+       0.0092,
+       0.1136
+      ]
+     }
+    },
+    "out_of_range": {
+     "invalid": {
+      "k": 0,
+      "n": 200,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.0188
+      ]
+     },
+     "valid": {
+      "k": 0,
+      "n": 60,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.0602
+      ]
+     }
+    },
+    "frame_inconsistent": {
+     "invalid": {
+      "k": 0,
+      "n": 200,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.0188
+      ]
+     },
+     "valid": {
+      "k": 0,
+      "n": 60,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.0602
+      ]
+     }
+    },
+    "quote_not_found": {
+     "invalid": {
+      "k": 12,
+      "n": 200,
+      "rate": 0.06,
+      "ci95": [
+       0.0347,
+       0.1019
+      ]
+     },
+     "valid": {
+      "k": 1,
+      "n": 60,
+      "rate": 0.0167,
+      "ci95": [
+       0.0029,
+       0.0886
+      ]
+     }
+    },
+    "path_not_found": {
+     "invalid": {
+      "k": 4,
+      "n": 200,
+      "rate": 0.02,
+      "ci95": [
+       0.0078,
+       0.0503
+      ]
+     },
+     "valid": {
+      "k": 0,
+      "n": 60,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.0602
+      ]
+     }
+    }
+   },
+   "classes": {
+    "valid": {
+     "refs_thin": 8,
+     "refs_none": 21,
+     "refs_verified": 19,
+     "refs_mixed": 12
+    },
+    "invalid": {
+     "refs_verified": 70,
+     "refs_none": 62,
+     "refs_thin": 30,
+     "refs_failed": 16,
+     "refs_mixed": 22
+    }
+   },
+   "by_era": {
+    "pre2023": {
+     "n": 41,
+     "valid": 18,
+     "invalid": 23,
+     "slop_listed": 0,
+     "false_flag_rate_valid": {
+      "k": 0,
+      "n": 18,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1759
+      ]
+     },
+     "precision_invalid": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       0.0,
+       1.0
+      ]
+     },
+     "recall_invalid": {
+      "k": 0,
+      "n": 23,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1431
+      ]
+     },
+     "recall_invalid_slop_listed": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       0.0,
+       1.0
+      ]
+     },
+     "recall_invalid_not_slop_listed": {
+      "k": 0,
+      "n": 23,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1431
+      ]
+     },
+     "coverage": {
+      "valid": {
+       "k": 6,
+       "n": 18,
+       "rate": 0.3333,
+       "ci95": [
+        0.1628,
+        0.5625
+       ]
+      },
+      "invalid": {
+       "k": 13,
+       "n": 23,
+       "rate": 0.5652,
+       "ci95": [
+        0.3681,
+        0.7437
+       ]
+      }
+     },
+     "per_check": {
+      "symbol_not_found": {
+       "invalid": {
+        "k": 0,
+        "n": 23,
+        "rate": 0.0,
+        "ci95": [
+         0.0,
+         0.1431
+        ]
+       },
+       "valid": {
+        "k": 1,
+        "n": 18,
+        "rate": 0.0556,
+        "ci95": [
+         0.0099,
+         0.2576
+        ]
+       }
+      },
+      "out_of_range": {
+       "invalid": {
+        "k": 0,
+        "n": 23,
+        "rate": 0.0,
+        "ci95": [
+         0.0,
+         0.1431
+        ]
+       },
+       "valid": {
+        "k": 0,
+        "n": 18,
+        "rate": 0.0,
+        "ci95": [
+         0.0,
+         0.1759
+        ]
+       }
+      },
+      "frame_inconsistent": {
+       "invalid": {
+        "k": 0,
+        "n": 23,
+        "rate": 0.0,
+        "ci95": [
+         0.0,
+         0.1431
+        ]
+       },
+       "valid": {
+        "k": 0,
+        "n": 18,
+        "rate": 0.0,
+        "ci95": [
+         0.0,
+         0.1759
+        ]
+       }
+      },
+      "quote_not_found": {
+       "invalid": {
+        "k": 0,
+        "n": 23,
+        "rate": 0.0,
+        "ci95": [
+         0.0,
+         0.1431
+        ]
+       },
+       "valid": {
+        "k": 0,
+        "n": 18,
+        "rate": 0.0,
+        "ci95": [
+         0.0,
+         0.1759
+        ]
+       }
+      },
+      "path_not_found": {
+       "invalid": {
+        "k": 0,
+        "n": 23,
+        "rate": 0.0,
+        "ci95": [
+         0.0,
+         0.1431
+        ]
+       },
+       "valid": {
+        "k": 0,
+        "n": 18,
+        "rate": 0.0,
+        "ci95": [
+         0.0,
+         0.1759
+        ]
+       }
+      }
+     },
+     "classes": {
+      "valid": {
+       "refs_thin": 3,
+       "refs_none": 12,
+       "refs_verified": 2,
+       "refs_mixed": 1
+      },
+      "invalid": {
+       "refs_verified": 7,
+       "refs_none": 10,
+       "refs_thin": 6
+      }
+     }
+    },
+    "post2023": {
+     "n": 219,
+     "valid": 42,
+     "invalid": 177,
+     "slop_listed": 17,
+     "false_flag_rate_valid": {
+      "k": 0,
+      "n": 42,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.0838
+      ]
+     },
+     "precision_invalid": {
+      "k": 16,
+      "n": 16,
+      "rate": 1.0,
+      "ci95": [
+       0.8064,
+       1.0
+      ]
+     },
+     "recall_invalid": {
+      "k": 16,
+      "n": 177,
+      "rate": 0.0904,
+      "ci95": [
+       0.0564,
+       0.1418
+      ]
+     },
+     "recall_invalid_slop_listed": {
+      "k": 6,
+      "n": 17,
+      "rate": 0.3529,
+      "ci95": [
+       0.1731,
+       0.587
+      ]
+     },
+     "recall_invalid_not_slop_listed": {
+      "k": 10,
+      "n": 160,
+      "rate": 0.0625,
+      "ci95": [
+       0.0343,
+       0.1112
+      ]
+     },
+     "coverage": {
+      "valid": {
+       "k": 33,
+       "n": 42,
+       "rate": 0.7857,
+       "ci95": [
+        0.6406,
+        0.8829
+       ]
+      },
+      "invalid": {
+       "k": 125,
+       "n": 177,
+       "rate": 0.7062,
+       "ci95": [
+        0.6353,
+        0.7684
+       ]
+      }
+     },
+     "per_check": {
+      "symbol_not_found": {
+       "invalid": {
+        "k": 11,
+        "n": 177,
+        "rate": 0.0621,
+        "ci95": [
+         0.0351,
+         0.1078
+        ]
+       },
+       "valid": {
+        "k": 1,
+        "n": 42,
+        "rate": 0.0238,
+        "ci95": [
+         0.0042,
+         0.1232
+        ]
+       }
+      },
+      "out_of_range": {
+       "invalid": {
+        "k": 0,
+        "n": 177,
+        "rate": 0.0,
+        "ci95": [
+         0.0,
+         0.0212
+        ]
+       },
+       "valid": {
+        "k": 0,
+        "n": 42,
+        "rate": 0.0,
+        "ci95": [
+         0.0,
+         0.0838
+        ]
+       }
+      },
+      "frame_inconsistent": {
+       "invalid": {
+        "k": 0,
+        "n": 177,
+        "rate": 0.0,
+        "ci95": [
+         0.0,
+         0.0212
+        ]
+       },
+       "valid": {
+        "k": 0,
+        "n": 42,
+        "rate": 0.0,
+        "ci95": [
+         0.0,
+         0.0838
+        ]
+       }
+      },
+      "quote_not_found": {
+       "invalid": {
+        "k": 12,
+        "n": 177,
+        "rate": 0.0678,
+        "ci95": [
+         0.0392,
+         0.1148
+        ]
+       },
+       "valid": {
+        "k": 1,
+        "n": 42,
+        "rate": 0.0238,
+        "ci95": [
+         0.0042,
+         0.1232
+        ]
+       }
+      },
+      "path_not_found": {
+       "invalid": {
+        "k": 4,
+        "n": 177,
+        "rate": 0.0226,
+        "ci95": [
+         0.0088,
+         0.0567
+        ]
+       },
+       "valid": {
+        "k": 0,
+        "n": 42,
+        "rate": 0.0,
+        "ci95": [
+         0.0,
+         0.0838
+        ]
+       }
+      }
+     },
+     "classes": {
+      "valid": {
+       "refs_none": 9,
+       "refs_verified": 17,
+       "refs_thin": 5,
+       "refs_mixed": 11
+      },
+      "invalid": {
+       "refs_none": 52,
+       "refs_thin": 24,
+       "refs_failed": 16,
+       "refs_verified": 63,
+       "refs_mixed": 22
+      }
+     }
+    }
+   },
+   "false_flags": []
+  },
+  "heldout": {
+   "n": 389,
+   "valid": 90,
+   "invalid": 299,
+   "slop_listed": 32,
+   "false_flag_rate_valid": {
+    "k": 1,
+    "n": 90,
+    "rate": 0.0111,
+    "ci95": [
+     0.002,
+     0.0603
+    ]
+   },
+   "precision_invalid": {
+    "k": 18,
+    "n": 19,
+    "rate": 0.9474,
+    "ci95": [
+     0.7536,
+     0.9906
+    ]
+   },
+   "recall_invalid": {
+    "k": 18,
+    "n": 299,
+    "rate": 0.0602,
+    "ci95": [
+     0.0384,
+     0.0931
+    ]
+   },
+   "recall_invalid_slop_listed": {
+    "k": 2,
+    "n": 32,
+    "rate": 0.0625,
+    "ci95": [
+     0.0173,
+     0.2015
+    ]
+   },
+   "recall_invalid_not_slop_listed": {
+    "k": 16,
+    "n": 267,
+    "rate": 0.0599,
+    "ci95": [
+     0.0372,
+     0.0951
+    ]
+   },
+   "coverage": {
+    "valid": {
+     "k": 59,
+     "n": 90,
+     "rate": 0.6556,
+     "ci95": [
+      0.5528,
+      0.7455
+     ]
+    },
+    "invalid": {
+     "k": 232,
+     "n": 299,
+     "rate": 0.7759,
+     "ci95": [
+      0.7253,
+      0.8195
+     ]
+    }
+   },
+   "per_check": {
+    "symbol_not_found": {
+     "invalid": {
+      "k": 15,
+      "n": 299,
+      "rate": 0.0502,
+      "ci95": [
+       0.0306,
+       0.0811
+      ]
+     },
+     "valid": {
+      "k": 0,
+      "n": 90,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.0409
+      ]
+     }
+    },
+    "out_of_range": {
+     "invalid": {
+      "k": 1,
+      "n": 299,
+      "rate": 0.0033,
+      "ci95": [
+       0.0006,
+       0.0187
+      ]
+     },
+     "valid": {
+      "k": 1,
+      "n": 90,
+      "rate": 0.0111,
+      "ci95": [
+       0.002,
+       0.0603
+      ]
+     }
+    },
+    "frame_inconsistent": {
+     "invalid": {
+      "k": 0,
+      "n": 299,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.0127
+      ]
+     },
+     "valid": {
+      "k": 0,
+      "n": 90,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.0409
+      ]
+     }
+    },
+    "quote_not_found": {
+     "invalid": {
+      "k": 12,
+      "n": 299,
+      "rate": 0.0401,
+      "ci95": [
+       0.0231,
+       0.0688
+      ]
+     },
+     "valid": {
+      "k": 4,
+      "n": 90,
+      "rate": 0.0444,
+      "ci95": [
+       0.0174,
+       0.1088
+      ]
+     }
+    },
+    "path_not_found": {
+     "invalid": {
+      "k": 5,
+      "n": 299,
+      "rate": 0.0167,
+      "ci95": [
+       0.0072,
+       0.0385
+      ]
+     },
+     "valid": {
+      "k": 2,
+      "n": 90,
+      "rate": 0.0222,
+      "ci95": [
+       0.0061,
+       0.0774
+      ]
+     }
+    }
+   },
+   "classes": {
+    "valid": {
+     "refs_thin": 13,
+     "refs_none": 31,
+     "refs_verified": 29,
+     "refs_mixed": 16,
+     "refs_failed": 1
+    },
+    "invalid": {
+     "refs_thin": 57,
+     "refs_none": 67,
+     "refs_verified": 112,
+     "refs_failed": 18,
+     "refs_mixed": 45
+    }
+   },
+   "by_era": {
+    "pre2023": {
+     "n": 61,
+     "valid": 27,
+     "invalid": 34,
+     "slop_listed": 0,
+     "false_flag_rate_valid": {
+      "k": 0,
+      "n": 27,
+      "rate": 0.0,
+      "ci95": [
+       0.0,
+       0.1246
+      ]
+     },
+     "precision_invalid": {
+      "k": 1,
+      "n": 1,
+      "rate": 1.0,
+      "ci95": [
+       0.2065,
+       1.0
+      ]
+     },
+     "recall_invalid": {
+      "k": 1,
+      "n": 34,
+      "rate": 0.0294,
+      "ci95": [
+       0.0052,
+       0.1492
+      ]
+     },
+     "recall_invalid_slop_listed": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "ci95": [
+       0.0,
+       1.0
+      ]
+     },
+     "recall_invalid_not_slop_listed": {
+      "k": 1,
+      "n": 34,
+      "rate": 0.0294,
+      "ci95": [
+       0.0052,
+       0.1492
+      ]
+     },
+     "coverage": {
+      "valid": {
+       "k": 12,
+       "n": 27,
+       "rate": 0.4444,
+       "ci95": [
+        0.2759,
+        0.6269
+       ]
+      },
+      "invalid": {
+       "k": 15,
+       "n": 34,
+       "rate": 0.4412,
+       "ci95": [
+        0.2888,
+        0.6055
+       ]
+      }
+     },
+     "per_check": {
+      "symbol_not_found": {
+       "invalid": {
+        "k": 0,
+        "n": 34,
+        "rate": 0.0,
+        "ci95": [
+         0.0,
+         0.1015
+        ]
+       },
+       "valid": {
+        "k": 0,
+        "n": 27,
+        "rate": 0.0,
+        "ci95": [
+         0.0,
+         0.1246
+        ]
+       }
+      },
+      "out_of_range": {
+       "invalid": {
+        "k": 0,
+        "n": 34,
+        "rate": 0.0,
+        "ci95": [
+         0.0,
+         0.1015
+        ]
+       },
+       "valid": {
+        "k": 0,
+        "n": 27,
+        "rate": 0.0,
+        "ci95": [
+         0.0,
+         0.1246
+        ]
+       }
+      },
+      "frame_inconsistent": {
+       "invalid": {
+        "k": 0,
+        "n": 34,
+        "rate": 0.0,
+        "ci95": [
+         0.0,
+         0.1015
+        ]
+       },
+       "valid": {
+        "k": 0,
+        "n": 27,
+        "rate": 0.0,
+        "ci95": [
+         0.0,
+         0.1246
+        ]
+       }
+      },
+      "quote_not_found": {
+       "invalid": {
+        "k": 0,
+        "n": 34,
+        "rate": 0.0,
+        "ci95": [
+         0.0,
+         0.1015
+        ]
+       },
+       "valid": {
+        "k": 0,
+        "n": 27,
+        "rate": 0.0,
+        "ci95": [
+         0.0,
+         0.1246
+        ]
+       }
+      },
+      "path_not_found": {
+       "invalid": {
+        "k": 1,
+        "n": 34,
+        "rate": 0.0294,
+        "ci95": [
+         0.0052,
+         0.1492
+        ]
+       },
+       "valid": {
+        "k": 1,
+        "n": 27,
+        "rate": 0.037,
+        "ci95": [
+         0.0066,
+         0.1828
+        ]
+       }
+      }
+     },
+     "classes": {
+      "valid": {
+       "refs_thin": 2,
+       "refs_none": 15,
+       "refs_verified": 7,
+       "refs_mixed": 3
+      },
+      "invalid": {
+       "refs_thin": 6,
+       "refs_none": 19,
+       "refs_verified": 7,
+       "refs_failed": 1,
+       "refs_mixed": 1
+      }
+     }
+    },
+    "post2023": {
+     "n": 328,
+     "valid": 63,
+     "invalid": 265,
+     "slop_listed": 32,
+     "false_flag_rate_valid": {
+      "k": 1,
+      "n": 63,
+      "rate": 0.0159,
+      "ci95": [
+       0.0028,
+       0.0846
+      ]
+     },
+     "precision_invalid": {
+      "k": 17,
+      "n": 18,
+      "rate": 0.9444,
+      "ci95": [
+       0.7424,
+       0.9901
+      ]
+     },
+     "recall_invalid": {
+      "k": 17,
+      "n": 265,
+      "rate": 0.0642,
+      "ci95": [
+       0.0404,
+       0.1003
+      ]
+     },
+     "recall_invalid_slop_listed": {
+      "k": 2,
+      "n": 32,
+      "rate": 0.0625,
+      "ci95": [
+       0.0173,
+       0.2015
+      ]
+     },
+     "recall_invalid_not_slop_listed": {
+      "k": 15,
+      "n": 233,
+      "rate": 0.0644,
+      "ci95": [
+       0.0394,
+       0.1035
+      ]
+     },
+     "coverage": {
+      "valid": {
+       "k": 47,
+       "n": 63,
+       "rate": 0.746,
+       "ci95": [
+        0.6266,
+        0.8372
+       ]
+      },
+      "invalid": {
+       "k": 217,
+       "n": 265,
+       "rate": 0.8189,
+       "ci95": [
+        0.768,
+        0.8606
+       ]
+      }
+     },
+     "per_check": {
+      "symbol_not_found": {
+       "invalid": {
+        "k": 15,
+        "n": 265,
+        "rate": 0.0566,
+        "ci95": [
+         0.0346,
+         0.0913
+        ]
+       },
+       "valid": {
+        "k": 0,
+        "n": 63,
+        "rate": 0.0,
+        "ci95": [
+         0.0,
+         0.0575
+        ]
+       }
+      },
+      "out_of_range": {
+       "invalid": {
+        "k": 1,
+        "n": 265,
+        "rate": 0.0038,
+        "ci95": [
+         0.0007,
+         0.0211
+        ]
+       },
+       "valid": {
+        "k": 1,
+        "n": 63,
+        "rate": 0.0159,
+        "ci95": [
+         0.0028,
+         0.0846
+        ]
+       }
+      },
+      "frame_inconsistent": {
+       "invalid": {
+        "k": 0,
+        "n": 265,
+        "rate": 0.0,
+        "ci95": [
+         0.0,
+         0.0143
+        ]
+       },
+       "valid": {
+        "k": 0,
+        "n": 63,
+        "rate": 0.0,
+        "ci95": [
+         0.0,
+         0.0575
+        ]
+       }
+      },
+      "quote_not_found": {
+       "invalid": {
+        "k": 12,
+        "n": 265,
+        "rate": 0.0453,
+        "ci95": [
+         0.0261,
+         0.0775
+        ]
+       },
+       "valid": {
+        "k": 4,
+        "n": 63,
+        "rate": 0.0635,
+        "ci95": [
+         0.025,
+         0.1522
+        ]
+       }
+      },
+      "path_not_found": {
+       "invalid": {
+        "k": 4,
+        "n": 265,
+        "rate": 0.0151,
+        "ci95": [
+         0.0059,
+         0.0382
+        ]
+       },
+       "valid": {
+        "k": 1,
+        "n": 63,
+        "rate": 0.0159,
+        "ci95": [
+         0.0028,
+         0.0846
+        ]
+       }
+      }
+     },
+     "classes": {
+      "valid": {
+       "refs_none": 16,
+       "refs_verified": 22,
+       "refs_thin": 11,
+       "refs_mixed": 13,
+       "refs_failed": 1
+      },
+      "invalid": {
+       "refs_none": 48,
+       "refs_thin": 51,
+       "refs_mixed": 44,
+       "refs_verified": 105,
+       "refs_failed": 17
+      }
+     }
+    }
+   },
+   "false_flags": [
+    {
+     "id": 3751712,
+     "url": "https://hackerone.com/reports/3751712",
+     "ref": "507cf6a13d",
+     "hard": 2,
+     "verified": 1,
+     "checked": 3,
+     "flags": {
+      "quote_not_found": 1,
+      "path_not_found": 1
+     }
+    }
+   ]
+  }
+ }
+}

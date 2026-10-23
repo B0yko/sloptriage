@@ -202,7 +202,7 @@ def load_config(path: Path | None) -> Config:
 
 
 def find_config(repo_path: Path | None) -> Path | None:
-    for base in (Path.cwd(), repo_path):
+    for base in (repo_path, Path.cwd()):  # the checked repository's own config wins
         if base is None:
             continue
         for name in (".sloptriage.yml", ".sloptriage.yaml"):

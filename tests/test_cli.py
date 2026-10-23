@@ -9,6 +9,11 @@ from conftest import make_repo
 from sloptriage.cli import main
 
 
+@pytest.fixture(autouse=True)
+def _neutral_cwd(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.chdir(tmp_path)  # no stray .sloptriage.yml from the working directory
+
+
 @pytest.fixture()
 def project(tmp_path: Path) -> Path:
     return make_repo(

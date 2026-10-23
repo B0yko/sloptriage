@@ -254,7 +254,7 @@ def explain(finding: dict[str, Any], claim: dict[str, Any], verdict: dict[str, A
                 if d.get("other_version")
                 else f"no such path; {code(d.get('resolved', ''))} exists"
             ),
-            "not_found": f"{code(d.get('path', claim['value']))} does not exist in {project} at {ref}",
+            "not_found": f"does not exist in {project} at {ref}",
             "outside_project": "outside the project tree",
             "other_repository": f"points to another repository ({code(d.get('repository', ''))})",
         }.get(status, status)
@@ -265,7 +265,7 @@ def explain(finding: dict[str, Any], claim: dict[str, Any], verdict: dict[str, A
             "defined_at_other_version": f"not defined at {code(d.get('primary_ref') or verdict['resolution']['ref'], 60)}; defined at {ref}",
             "external": "standard-library or third-party name",
             "defined_by_poc": "defined by the report's own PoC",
-            "not_found": f"{code(d.get('symbol', claim['value']))} is not defined anywhere in {project} at {ref}",
+            "not_found": f"not defined anywhere in {project} at {ref}",
         }.get(status, status)
     if check == "line":
         line, total, path = d.get("line"), d.get("lines"), code(d.get("path", ""))
@@ -500,21 +500,28 @@ def render_markdown(verdict: dict[str, Any]) -> str:
     return text
 
 
-def render_text(verdict: dict[str, Any]) -> str:
+def render_text(verdict: dict[str, Any], *, max_ok: int = 3) -> str:
     def plain(s: str) -> str:
         return re.sub(r"`([^`]*)`", r"\1", s).replace("**", "")
 
     lines = [plain(summary_line(verdict)), plain(_resolution_sentence(verdict)), ""]
+    ok: list[str] = []
     for claim in verdict["claims"]:
         worst = _worst(claim)
         if worst is None or worst["severity"] == "neutral":
             continue
-        ev = worst["evidence"][0] if worst.get("evidence") else ""
+        row = f"  {_mark(worst['severity'])} {plain(describe(claim))}: {plain(explain(worst, claim, verdict))}"
+        if worst["severity"] == "ok":
+            ok.append(row)
+            continue
+        lines.append(row)
+        if worst.get("evidence"):
+            lines.append(f"      {worst['evidence'][0]}")
+    lines += ok[:max_ok]
+    if len(ok) > max_ok:
         lines.append(
-            f"  {_mark(worst['severity'])} {plain(describe(claim))}: {plain(explain(worst, claim, verdict))}"
+            f"  ✓ and {len(ok) - max_ok} more cited items that check out (--format md lists all with links)"
         )
-        if ev:
-            lines.append(f"      {ev}")
     lines.append("")
     lines += [
         plain(x)

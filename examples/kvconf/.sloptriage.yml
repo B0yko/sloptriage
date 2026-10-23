@@ -1,0 +1,16 @@
+# sloptriage configuration for a Python package (the bundled kvconf demo).
+version: 1
+project:
+  name: kvconf
+  binaries: [kvconf]
+version_tags: [v]
+languages: [python]
+repro:
+  enabled: false
+  recipe:
+    preset: python-pip
+  runners: [python, shell, input]
+  harness: "kvconf {input}"
+  limits:
+    timeout: 30
+    memory: 512m

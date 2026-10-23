@@ -1,0 +1,769 @@
+{
+ "schema": "sloptriage-demo-labels/1",
+ "reports": [
+  {
+   "file": "01-header-join-overflow.md",
+   "label": "valid",
+   "project": "parsekit",
+   "claimed_version": "1.2.0",
+   "bug": "heap-buffer-overflow",
+   "failure_modes": [],
+   "poc": "input",
+   "poc_reproduces": true,
+   "notes": "detailed, base64 input PoC, quote and trace"
+  },
+  {
+   "file": "02-join-overflow-cli.md",
+   "label": "valid",
+   "project": "parsekit",
+   "claimed_version": "1.1.0",
+   "bug": "heap-buffer-overflow",
+   "failure_modes": [],
+   "poc": "sh",
+   "poc_reproduces": true,
+   "notes": "terse, shell PoC, version 1.1.0"
+  },
+  {
+   "file": "03-join-overflow-api.md",
+   "label": "valid",
+   "project": "parsekit",
+   "claimed_version": "1.2.0",
+   "bug": "heap-buffer-overflow",
+   "failure_modes": [],
+   "poc": "c",
+   "poc_reproduces": true,
+   "notes": "C API PoC, function span and lines"
+  },
+  {
+   "file": "04-dup-header-crash-noversion.md",
+   "label": "valid",
+   "project": "parsekit",
+   "claimed_version": null,
+   "bug": "heap-buffer-overflow",
+   "failure_modes": [],
+   "poc": "sh",
+   "poc_reproduces": true,
+   "notes": "no version, few references"
+  },
+  {
+   "file": "05-join-missing-nul-quote.md",
+   "label": "valid",
+   "project": "parsekit",
+   "claimed_version": "1.2.0",
+   "bug": "heap-buffer-overflow",
+   "failure_modes": [],
+   "poc": "sh",
+   "poc_reproduces": true,
+   "notes": "abbreviated quote with ellipsis"
+  },
+  {
+   "file": "06-set-cookie-join.md",
+   "label": "valid",
+   "project": "parsekit",
+   "claimed_version": "1.2.0",
+   "bug": "heap-buffer-overflow",
+   "failure_modes": [],
+   "poc": "c",
+   "poc_reproduces": true,
+   "notes": "trace without columns"
+  },
+  {
+   "file": "07-thin-join.md",
+   "label": "valid",
+   "project": "parsekit",
+   "claimed_version": "1.2.0",
+   "bug": "heap-buffer-overflow",
+   "failure_modes": [],
+   "poc": "sh",
+   "poc_reproduces": true,
+   "notes": "thin: one reference"
+  },
+  {
+   "file": "08-normalize-uaf.md",
+   "label": "valid",
+   "project": "parsekit",
+   "claimed_version": "1.2.0",
+   "bug": "heap-use-after-free",
+   "failure_modes": [],
+   "poc": "sh",
+   "poc_reproduces": true,
+   "notes": "detailed UAF with free and alloc stacks"
+  },
+  {
+   "file": "09-normalize-uaf-api.md",
+   "label": "valid",
+   "project": "parsekit",
+   "claimed_version": "1.2.0",
+   "bug": "heap-use-after-free",
+   "failure_modes": [],
+   "poc": "c",
+   "poc_reproduces": true,
+   "notes": "C API PoC, prose frame"
+  },
+  {
+   "file": "10-normalize-uaf-terse.md",
+   "label": "valid",
+   "project": "parsekit",
+   "claimed_version": "1.2.0",
+   "bug": "heap-use-after-free",
+   "failure_modes": [],
+   "poc": "sh",
+   "poc_reproduces": true,
+   "notes": "terse, short trace"
+  },
+  {
+   "file": "11-normalize-uaf-noversion.md",
+   "label": "valid",
+   "project": "parsekit",
+   "claimed_version": null,
+   "bug": "heap-use-after-free",
+   "failure_modes": [],
+   "poc": "sh",
+   "poc_reproduces": true,
+   "notes": "no version"
+  },
+  {
+   "file": "12-normalize-uaf-docs-url.md",
+   "label": "valid",
+   "project": "parsekit",
+   "claimed_version": "1.2.0",
+   "bug": "heap-use-after-free",
+   "failure_modes": [],
+   "poc": "c",
+   "poc_reproduces": true,
+   "notes": "C PoC with full trace"
+  },
+  {
+   "file": "13-normalize-in-function-at.md",
+   "label": "valid",
+   "project": "parsekit",
+   "claimed_version": "1.2.0",
+   "bug": "heap-use-after-free",
+   "failure_modes": [],
+   "poc": "sh",
+   "poc_reproduces": true,
+   "notes": "'in function X at file:line' prose"
+  },
+  {
+   "file": "14-thin-uaf.md",
+   "label": "valid",
+   "project": "parsekit",
+   "claimed_version": "1.2.0",
+   "bug": "heap-use-after-free",
+   "failure_modes": [],
+   "poc": "sh",
+   "poc_reproduces": true,
+   "notes": "thin"
+  },
+  {
+   "file": "15-kvconf-recursion.md",
+   "label": "valid",
+   "project": "kvconf",
+   "claimed_version": "0.2.0",
+   "bug": "RecursionError",
+   "failure_modes": [],
+   "poc": "python",
+   "poc_reproduces": true,
+   "notes": "python traceback and quote"
+  },
+  {
+   "file": "16-kvconf-cli-loop.md",
+   "label": "valid",
+   "project": "kvconf",
+   "claimed_version": "0.2.0",
+   "bug": "RecursionError",
+   "failure_modes": [],
+   "poc": "sh",
+   "poc_reproduces": true,
+   "notes": "CLI shell PoC"
+  },
+  {
+   "file": "17-kvconf-self-noversion.md",
+   "label": "valid",
+   "project": "kvconf",
+   "claimed_version": null,
+   "bug": "RecursionError",
+   "failure_modes": [],
+   "poc": "python",
+   "poc_reproduces": true,
+   "notes": "no version, python PoC"
+  },
+  {
+   "file": "18-join-overflow-inline-header.md",
+   "label": "valid",
+   "project": "parsekit",
+   "claimed_version": "1.2.0",
+   "bug": "heap-buffer-overflow",
+   "failure_modes": [],
+   "poc": "sh",
+   "poc_reproduces": true,
+   "notes": "inline header argument"
+  },
+  {
+   "file": "19-normalize-uaf-lines.md",
+   "label": "valid",
+   "project": "parsekit",
+   "claimed_version": "1.2.0",
+   "bug": "heap-use-after-free",
+   "failure_modes": [],
+   "poc": "sh",
+   "poc_reproduces": true,
+   "notes": "File/Function/Lines template"
+  },
+  {
+   "file": "20-kvconf-mutual.md",
+   "label": "valid",
+   "project": "kvconf",
+   "claimed_version": "0.2.0",
+   "bug": "RecursionError",
+   "failure_modes": [],
+   "poc": "python",
+   "poc_reproduces": true,
+   "notes": "lines only"
+  },
+  {
+   "file": "21-merge-continuation.md",
+   "label": "invalid",
+   "project": "parsekit",
+   "claimed_version": "1.2.0",
+   "bug": null,
+   "failure_modes": [
+    "nonexistent_function"
+   ],
+   "poc": "none",
+   "poc_reproduces": false,
+   "notes": "three invented functions"
+  },
+  {
+   "file": "22-resolve-relative.md",
+   "label": "invalid",
+   "project": "parsekit",
+   "claimed_version": "1.2.0",
+   "bug": null,
+   "failure_modes": [
+    "nonexistent_function"
+   ],
+   "poc": "none",
+   "poc_reproduces": false,
+   "notes": "two invented functions"
+  },
+  {
+   "file": "23-buf-grow-exact.md",
+   "label": "invalid",
+   "project": "parsekit",
+   "claimed_version": null,
+   "bug": null,
+   "failure_modes": [
+    "nonexistent_function"
+   ],
+   "poc": "none",
+   "poc_reproduces": false,
+   "notes": "no version, invented functions"
+  },
+  {
+   "file": "24-http-parser-file.md",
+   "label": "invalid",
+   "project": "parsekit",
+   "claimed_version": "1.2.0",
+   "bug": null,
+   "failure_modes": [
+    "nonexistent_file",
+    "line_out_of_range"
+   ],
+   "poc": "none",
+   "poc_reproduces": false,
+   "notes": "files that never existed"
+  },
+  {
+   "file": "25-cookie-file.md",
+   "label": "invalid",
+   "project": "parsekit",
+   "claimed_version": "1.2.0",
+   "bug": null,
+   "failure_modes": [
+    "nonexistent_file"
+   ],
+   "poc": "none",
+   "poc_reproduces": false,
+   "notes": "nonexistent files"
+  },
+  {
+   "file": "26-session-file.md",
+   "label": "invalid",
+   "project": "parsekit",
+   "claimed_version": null,
+   "bug": null,
+   "failure_modes": [
+    "nonexistent_file"
+   ],
+   "poc": "none",
+   "poc_reproduces": false,
+   "notes": "nonexistent files, no version"
+  },
+  {
+   "file": "27-url-line-612.md",
+   "label": "invalid",
+   "project": "parsekit",
+   "claimed_version": "1.2.0",
+   "bug": null,
+   "failure_modes": [
+    "line_out_of_range"
+   ],
+   "poc": "none",
+   "poc_reproduces": false,
+   "notes": "lines past end of src/url.c"
+  },
+  {
+   "file": "28-header-line-940.md",
+   "label": "invalid",
+   "project": "parsekit",
+   "claimed_version": "1.2.0",
+   "bug": null,
+   "failure_modes": [
+    "line_out_of_range"
+   ],
+   "poc": "none",
+   "poc_reproduces": false,
+   "notes": "lines past end"
+  },
+  {
+   "file": "29-decode-line-oob.md",
+   "label": "invalid",
+   "project": "parsekit",
+   "claimed_version": "1.1.0",
+   "bug": null,
+   "failure_modes": [
+    "line_out_of_range"
+   ],
+   "poc": "none",
+   "poc_reproduces": false,
+   "notes": "lines past end at 1.1.0"
+  },
+  {
+   "file": "30-comment-line.md",
+   "label": "invalid",
+   "project": "parsekit",
+   "claimed_version": "1.2.0",
+   "bug": null,
+   "failure_modes": [
+    "line_blank_or_comment"
+   ],
+   "poc": "none",
+   "poc_reproduces": false,
+   "notes": "cites a comment line and a blank line"
+  },
+  {
+   "file": "31-blank-line-only.md",
+   "label": "invalid",
+   "project": "parsekit",
+   "claimed_version": null,
+   "bug": null,
+   "failure_modes": [
+    "line_blank_or_comment",
+    "no_poc"
+   ],
+   "poc": "none",
+   "poc_reproduces": false,
+   "notes": "blank line only"
+  },
+  {
+   "file": "32-frame-mismatch-join.md",
+   "label": "invalid",
+   "project": "parsekit",
+   "claimed_version": "1.2.0",
+   "bug": null,
+   "failure_modes": [
+    "frame_mismatch"
+   ],
+   "poc": "none",
+   "poc_reproduces": false,
+   "notes": "real names, lines inside other functions"
+  },
+  {
+   "file": "33-frame-mismatch-normalize.md",
+   "label": "invalid",
+   "project": "parsekit",
+   "claimed_version": "1.2.0",
+   "bug": null,
+   "failure_modes": [
+    "frame_mismatch"
+   ],
+   "poc": "none",
+   "poc_reproduces": false,
+   "notes": "frames point into other functions; call chain impossible"
+  },
+  {
+   "file": "34-frame-mismatch-unfold.md",
+   "label": "invalid",
+   "project": "parsekit",
+   "claimed_version": "1.2.0",
+   "bug": null,
+   "failure_modes": [
+    "frame_mismatch"
+   ],
+   "poc": "none",
+   "poc_reproduces": false,
+   "notes": "frame lines inside other functions"
+  },
+  {
+   "file": "35-fabricated-trace-chunked.md",
+   "label": "invalid",
+   "project": "parsekit",
+   "claimed_version": "1.2.0",
+   "bug": null,
+   "failure_modes": [
+    "fabricated_trace",
+    "nonexistent_file",
+    "nonexistent_function"
+   ],
+   "poc": "sh",
+   "poc_reproduces": false,
+   "notes": "invented trace; PoC uses a normal URL"
+  },
+  {
+   "file": "36-fabricated-trace-resolve.md",
+   "label": "invalid",
+   "project": "parsekit",
+   "claimed_version": null,
+   "bug": null,
+   "failure_modes": [
+    "fabricated_trace",
+    "nonexistent_function"
+   ],
+   "poc": "none",
+   "poc_reproduces": false,
+   "notes": "invented functions in a real file"
+  },
+  {
+   "file": "37-fabricated-trace-cookie.md",
+   "label": "invalid",
+   "project": "parsekit",
+   "claimed_version": "1.2.0",
+   "bug": null,
+   "failure_modes": [
+    "fabricated_trace",
+    "nonexistent_file",
+    "nonexistent_function"
+   ],
+   "poc": "none",
+   "poc_reproduces": false,
+   "notes": "invented trace"
+  },
+  {
+   "file": "38-fabricated-quote-merge.md",
+   "label": "invalid",
+   "project": "parsekit",
+   "claimed_version": "1.2.0",
+   "bug": null,
+   "failure_modes": [
+    "fabricated_quote",
+    "nonexistent_function"
+   ],
+   "poc": "none",
+   "poc_reproduces": false,
+   "notes": "quote never in the project"
+  },
+  {
+   "file": "39-fabricated-quote-port.md",
+   "label": "invalid",
+   "project": "parsekit",
+   "claimed_version": "1.2.0",
+   "bug": null,
+   "failure_modes": [
+    "fabricated_quote"
+   ],
+   "poc": "none",
+   "poc_reproduces": false,
+   "notes": "quote never in the project"
+  },
+  {
+   "file": "40-fabricated-quote-chunk.md",
+   "label": "invalid",
+   "project": "parsekit",
+   "claimed_version": null,
+   "bug": null,
+   "failure_modes": [
+    "fabricated_quote",
+    "nonexistent_function"
+   ],
+   "poc": "none",
+   "poc_reproduces": false,
+   "notes": "invented helper quoted from a real file"
+  },
+  {
+   "file": "41-own-buffer-host.md",
+   "label": "invalid",
+   "project": "parsekit",
+   "claimed_version": "1.2.0",
+   "bug": null,
+   "failure_modes": [
+    "poc_own_buffer"
+   ],
+   "poc": "c",
+   "poc_reproduces": false,
+   "notes": "PoC overflows its own 8-byte buffer"
+  },
+  {
+   "file": "42-own-buffer-strerror.md",
+   "label": "invalid",
+   "project": "parsekit",
+   "claimed_version": "1.2.0",
+   "bug": null,
+   "failure_modes": [
+    "poc_own_buffer"
+   ],
+   "poc": "c",
+   "poc_reproduces": false,
+   "notes": "PoC copies into its own 4-byte allocation"
+  },
+  {
+   "file": "43-no-lib-double-free.md",
+   "label": "invalid",
+   "project": "parsekit",
+   "claimed_version": "1.2.0",
+   "bug": null,
+   "failure_modes": [
+    "poc_no_library_call"
+   ],
+   "poc": "c",
+   "poc_reproduces": false,
+   "notes": "PoC never calls the library"
+  },
+  {
+   "file": "44-no-lib-array.md",
+   "label": "invalid",
+   "project": "parsekit",
+   "claimed_version": null,
+   "bug": null,
+   "failure_modes": [
+    "poc_no_library_call"
+   ],
+   "poc": "c",
+   "poc_reproduces": false,
+   "notes": "PoC never calls the library"
+  },
+  {
+   "file": "45-no-compile-set-raw.md",
+   "label": "invalid",
+   "project": "parsekit",
+   "claimed_version": "1.2.0",
+   "bug": null,
+   "failure_modes": [
+    "poc_does_not_compile",
+    "nonexistent_function"
+   ],
+   "poc": "c",
+   "poc_reproduces": false,
+   "notes": "calls functions that do not exist"
+  },
+  {
+   "file": "46-no-compile-url-new.md",
+   "label": "invalid",
+   "project": "parsekit",
+   "claimed_version": "1.2.0",
+   "bug": null,
+   "failure_modes": [
+    "poc_does_not_compile",
+    "nonexistent_function"
+   ],
+   "poc": "c",
+   "poc_reproduces": false,
+   "notes": "API that never existed"
+  },
+  {
+   "file": "47-version-130.md",
+   "label": "invalid",
+   "project": "parsekit",
+   "claimed_version": "1.3.0",
+   "bug": null,
+   "failure_modes": [
+    "version_never_released",
+    "nonexistent_function"
+   ],
+   "poc": "none",
+   "poc_reproduces": false,
+   "notes": "version never released"
+  },
+  {
+   "file": "48-version-200.md",
+   "label": "invalid",
+   "project": "parsekit",
+   "claimed_version": "2.0.0",
+   "bug": null,
+   "failure_modes": [
+    "version_never_released"
+   ],
+   "poc": "sh",
+   "poc_reproduces": false,
+   "notes": "version never released, benign PoC"
+  },
+  {
+   "file": "49-version-131.md",
+   "label": "invalid",
+   "project": "kvconf",
+   "claimed_version": "1.3.1",
+   "bug": null,
+   "failure_modes": [
+    "version_never_released",
+    "nonexistent_function"
+   ],
+   "poc": "none",
+   "poc_reproduces": false,
+   "notes": "kvconf version never released"
+  },
+  {
+   "file": "50-other-library-xml.md",
+   "label": "invalid",
+   "project": "parsekit",
+   "claimed_version": "1.2.0",
+   "bug": null,
+   "failure_modes": [
+    "other_library"
+   ],
+   "poc": "none",
+   "poc_reproduces": false,
+   "notes": "describes libxml2, not parsekit"
+  },
+  {
+   "file": "51-other-library-curl.md",
+   "label": "invalid",
+   "project": "parsekit",
+   "claimed_version": "1.2.0",
+   "bug": null,
+   "failure_modes": [
+    "other_library",
+    "nonexistent_file",
+    "nonexistent_function"
+   ],
+   "poc": "none",
+   "poc_reproduces": false,
+   "notes": "describes a different library"
+  },
+  {
+   "file": "52-padded-merge.md",
+   "label": "invalid",
+   "project": "parsekit",
+   "claimed_version": "1.2.0",
+   "bug": null,
+   "failure_modes": [
+    "padded",
+    "nonexistent_function"
+   ],
+   "poc": "none",
+   "poc_reproduces": false,
+   "notes": "three invented functions among many real references"
+  },
+  {
+   "file": "53-padded-trace.md",
+   "label": "invalid",
+   "project": "parsekit",
+   "claimed_version": "1.2.0",
+   "bug": null,
+   "failure_modes": [
+    "padded",
+    "fabricated_trace",
+    "nonexistent_function"
+   ],
+   "poc": "none",
+   "poc_reproduces": false,
+   "notes": "invented frames among real references"
+  },
+  {
+   "file": "54-padded-quote.md",
+   "label": "invalid",
+   "project": "parsekit",
+   "claimed_version": "1.2.0",
+   "bug": null,
+   "failure_modes": [
+    "padded",
+    "fabricated_quote",
+    "nonexistent_function"
+   ],
+   "poc": "none",
+   "poc_reproduces": false,
+   "notes": "invented quote and function among real references"
+  },
+  {
+   "file": "55-padded-files.md",
+   "label": "invalid",
+   "project": "parsekit",
+   "claimed_version": null,
+   "bug": null,
+   "failure_modes": [
+    "padded",
+    "nonexistent_file",
+    "nonexistent_function"
+   ],
+   "poc": "none",
+   "poc_reproduces": false,
+   "notes": "two invented files and functions among real ones"
+  },
+  {
+   "file": "56-vague-1.md",
+   "label": "invalid",
+   "project": "parsekit",
+   "claimed_version": null,
+   "bug": null,
+   "failure_modes": [
+    "no_references"
+   ],
+   "poc": "none",
+   "poc_reproduces": false,
+   "notes": "nothing checkable"
+  },
+  {
+   "file": "57-vague-2.md",
+   "label": "invalid",
+   "project": "kvconf",
+   "claimed_version": null,
+   "bug": null,
+   "failure_modes": [
+    "no_references"
+   ],
+   "poc": "none",
+   "poc_reproduces": false,
+   "notes": "nothing checkable"
+  },
+  {
+   "file": "58-stale-concat.md",
+   "label": "invalid",
+   "project": "parsekit",
+   "claimed_version": "1.2.0",
+   "bug": null,
+   "failure_modes": [
+    "stale_reference",
+    "nonexistent_function"
+   ],
+   "poc": "sh",
+   "poc_reproduces": false,
+   "notes": "names from 1.0.0 plus an invented function; benign PoC"
+  },
+  {
+   "file": "59-benign-poc-normal-url.md",
+   "label": "invalid",
+   "project": "parsekit",
+   "claimed_version": "1.2.0",
+   "bug": null,
+   "failure_modes": [
+    "poc_does_not_reproduce"
+   ],
+   "poc": "sh",
+   "poc_reproduces": false,
+   "notes": "real reference, PoC with a normal URL"
+  },
+  {
+   "file": "60-kvconf-fake-include.md",
+   "label": "invalid",
+   "project": "kvconf",
+   "claimed_version": "0.2.0",
+   "bug": null,
+   "failure_modes": [
+    "nonexistent_function",
+    "nonexistent_file"
+   ],
+   "poc": "none",
+   "poc_reproduces": false,
+   "notes": "invented module and helpers"
+  }
+ ]
+}

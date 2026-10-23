@@ -143,22 +143,26 @@ def _all_paths(index: Index) -> list[str]:
 def in_tree_path(ctx: RefContext, cited: str) -> str | None:
     """Normalise a cited path to a repository-relative path, or None when it is not about the tree.
 
-    ``/home/u/curl-8.4.0/lib/http.c`` -> ``lib/http.c``; ``exploit/poc.c`` -> None.
+    ``/home/u/curl-8.4.0/lib/http.c`` -> ``lib/http.c``;
+    ``/usr/lib/python3/site-packages/kvconf/parser.py`` -> ``src/kvconf/parser.py``;
+    ``exploit/poc.c`` -> None.
     """
     path = cited.strip().replace("\\", "/")
     path = re.sub(r"^(?:\./|a/|b/)+", "", path)
-    if not path:
-        return None
     parts = [p for p in path.split("/") if p and p != "."]
     if not parts:
         return None
     if len(parts) == 1:
         return parts[0]
+    joined = "/".join(parts)
+    if ctx.primary.file(joined) is not None:
+        return joined
+    suffix_hits = ctx.primary.resolve_path(joined)
+    if len(suffix_hits) == 1:
+        return suffix_hits[0]
     for i, part in enumerate(parts[:-1]):
         if part in ctx.top_dirs:
             return "/".join(parts[i:])
-    if ctx.primary.file("/".join(parts)) is not None:
-        return "/".join(parts)
     return None
 
 
@@ -185,8 +189,6 @@ def check_path(ctx: RefContext, claim: Claim) -> Finding:
         return Finding(
             claim, "path", "other_repository", "neutral", {"path": cited, "repository": claim.repo}
         )
-    if _is_system_path(cited) and in_tree_path(ctx, cited) is None:
-        return Finding(claim, "path", "outside_project", "neutral", {"path": cited})
     rel = in_tree_path(ctx, cited)
     if rel is None:
         return Finding(claim, "path", "outside_project", "neutral", {"path": cited})

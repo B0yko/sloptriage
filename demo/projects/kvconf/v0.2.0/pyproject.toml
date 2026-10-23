@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kvconf"
+version = "0.2.0"
+description = "A small key = value configuration file parser with sections, includes and interpolation."
+license = {text = "Apache-2.0"}
+requires-python = ">=3.9"
+
+[project.scripts]
+kvconf = "kvconf.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

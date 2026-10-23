@@ -1,0 +1,17 @@
+# sloptriage configuration for a CMake C project (the bundled parsekit demo).
+version: 1
+project:
+  name: parsekit
+  aliases: [libparsekit]
+  binaries: [parsekit]
+version_tags: [v]             # preset: v{version}
+languages: [c]
+repro:
+  enabled: false
+  recipe:
+    preset: cmake-asan
+  runners: [c, shell, input]
+  harness: "parsekit header --file {input}"
+  limits:
+    timeout: 30
+    memory: 1g

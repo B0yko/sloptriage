@@ -60,7 +60,8 @@ def _open_repo(location: str | None, cfg: Any) -> tuple[Any, str]:
     except GitError as exc:
         raise InfraError(str(exc)) from exc
     if not cfg.project:
-        name = loc.rstrip("/").removesuffix(".git").rsplit("/", 1)[-1]
+        base = loc if is_url(loc) else str(Path(loc).expanduser().resolve())
+        name = base.rstrip("/").removesuffix(".git").rsplit("/", 1)[-1]
         cfg.project = name
         if not cfg.binaries:
             cfg.binaries = [name]

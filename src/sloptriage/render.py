@@ -82,9 +82,7 @@ def _claim_value(c: Claim) -> str:
     return str(c.value)
 
 
-def build_verdict(
-    result: CheckResult, cfg: Config, reproduction: dict[str, Any] | None = None
-) -> dict[str, Any]:
+def build_verdict(result: CheckResult, cfg: Config) -> dict[str, Any]:
     agg = result.aggregate
     res = result.resolution
     claims = []
@@ -152,7 +150,7 @@ def build_verdict(
         },
         "claims": claims,
         "chain": chain,
-        "reproduction": reproduction,
+        "reproduction": None,  # reserved: PoCs are not run in this version
         "needs": need,
         "labels": [],
         "comment": False,
@@ -413,44 +411,6 @@ def _resolution_sentence(verdict: dict[str, Any]) -> str:
     return text
 
 
-def _repro_lines(verdict: dict[str, Any]) -> list[str]:
-    repro = verdict.get("reproduction")
-    if not repro:
-        return []
-    v = repro["verdict"]
-    text = {
-        "reproduced": "the PoC crashes where the report says",
-        "crashed_elsewhere": "the PoC crashes, but not in the way or place the report describes",
-        "not_reproduced": "no crash in three clean runs",
-        "poc_build_failed": "the PoC did not compile against the project",
-        "poc_missing": "no PoC found in the report",
-        "poc_unsupported": "the PoC needs something the sandbox does not provide",
-        "build_failed": "the project did not build in the sandbox (an infrastructure problem, not the report's)",
-        "timeout": "the PoC ran into the time limit",
-        "flaky": "runs disagreed",
-    }[v]
-    lines = [f"**Reproduction:** {text}."]
-    if repro.get("reason"):
-        lines[0] = lines[0][:-1] + f": {clean(repro['reason'], 200)}."
-    runs = repro.get("runs") or []
-    if runs:
-        top = next((r for r in runs if r.get("error_type")), None)
-        if top:
-            lines.append(
-                f"Observed {code(top['error_type'], 60)} in {code((top.get('top_frame') or '?') + '()')}."
-            )
-    if repro.get("output_excerpt"):
-        lines += [
-            "",
-            "<details><summary>Sanitizer output (first 30 lines)</summary>",
-            "",
-            fenced(repro["output_excerpt"]),
-            "",
-            "</details>",
-        ]
-    return lines
-
-
 def _help_lines(verdict: dict[str, Any]) -> list[str]:
     project = clean(verdict["project"]["name"], 60)
     rows = _rows(verdict)
@@ -543,9 +503,6 @@ def render_markdown(verdict: dict[str, Any]) -> str:
             f"Call chain: the caller's code does not mention the callee for {names}. Inlining, macros and function pointers can explain this, so it is informational only.",
             "",
         ]
-    repro_lines = _repro_lines(verdict)
-    if repro_lines:
-        parts += [*repro_lines, ""]
     help_lines = _help_lines(verdict)
     if help_lines:
         parts += [*help_lines, ""]
@@ -581,14 +538,9 @@ def render_text(verdict: dict[str, Any], *, max_ok: int = 3) -> str:
     lines += ok[:max_ok]
     if len(ok) > max_ok:
         lines.append(
-            f"  ✓ and {len(ok) - max_ok} more cited items that check out (--format md lists all with links)"
+            f"  ✓ and {len(ok) - max_ok} more cited items were found (--format md lists all with links)"
         )
     lines.append("")
-    lines += [
-        plain(x)
-        for x in _repro_lines(verdict)
-        if not x.startswith(("<details", "</details", "```"))
-    ][:3]
     lines.append(
         f"class: {verdict['references']['class']}   labels: {', '.join(verdict['labels']) or '-'}"
     )

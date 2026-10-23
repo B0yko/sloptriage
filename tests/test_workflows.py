@@ -105,6 +105,7 @@ def test_hostile_issues_through_the_action_shell(
     env = {
         **os.environ,
         "GITHUB_EVENT_PATH": str(event_path),
+        "GITHUB_WORKSPACE": str(project),
         "SLOPTRIAGE_VERDICT": str(tmp_path / "verdict.json"),
         "SLOPTRIAGE_CONFIG": "",
         "SLOPTRIAGE_SOURCE": str(ROOT),
@@ -136,3 +137,11 @@ def test_hostile_issues_through_the_action_shell(
     )
     assert not canary.exists()
     assert not Path("/tmp/pwned").exists()  # noqa: S108 - the canary the fixtures try to create
+
+
+def test_readme_action_snippet_matches_the_example_workflow() -> None:
+    readme = (ROOT / "README.md").read_text()
+    section = readme.split("## For maintainers", 1)[1]
+    snippet = section.split("```yaml\n", 1)[1].split("```", 1)[0]
+    example = yaml.safe_load((ROOT / "examples" / "workflows" / "triage-issues.yml").read_text())
+    assert yaml.safe_load(snippet) == example

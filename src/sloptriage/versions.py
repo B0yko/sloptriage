@@ -255,11 +255,3 @@ class VersionResolver:
         if head and head not in seen:
             out.append((head, branch))
         return out
-
-    def buildable(self, commit: str) -> bool:
-        """Reproduction only builds commits reachable from a release tag or the default branch."""
-        branch = self.repo.default_branch()
-        head = self.repo.resolve_commit(branch)
-        if head and self.repo.is_ancestor(commit, head):
-            return True
-        return any(t in self.tags for t in self.repo.tags_containing(commit))

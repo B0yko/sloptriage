@@ -39,11 +39,11 @@ runs:
         SLOPTRIAGE_CONFIG: ${{ inputs.config }}
       run: |
         set -euo pipefail
-        args=(check "$GITHUB_EVENT_PATH" --format json --output "$SLOPTRIAGE_VERDICT")
+        args=(check "$GITHUB_EVENT_PATH" --repo "$GITHUB_WORKSPACE" --format json --output "$SLOPTRIAGE_VERDICT")
         if [ -n "$SLOPTRIAGE_CONFIG" ]; then
           args+=(--config "$SLOPTRIAGE_CONFIG")
         fi
-        uvx --from "$SLOPTRIAGE_SOURCE" sloptriage "${args[@]}"
+        uv run --locked --no-dev --quiet --project "$SLOPTRIAGE_SOURCE" sloptriage "${args[@]}"
 
     - name: Post the verdict
       if: inputs.mode == 'post'
@@ -54,7 +54,7 @@ runs:
         GITHUB_TOKEN: ${{ inputs.token }}
       run: |
         set -euo pipefail
-        uvx --from "$SLOPTRIAGE_SOURCE" sloptriage post --verdict "$SLOPTRIAGE_VERDICT" --event "$GITHUB_EVENT_PATH"
+        uv run --locked --no-dev --quiet --project "$SLOPTRIAGE_SOURCE" sloptriage post --verdict "$SLOPTRIAGE_VERDICT" --event "$GITHUB_EVENT_PATH"
 
     - name: Reject unknown modes
       if: inputs.mode != 'check' && inputs.mode != 'post'

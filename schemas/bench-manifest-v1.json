@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/B0yko/sloptriage/schemas/bench-manifest-v1.json",
+  "title": "sloptriage benchmark manifest",
+  "description": "Identifiers, outcome labels, dates and hashes only. No free-text fields.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "project", "source", "enumerated_at", "slop_list_source", "reports"],
+  "properties": {
+    "schema": {"type": "string", "enum": ["sloptriage-bench-manifest/1"]},
+    "project": {"type": "string", "enum": ["curl"]},
+    "source": {"type": "string", "enum": ["hackerone"]},
+    "enumerated_at": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+    "slop_list_source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["url", "revision"],
+      "properties": {
+        "url": {"type": "string", "pattern": "^https://gist\\.github\\.com/bagder/[0-9a-f]+$"},
+        "revision": {"type": "string", "pattern": "^[0-9a-f]{40}$"}
+      }
+    },
+    "reports": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "url", "substate", "label", "slop_list", "disclosed_at", "era", "json_sha256", "body_sha256"],
+        "properties": {
+          "id": {"type": "integer", "minimum": 1},
+          "url": {"type": "string", "pattern": "^https://hackerone\\.com/reports/[0-9]+$"},
+          "substate": {"type": "string", "enum": ["resolved", "not-applicable", "informative", "spam", "duplicate"]},
+          "label": {"type": "string", "enum": ["valid", "invalid", "excluded"]},
+          "slop_list": {"type": "boolean"},
+          "disclosed_at": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+          "era": {"type": "string", "enum": ["pre2023", "post2023"]},
+          "json_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "body_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    }
+  }
+}

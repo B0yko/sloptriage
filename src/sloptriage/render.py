@@ -291,12 +291,6 @@ def explain(finding: dict[str, Any], claim: dict[str, Any], verdict: dict[str, A
         }.get(status, status)
     if check == "frame":
         fn = code((d.get("function") or claim.get("function") or "?") + "()")
-        idx = claim.get("frame_index")
-        head = (
-            f"stack frame {idx} names {fn}"
-            if idx is not None and claim.get("trace") is not None
-            else f"the report names {fn}"
-        )
         if status == "consistent":
             return f"line {d.get('line')} is inside {fn}"
         if status == "outside_function":

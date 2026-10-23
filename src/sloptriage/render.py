@@ -214,27 +214,33 @@ def _ref(verdict: dict[str, Any]) -> str:
     return code(verdict["resolution"]["ref"], 60)
 
 
-def describe(claim: dict[str, Any]) -> str:
+def _n(count: int, one: str, many: str) -> str:
+    return f"{count} {one if count == 1 else many}"
+
+
+def _resolved_path(claim: dict[str, Any], finding: dict[str, Any] | None) -> str:
+    detail = (finding or {}).get("detail", {})
+    return str(detail.get("resolved") or detail.get("path") or claim.get("path") or claim["value"])
+
+
+def describe(claim: dict[str, Any], finding: dict[str, Any] | None = None) -> str:
     kind = claim["kind"]
     if kind == "path":
         return code(claim["path"] or claim["value"])
     if kind == "line":
         end = f"-{claim['line_end']}" if claim.get("line_end") else ""
-        return code(f"{claim['path']}:{claim['line']}{end}")
+        return code(f"{_resolved_path(claim, finding)}:{claim['line']}{end}")
     if kind == "symbol":
         return code(claim["value"] + ("()" if "call" in claim.get("source", "") else ""))
     if kind == "frame":
         idx = claim.get("frame_index")
-        where = f"{claim['path']}:{claim['line']}" if claim.get("path") else ""
-        head = f"frame #{idx} " if idx is not None and claim.get("trace") is not None else ""
-        return (
-            f"{head}{code((claim.get('function') or '?') + '()')} at {code(where)}"
-            if where
-            else f"{head}{code(claim.get('function') or '?')}"
-        )
+        where = f"{_resolved_path(claim, finding)}:{claim['line']}" if claim.get("path") else ""
+        head = f"stack frame {idx}: " if idx is not None and claim.get("trace") is not None else ""
+        fn = code((claim.get("function") or "?") + "()")
+        return f"{head}{fn} at {code(where)}" if where else f"{head}{fn}"
     if kind == "quote":
         where = f" from {code(claim['path'])}" if claim.get("path") else ""
-        return f"quoted code ({claim.get('lines') or 0} lines){where}"
+        return f"quoted code, {_n(claim.get('lines') or 0, 'line', 'lines')}{where}"
     if kind == "poc":
         return f"PoC ({clean(claim['value'], 20)})"
     return code(claim["value"])
@@ -245,27 +251,35 @@ def explain(finding: dict[str, Any], claim: dict[str, Any], verdict: dict[str, A
     status: str = str(finding["status"])
     project = clean(verdict["project"]["name"], 60)
     ref = code(d.get("ref") or verdict["resolution"]["ref"], 60)
+    primary = code(d.get("primary_ref") or verdict["resolution"]["ref"], 60)
     check = finding["check"]
     if check == "path":
+        cited = (claim.get("path") or claim["value"]).lstrip("./")
+        resolved = d.get("resolved", "")
+        if status == "found":
+            return (
+                f"matches {code(resolved)} (leading path ignored)"
+                if resolved and resolved != cited
+                else "exists"
+            )
         return {
-            "found": "exists",
             "found_moved": (
-                f"not at {code(d.get('primary_ref') or verdict['resolution']['ref'], 60)}; exists at {ref}"
+                f"not at {primary}; exists at {ref}"
                 if d.get("other_version")
-                else f"no such path; {code(d.get('resolved', ''))} exists"
+                else f"no file at this path; {code(resolved)} exists"
             ),
-            "not_found": f"does not exist in {project} at {ref}",
+            "not_found": f"no such file in {project} at {ref}",
             "outside_project": "outside the project tree",
             "other_repository": f"points to another repository ({code(d.get('repository', ''))})",
         }.get(status, status)
     if check == "symbol":
         return {
             "defined": f"defined in {code(d.get('path', ''))}",
-            "referenced_only": f"used in {project}, not defined there",
-            "defined_at_other_version": f"not defined at {code(d.get('primary_ref') or verdict['resolution']['ref'], 60)}; defined at {ref}",
+            "referenced_only": f"appears in {project} code but is not defined there (often a system or library function)",
+            "defined_at_other_version": f"no definition at {primary}; defined at {ref}",
             "external": "standard-library or third-party name",
             "defined_by_poc": "defined by the report's own PoC",
-            "not_found": f"not defined anywhere in {project} at {ref}",
+            "not_found": f"no definition was found in {project} at {ref}",
         }.get(status, status)
     if check == "line":
         line, total, path = d.get("line"), d.get("lines"), code(d.get("path", ""))
@@ -279,7 +293,7 @@ def explain(finding: dict[str, Any], claim: dict[str, Any], verdict: dict[str, A
         fn = code((d.get("function") or claim.get("function") or "?") + "()")
         idx = claim.get("frame_index")
         head = (
-            f"frame #{idx} names {fn}"
+            f"stack frame {idx} names {fn}"
             if idx is not None and claim.get("trace") is not None
             else f"the report names {fn}"
         )
@@ -287,38 +301,45 @@ def explain(finding: dict[str, Any], claim: dict[str, Any], verdict: dict[str, A
             return f"line {d.get('line')} is inside {fn}"
         if status == "outside_function":
             actual = d.get("actual")
-            where = f"inside {code(actual + '()')}" if actual else "not inside it"
-            return f"{head}, but line {d.get('line')} is {where}"
+            if actual:
+                return f"line {d.get('line')} is inside {code(actual + '()')}, not {fn}"
+            return f"line {d.get('line')} is not inside {fn}"
         if status == "function_not_in_file":
             others = d.get("defined_in") or []
             tail = f" (it is defined in {code(others[0])})" if others else ""
-            return f"{fn} is not defined in {code(d.get('path', ''))}{tail}"
+            return f"no definition of {fn} in {code(d.get('path', ''))}{tail}"
         if status == "consistent_at_other_version":
             return f"consistent at {code(d.get('other_ref', ''), 60)}, not at {ref}"
         if status == "outside_project":
             return "outside the project (runtime, system library or the reporter's own code)"
         return status
     if check == "quote":
+        pct = round(100 * float(d.get("similarity", d.get("best_similarity", 0))))
         if status == "exact":
-            return "found verbatim in the code"
+            return "found; all lines match once whitespace and comments are ignored"
         if status == "approximate":
-            return f"found with small differences ({round(100 * float(d.get('similarity', 0)))}% of lines)"
+            return f"found; {pct}% of its lines match once whitespace and comments are ignored"
         if status == "found_at_other_version":
-            return f"not at {code(d.get('primary_ref') or verdict['resolution']['ref'], 60)}; found at {ref}"
+            return f"not at {primary}; found at {ref}"
         if status == "not_found":
-            share = round(100 * float(d.get("best_similarity", 0)))
-            return f"this code does not appear in {project} at {ref} (at most {share}% of its lines match)"
+            if not pct:
+                return f"none of its lines were found in {project} at {ref}"
+            closest = d.get("closest") or {}
+            where = f" in {code(closest['path'])}" if closest.get("path") else ""
+            return f"not found in {project} at {ref}; the closest match{where} has {pct}% of the quoted lines"
         return "too short to check"
     if check == "poc":
         return {
-            "calls_project": f"uses {project} code",
-            "no_project_reference": f"does not use any function or header of {project}",
+            "calls_project": f"the PoC uses functions or headers of {project}",
+            "no_project_reference": f"the PoC does not use any function or header of {project}",
             "not_checked": "not checked statically",
         }.get(status, status)
     return str(status)
 
 
-def _mark(severity: str) -> str:
+def _mark(severity: str, status: str = "") -> str:
+    if status == "referenced_only":
+        return "○"
     return {"hard": "✗", "soft": "⚠", "ok": "✓", "neutral": "·"}[severity]
 
 
@@ -330,45 +351,70 @@ def _worst(claim: dict[str, Any]) -> dict[str, Any] | None:
     return worst
 
 
+def _rows(verdict: dict[str, Any]) -> list[tuple[dict[str, Any], dict[str, Any]]]:
+    """(claim, worst finding) for every claim with a non-neutral result, problems first."""
+    out = []
+    for claim in verdict["claims"]:
+        worst = _worst(claim)
+        if worst is not None and worst["severity"] != "neutral":
+            out.append((claim, worst))
+    return out
+
+
 def summary_line(verdict: dict[str, Any]) -> str:
-    r = verdict["references"]
+    rows = _rows(verdict)
     project = clean(verdict["project"]["name"], 60)
     ref = _ref(verdict)
-    cls = r["class"]
-    if cls == "refs_failed":
+    fail = sum(1 for _, f in rows if f["severity"] == "hard")
+    look = sum(1 for _, f in rows if f["severity"] == "soft")
+    ok = sum(1 for _, f in rows if f["severity"] == "ok")
+    if not rows:
+        return "No file, function, line or stack frame was found in the report text to check."
+    if fail:
+        found = f"; {ok} {'was' if ok == 1 else 'were'} found" if ok else ""
+        return f"{_n(fail, 'cited item', 'cited items')} could not be found in {project} at {ref}{found}."
+    if look:
         return (
-            f"{r['hard']} of {r['checked']} cited items could not be found in {project} at {ref}."
+            f"{ok} of {len(rows)} cited items {'was' if ok == 1 else 'were'} found in {project} at {ref}; "
+            f"{look} could not be matched exactly."
         )
-    if cls == "refs_mixed":
-        return f"{r['verified']} of {r['checked']} cited items check out at {ref}; {r['checked'] - r['verified']} need a closer look."
-    if cls == "refs_verified":
-        return f"All {r['verified']} cited files, functions and lines exist in {project} at {ref}. This confirms the references, not the issue."
-    if cls == "refs_thin":
-        return f"The {r['verified']} cited item(s) check out at {ref}, but the report cites little that can be checked."
-    return "The report cites no file, function, line or stack frame that can be checked."
+    if verdict["references"]["class"] == "refs_thin":
+        it = "it was" if ok == 1 else "they were"
+        return f"Only {_n(ok, 'item', 'items')} in the report could be checked automatically, and {it} found at {ref}."
+    return f"All {ok} cited files, functions and lines were found in {project} at {ref}. This confirms the references, not the issue."
 
 
 def _resolution_sentence(verdict: dict[str, Any]) -> str:
     res = verdict["resolution"]
     commit = code(res["commit"][:12])
     project = clean(verdict["project"]["name"], 60)
+    missing = [v for v in res.get("versions", []) if v["status"] == "not_found"]
+    if res["reason"] == "version_not_found" and missing:
+        v = missing[0]
+        near = ", ".join(code(n, 40) for n in v.get("nearest", [])[:3])
+        return (
+            f"Checked against {project} at {_ref(verdict)} ({commit}) because no tag for version "
+            f"{code(v['claimed'], 40)} was found"
+            + (f" (nearest tags: {near})" if near else "")
+            + ". "
+            "If you built from a development branch or a fork, please give the commit."
+        )
     reason = {
         "claimed": "the version the report names",
         "explicit": "the ref given on the command line",
         "sha": "the commit the report names",
         "dev_version": "a development version: the default branch as of the report date",
         "no_version": "no version given: the default branch as of the report date",
-        "version_not_found": "the named version does not exist: the default branch as of the report date",
+        "version_not_found": "no tag for the named version was found: the default branch as of the report date",
         "latest": "the default branch",
     }[res["reason"]]
     if "@" not in res["ref"]:
         reason = reason.replace(" as of the report date", "")
     text = f"Checked against {project} at {_ref(verdict)} ({commit}), {reason}."
-    missing = [v for v in res.get("versions", []) if v["status"] == "not_found"]
     for v in missing[:2]:
         near = ", ".join(code(n, 40) for n in v.get("nearest", [])[:3])
-        text += f" Version {code(v['claimed'], 40)} was never tagged" + (
-            f" (nearest: {near})." if near else "."
+        text += f" No tag for version {code(v['claimed'], 40)} was found" + (
+            f" (nearest tags: {near})." if near else "."
         )
     return text
 
@@ -413,21 +459,29 @@ def _repro_lines(verdict: dict[str, Any]) -> list[str]:
 
 def _help_lines(verdict: dict[str, Any]) -> list[str]:
     project = clean(verdict["project"]["name"], 60)
+    rows = _rows(verdict)
+    problems = [(c, f) for c, f in rows if f["severity"] in ("hard", "soft")]
     items = []
     if "needs_version" in verdict.get("needs", []):
         items.append(f"- The exact {project} version or commit you tested.")
     if "needs_poc" in verdict.get("needs", []):
         items.append("- A minimal reproducer: a command line, a small program or an input file.")
-    if verdict["references"]["class"] in ("refs_failed", "refs_mixed"):
+    if problems:
+        linked = any(_project_link(verdict, u) for _, f in problems for u in f.get("evidence", []))
+        tail = "; where the Evidence column has a link, it points at that code" if linked else ""
         items.append(
-            f"- Check the names and line numbers marked ✗ against {_ref(verdict)}; the links point at that code."
+            f"- Check the names and line numbers marked ✗ or ⚠ against {_ref(verdict)}{tail}."
         )
-    if verdict["references"]["class"] == "refs_none":
+    if any(f["severity"] == "hard" for _, f in problems):
+        items.append(
+            "- If a name or file marked ✗ belongs to your own test script, attach the script or paste its content."
+        )
+    if not rows:
         items.append("- The file, function and line where the problem happens.")
     if not items:
         return []
     template = (
-        "Version: <output of the version command, or a commit>\n"
+        f"Version: <the {project} version you tested (for example its --version output) or a commit>\n"
         "Steps to reproduce:\n  1. ...\n"
         "Expected and actual result:\n"
         "Sanitizer output or stack trace (if any):"
@@ -446,36 +500,46 @@ def _help_lines(verdict: dict[str, Any]) -> list[str]:
 
 
 # -- formats ---------------------------------------------------------------------------
-def render_markdown(verdict: dict[str, Any]) -> str:
-    rows = []
-    for claim in verdict["claims"]:
-        worst = _worst(claim)
-        if worst is None or worst["severity"] == "neutral":
-            continue
-        ev = ""
-        links = [u for u in worst.get("evidence", []) if _project_link(verdict, u)]
-        if links:
-            label = clean(re.sub(r"^.*/blob/[0-9a-f]{40}/", "", links[0]), 60).replace("]", "")
-            ev = f"[{label}]({links[0]})"
-        elif worst.get("evidence"):
-            ev = code(worst["evidence"][0], 70)
-        rows.append(
-            f"| {_mark(worst['severity'])} | {describe(claim)} | {explain(worst, claim, verdict)} | {ev} |"
+def _evidence(verdict: dict[str, Any], finding: dict[str, Any]) -> str:
+    links = [u for u in finding.get("evidence", []) if _project_link(verdict, u)]
+    if links:
+        label = clean(re.sub(r"^.*/blob/[0-9a-f]{40}/", "", links[0]), 60).replace("]", "")
+        return f"[{label}]({links[0]})"
+    if finding.get("evidence"):
+        return code(finding["evidence"][0], 70)
+    return ""
+
+
+def _table(verdict: dict[str, Any], rows: list[tuple[dict[str, Any], dict[str, Any]]]) -> list[str]:
+    out = ["| | Cited | Result | Evidence |", "|---|---|---|---|"]
+    for claim, f in rows[:MAX_ROWS]:
+        out.append(
+            f"| {_mark(f['severity'], f['status'])} | {describe(claim, f)} | {explain(f, claim, verdict)} | {_evidence(verdict, f)} |"
         )
+    if len(rows) > MAX_ROWS:
+        out.append(f"| | | and {len(rows) - MAX_ROWS} more | |")
+    return out
+
+
+def render_markdown(verdict: dict[str, Any]) -> str:
+    rows = _rows(verdict)
+    problems = [r for r in rows if r[1]["severity"] in ("hard", "soft")]
+    found = [r for r in rows if r[1]["severity"] == "ok"]
     chain_soft = [f for f in verdict.get("chain", []) if f["status"] == "call_not_seen"]
     parts = [
         MARKER,
-        f"### sloptriage: {summary_line(verdict)}",
+        f"### Reference check: {summary_line(verdict)}",
         "",
         _resolution_sentence(verdict),
         "",
     ]
-    if rows:
-        shown = rows[:MAX_ROWS]
-        parts += ["| | Cited | Result | Evidence |", "|---|---|---|---|", *shown]
-        if len(rows) > MAX_ROWS:
-            parts.append(f"| | | and {len(rows) - MAX_ROWS} more | |")
-        parts.append("")
+    if problems:
+        parts += [*_table(verdict, problems), ""]
+    if found:
+        if problems:
+            parts += [f"<details><summary>Items that were found ({len(found)})</summary>", ""]
+        parts += _table(verdict, found)
+        parts += ["", "</details>", ""] if problems else [""]
     if chain_soft:
         names = ", ".join(
             f"{code(f['detail'].get('caller', '') + '()')} → {code(f['detail'].get('callee', '') + '()')}"
@@ -492,9 +556,10 @@ def render_markdown(verdict: dict[str, Any]) -> str:
     if help_lines:
         parts += [*help_lines, ""]
     parts.append(
-        f"<sub>Checked by [sloptriage]({REPO_URL}) {__version__}. It compares the files, functions, lines and "
-        "stack frames a report cites with the code; it does not judge whether the issue is real. "
-        "This comment is updated when the report is edited.</sub>"
+        f"<sub>Automated reference check by [sloptriage]({REPO_URL}) {__version__}. It compares the files, "
+        "functions, lines and stack frames a report cites with the code; it does not judge whether the issue "
+        "is real. If a result looks wrong, reply here: the check can miss code defined by macros or generated "
+        "at build time. This comment is updated when the report is edited.</sub>"
     )
     text = neutralise_mentions("\n".join(parts)) + "\n"
     if len(text) > MAX_COMMENT:
@@ -512,7 +577,7 @@ def render_text(verdict: dict[str, Any], *, max_ok: int = 3) -> str:
         worst = _worst(claim)
         if worst is None or worst["severity"] == "neutral":
             continue
-        row = f"  {_mark(worst['severity'])} {plain(describe(claim))}: {plain(explain(worst, claim, verdict))}"
+        row = f"  {_mark(worst['severity'], worst['status'])} {plain(describe(claim, worst))}: {plain(explain(worst, claim, verdict))}"
         if worst["severity"] == "ok":
             ok.append(row)
             continue
@@ -551,11 +616,13 @@ def render_preflight(verdict: dict[str, Any]) -> str:
         if worst is None:
             continue
         if worst["severity"] in ("hard", "soft"):
-            fixes.append(f"  [ ] {plain(describe(claim))}: {plain(explain(worst, claim, verdict))}")
+            fixes.append(
+                f"  [ ] {plain(describe(claim, worst))}: {plain(explain(worst, claim, verdict))}"
+            )
     if fixes:
         out += ["Fix or double-check:", *fixes, ""]
     ok = sum(1 for c in verdict["claims"] if (_worst(c) or {}).get("severity") == "ok")
-    out.append(f"  [x] {ok} cited item(s) match the code.")
+    out.append(f"  [x] {_n(ok, 'cited item matches', 'cited items match')} the code.")
     if "needs_version" in verdict["needs"]:
         out.append("  [ ] Say which version or commit you tested.")
     if "needs_poc" in verdict["needs"]:

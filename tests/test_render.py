@@ -49,6 +49,8 @@ def test_every_demo_card_is_neutral_and_valid(
         assert md.startswith("<!-- sloptriage -->")
         assert len(md) < MAX_COMMENT
         outside_code = re.sub(r"(?s)```+.*?```+", "", md.split("\n", 1)[1])
+        prose = re.sub(r"`[^`]*`|\]\([^)]*\)", "", outside_code)
+        assert not re.search(r"(?<![\w&])#\d", prose), (rep.file, "issue cross-reference")
         for tag in re.findall(r"<(/?[a-zA-Z][\w-]*)", outside_code):
             assert tag in ALLOWED_TAGS, (rep.file, tag)
 

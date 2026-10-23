@@ -273,7 +273,12 @@ def check_symbol(ctx: RefContext, claim: Claim) -> Finding:
             [ctx.link(ctx.primary, loc.path, loc.definition.start, loc.definition.end)],
         )
     if ctx.primary.is_referenced(name):
-        files = ctx.primary.files_referencing(name, limit=3)
+        from sloptriage.index.defs import language_for
+
+        # point at a use in source code rather than a build file or a document
+        files = sorted(
+            ctx.primary.files_referencing(name, limit=25), key=lambda f: language_for(f) is None
+        )[:3]
         return Finding(
             claim,
             "symbol",

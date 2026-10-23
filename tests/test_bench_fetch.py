@@ -35,8 +35,13 @@ def test_fetch_rate_limit_user_agent_and_cache(tmp_path: Path) -> None:
 
     clock = FakeClock()
     (tmp_path / "3.json").write_text("{}")
-    res = fetch_reports([1, 2, 3], tmp_path, client=_client(httpx.MockTransport(handle)),
-                        sleep=clock.sleep, clock=clock.clock)
+    res = fetch_reports(
+        [1, 2, 3],
+        tmp_path,
+        client=_client(httpx.MockTransport(handle)),
+        sleep=clock.sleep,
+        clock=clock.clock,
+    )
     assert res.fetched == [1, 2] and res.cached == [3]
     assert all(r.headers["User-Agent"].startswith("sloptriage/") for r in seen)
     assert "github.com/B0yko/sloptriage" in seen[0].headers["User-Agent"]
@@ -55,7 +60,13 @@ def test_fetch_honours_retry_after(tmp_path: Path) -> None:
         return httpx.Response(200, json={"id": 5})
 
     clock = FakeClock()
-    res = fetch_reports([5], tmp_path, client=_client(httpx.MockTransport(handle)), sleep=clock.sleep, clock=clock.clock)
+    res = fetch_reports(
+        [5],
+        tmp_path,
+        client=_client(httpx.MockTransport(handle)),
+        sleep=clock.sleep,
+        clock=clock.clock,
+    )
     assert res.fetched == [5]
     assert 7.0 in clock.sleeps
 
@@ -65,8 +76,14 @@ def test_fetch_stops_on_repeated_errors(tmp_path: Path) -> None:
         return httpx.Response(503)
 
     clock = FakeClock()
-    res = fetch_reports(range(1, 20), tmp_path, client=_client(httpx.MockTransport(handle)),
-                        sleep=clock.sleep, clock=clock.clock, max_consecutive_errors=3)
+    res = fetch_reports(
+        range(1, 20),
+        tmp_path,
+        client=_client(httpx.MockTransport(handle)),
+        sleep=clock.sleep,
+        clock=clock.clock,
+        max_consecutive_errors=3,
+    )
     assert res.stopped_early
     assert len(res.failed) == 3
 
@@ -76,6 +93,12 @@ def test_fetch_rejects_unexpected_documents(tmp_path: Path) -> None:
         return httpx.Response(200, json={"id": 999})
 
     clock = FakeClock()
-    res = fetch_reports([1], tmp_path, client=_client(httpx.MockTransport(handle)), sleep=clock.sleep, clock=clock.clock)
+    res = fetch_reports(
+        [1],
+        tmp_path,
+        client=_client(httpx.MockTransport(handle)),
+        sleep=clock.sleep,
+        clock=clock.clock,
+    )
     assert res.failed == {1: "unexpected document shape"}
     assert not (tmp_path / "1.json").exists()

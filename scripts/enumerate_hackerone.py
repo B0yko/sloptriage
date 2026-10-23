@@ -55,7 +55,11 @@ def main(team: str) -> None:
             offset += size
             time.sleep(1.0)
     json.dump(
-        {"team": team, "total_count": total, "reports": {str(k): v for k, v in sorted(out.items())}},
+        {
+            "team": team,
+            "total_count": total,
+            "reports": {str(k): v for k, v in sorted(out.items())},
+        },
         sys.stdout,
         indent=1,
     )

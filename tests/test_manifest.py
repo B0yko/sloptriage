@@ -26,6 +26,7 @@ def test_manifest_schema_has_no_free_text_fields() -> None:
     assert props
     for path, prop in props:
         assert "enum" in prop or "pattern" in prop, f"{path} would allow free text"
+
     # every object closes the door on extra keys
     def closed(node: Any) -> None:
         if isinstance(node, dict):
@@ -36,6 +37,7 @@ def test_manifest_schema_has_no_free_text_fields() -> None:
         elif isinstance(node, list):
             for value in node:
                 closed(value)
+
     closed(schema)
 
 

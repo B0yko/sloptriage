@@ -27,7 +27,9 @@ OUT = Path(__file__).resolve().parent.parent / "bench" / "manifest"
 
 def main(enum_path: str, gist_path: str, revision: str) -> None:
     enum = json.loads(Path(enum_path).read_text())
-    slop = {int(x) for x in re.findall(r"hackerone\.com/reports/(\d+)", Path(gist_path).read_text())}
+    slop = {
+        int(x) for x in re.findall(r"hackerone\.com/reports/(\d+)", Path(gist_path).read_text())
+    }
     store = cache_dir("bench", "hackerone")
     reports = []
     missing = []
@@ -79,7 +81,10 @@ def main(enum_path: str, gist_path: str, revision: str) -> None:
     (OUT / "MANIFEST.sha256").write_text("\n".join(lines) + "\n")
     print(f"{len(reports)} reports, {len(missing)} missing: {missing}", file=sys.stderr)
     print(f"dev {len(split['dev'])}, heldout {len(split['heldout'])}", file=sys.stderr)
-    print(f"slop-listed ids not in enumeration: {sorted(slop - {r['id'] for r in reports})}", file=sys.stderr)
+    print(
+        f"slop-listed ids not in enumeration: {sorted(slop - {r['id'] for r in reports})}",
+        file=sys.stderr,
+    )
 
 
 if __name__ == "__main__":

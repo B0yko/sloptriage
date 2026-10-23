@@ -94,6 +94,19 @@ class GitRepo:
                 result[parts[0]] = parts[1] or parts[2]
         return result
 
+    def tag_commits(self) -> dict[str, str]:
+        """Commit SHA -> tag name (first tag wins), peeling annotated tags."""
+        out = self.try_run(
+            "for-each-ref", "--format=%(objectname) %(*objectname) %(refname:short)", "refs/tags"
+        )
+        result: dict[str, str] = {}
+        for line in (out or "").splitlines():
+            parts = line.split(" ")
+            if len(parts) == 3:
+                sha = parts[1] or parts[0]
+                result.setdefault(sha, parts[2])
+        return result
+
     def default_branch(self) -> str:
         out = self.try_run("symbolic-ref", "--quiet", "--short", "HEAD")
         if out and out.strip():

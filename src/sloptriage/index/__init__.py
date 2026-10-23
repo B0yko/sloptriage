@@ -125,6 +125,26 @@ class Index:
             d for d in self.defs_in_file(path) if d.kind == "macro" and d.start <= line <= d.end
         ]
 
+    # -- other indexed versions ---------------------------------------------------
+    def any_version_definition(self, name: str) -> tuple[str, str] | None:
+        """(commit, path) of a definition of ``name`` in any indexed commit."""
+        row = self._db.execute(
+            "SELECT c.sha, p.path FROM defs d JOIN tree t ON t.blob_id=d.blob_id "
+            "JOIN commits c ON c.id=t.commit_id JOIN paths p ON p.id=t.path_id "
+            "WHERE d.name=? ORDER BY c.id DESC LIMIT 1",
+            (name,),
+        ).fetchone()
+        return (row[0], row[1]) if row else None
+
+    def any_version_path(self, path: str) -> str | None:
+        """Commit of any indexed version that has ``path``."""
+        row = self._db.execute(
+            "SELECT c.sha FROM paths p JOIN tree t ON t.path_id=p.id JOIN commits c ON c.id=t.commit_id "
+            "WHERE p.path=? ORDER BY c.id DESC LIMIT 1",
+            (path,),
+        ).fetchone()
+        return row[0] if row else None
+
     # -- identifier occurrences ------------------------------------------------
     def is_referenced(self, word: str) -> bool:
         row = self._db.execute(

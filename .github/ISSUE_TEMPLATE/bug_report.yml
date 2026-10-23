@@ -1,0 +1,24 @@
+name: Bug report
+description: Something sloptriage does wrong
+labels: [bug]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: sloptriage version
+      description: Output of `sloptriage --version`
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: The command, the repository and version, and the report (or a minimal synthetic copy).
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Expected and actual result
+    validations:
+      required: true

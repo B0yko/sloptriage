@@ -1,0 +1,21 @@
+name: False flag on a real report
+description: A valid report was classed refs_failed or a citation was misread
+labels: [false-flag]
+body:
+  - type: input
+    id: report
+    attributes:
+      label: Public report URL (or attach a minimal synthetic copy)
+    validations:
+      required: true
+  - type: input
+    id: repo
+    attributes:
+      label: Repository and version checked
+    validations:
+      required: true
+  - type: textarea
+    id: verdict
+    attributes:
+      label: Output of `sloptriage check --format json`
+      render: json

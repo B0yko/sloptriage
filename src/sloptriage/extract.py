@@ -131,6 +131,9 @@ _RAW_RE = re.compile(
 )
 _CVE_RE = re.compile(r"\bCVE-(\d{4})-(\d{4,7})\b", re.I)
 _CWE_RE = re.compile(r"\bCWE-(\d{1,4})\b", re.I)
+_PROSE_CALL_RE = re.compile(
+    rf"(?<![\w.>:$])(?P<name>{_IDENT}(?:::{_IDENT})*)\((?P<args>[^()\n]{{0,80}})\)"
+)
 _CALL_RE = re.compile(
     rf"(?<![\w.>:$])(?P<name>{_IDENT}(?:::{_IDENT})*)\s?\((?P<args>[^()\n]{{0,80}})\)"
 )
@@ -859,7 +862,7 @@ def _extract_inline_code(b: _Builder, prose: str) -> None:
             name = call.group("name").split("::")[-1]
             conf = _symbol_confidence(name, True, names)
             if conf:
-                b.add(Claim("symbol", name, start, end, conf, "backtick"))
+                b.add(Claim("symbol", name, start, end, conf, "backtick-call"))
             continue
         if _IDENT_RE.match(content):
             conf = _symbol_confidence(content, False, names)
@@ -1083,7 +1086,7 @@ def _extract_prose(b: _Builder, prose: str) -> None:
                 line_end=int(l2) if l2 else None,
             )
         )
-    for m in _CALL_RE.finditer(no_urls):
+    for m in _PROSE_CALL_RE.finditer(no_urls):
         name = m.group("name").split("::")[-1]
         conf = _symbol_confidence(name, True, names)
         if conf is None:

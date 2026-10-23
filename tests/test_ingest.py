@@ -54,14 +54,31 @@ def test_eml_parts_and_attachments(tmp_path: Path) -> None:
 
 def test_hackerone_json(tmp_path: Path) -> None:
     p = tmp_path / "1.json"
-    p.write_text(json.dumps({"id": 1, "title": "t", "vulnerability_information": "body", "submitted_at": "2024-01-02T00:00:00Z"}))
+    p.write_text(
+        json.dumps(
+            {
+                "id": 1,
+                "title": "t",
+                "vulnerability_information": "body",
+                "submitted_at": "2024-01-02T00:00:00Z",
+            }
+        )
+    )
     rep = load_report(str(p))
-    assert (rep.source, rep.id, rep.body_markdown, rep.created_at) == ("hackerone", "1", "body", "2024-01-02T00:00:00Z")
+    assert (rep.source, rep.id, rep.body_markdown, rep.created_at) == (
+        "hackerone",
+        "1",
+        "body",
+        "2024-01-02T00:00:00Z",
+    )
 
 
 def test_github_event_payload(tmp_path: Path) -> None:
-    event = {"action": "opened", "issue": {"number": 7, "title": "x", "body": "y", "created_at": "2024-05-01T00:00:00Z"},
-             "repository": {"full_name": "o/r"}}
+    event = {
+        "action": "opened",
+        "issue": {"number": 7, "title": "x", "body": "y", "created_at": "2024-05-01T00:00:00Z"},
+        "repository": {"full_name": "o/r"},
+    }
     rep = load_event_payload(event)
     assert (rep.id, rep.title, rep.body_markdown) == ("o/r#7", "x", "y")
     p = tmp_path / "event.json"
@@ -76,7 +93,9 @@ def test_issue_ref_parsing() -> None:
 
 
 def test_html_is_converted_without_rendering() -> None:
-    text = html_to_text('<p>See <code>foo()</code><img src="http://example.com/x.png"></p><script>alert(1)</script><pre>a\nb</pre>')
+    text = html_to_text(
+        '<p>See <code>foo()</code><img src="http://example.com/x.png"></p><script>alert(1)</script><pre>a\nb</pre>'
+    )
     assert "`foo()`" in text
     assert "alert" not in text and "example.com" not in text
     assert "```\na\nb\n```" in text

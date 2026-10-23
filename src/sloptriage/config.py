@@ -21,11 +21,8 @@ DEFAULT_LABELS = {
     "refs_failed": "triage:refs-failed",
     "needs_version": "triage:needs-version",
     "needs_poc": "triage:needs-poc",
-    "reproduced": "triage:reproduced",
-    "not_reproduced": "triage:not-reproduced",
 }
 LANGUAGES = ("c", "cpp", "python", "javascript", "typescript", "go", "rust")
-RUNNERS = ("c", "cpp", "shell", "python", "input")
 COMMENT_WHEN_DEFAULT = ("refs_failed", "refs_mixed", "needs_version", "needs_poc")
 
 
@@ -42,39 +39,6 @@ class Thresholds:
     hard_fail_min: int = 2
     min_verified_share: float = 0.7
     min_verified_claims: int = 3
-
-
-@dataclass
-class Limits:
-    timeout: int = 60
-    memory: str = "1g"
-    cpus: float = 2.0
-    pids: int = 256
-    tmpfs: str = "256m"
-    output_kb: int = 1024
-    runs: int = 3
-
-
-@dataclass
-class Recipe:
-    preset: str | None = None
-    image: str | None = None
-    packages: list[str] = field(default_factory=list)
-    configure: str | None = None
-    build: str | None = None
-    install: str | None = None
-    cflags: str | None = None
-    env: dict[str, str] = field(default_factory=dict)
-
-
-@dataclass
-class ReproConfig:
-    enabled: bool = False
-    recipe: Recipe = field(default_factory=Recipe)
-    runners: list[str] = field(default_factory=lambda: list(RUNNERS))
-    harness: str | None = None
-    limits: Limits = field(default_factory=Limits)
-    runtime: str | None = None  # "docker" | "podman"; detected when unset
 
 
 @dataclass
@@ -96,7 +60,6 @@ class Config:
     thresholds: Thresholds = field(default_factory=Thresholds)
     labels: dict[str, str] = field(default_factory=lambda: dict(DEFAULT_LABELS))
     comment: CommentPolicy = field(default_factory=CommentPolicy)
-    repro: ReproConfig = field(default_factory=ReproConfig)
     cves_file: str | None = None
     source: str = "<defaults>"
     base_dir: Path = field(default_factory=Path.cwd)
@@ -123,31 +86,6 @@ _SCHEMA: dict[str, Any] = {
     "thresholds": {"hard_fail_min": int, "min_verified_share": float, "min_verified_claims": int},
     "labels": dict.fromkeys(DEFAULT_LABELS, str),
     "comment": {"mode": str, "when": [str]},
-    "repro": {
-        "enabled": bool,
-        "runtime": str,
-        "recipe": {
-            "preset": str,
-            "image": str,
-            "packages": [str],
-            "configure": str,
-            "build": str,
-            "install": str,
-            "cflags": str,
-            "env": {"*": str},
-        },
-        "runners": [str],
-        "harness": str,
-        "limits": {
-            "timeout": int,
-            "memory": str,
-            "cpus": float,
-            "pids": int,
-            "tmpfs": str,
-            "output_kb": int,
-            "runs": int,
-        },
-    },
     "cves_file": str,
 }
 
@@ -182,13 +120,6 @@ def _check(node: Any, schema: Any, path: str, errors: list[str], src: str) -> No
             errors.append(f"{src}: {path}: expected true or false")
     elif schema is str and not isinstance(node, str):
         errors.append(f"{src}: {path}: expected a string")
-
-
-def _limits(doc: dict[str, Any]) -> Limits:
-    lim = Limits()
-    for key, value in doc.items():
-        setattr(lim, key, float(value) if key == "cpus" else value)
-    return lim
 
 
 def expand_version_tags(items: list[str]) -> list[str]:
@@ -250,42 +181,6 @@ def parse_config(doc: Any, source: str = "<config>", base_dir: Path | None = Non
     for i, w in enumerate(cfg.comment.when):
         if w not in (*DEFAULT_LABELS, "always"):
             errors.append(f"{source}: comment.when[{i}]: {w!r} is not a class or label key")
-    repro = doc.get("repro", {})
-    recipe = repro.get("recipe", {})
-    limits = repro.get("limits", {})
-    cfg.repro = ReproConfig(
-        enabled=repro.get("enabled", False),
-        runtime=repro.get("runtime"),
-        recipe=Recipe(
-            preset=recipe.get("preset"),
-            image=recipe.get("image"),
-            packages=list(recipe.get("packages", [])),
-            configure=recipe.get("configure"),
-            build=recipe.get("build"),
-            install=recipe.get("install"),
-            cflags=recipe.get("cflags"),
-            env=dict(recipe.get("env", {})),
-        ),
-        runners=list(repro.get("runners", RUNNERS)),
-        harness=repro.get("harness"),
-        limits=_limits(limits),
-    )
-    for i, r in enumerate(cfg.repro.runners):
-        if r not in RUNNERS:
-            errors.append(f"{source}: repro.runners[{i}]: {r!r} is not one of {', '.join(RUNNERS)}")
-    if cfg.repro.runtime not in (None, "docker", "podman"):
-        errors.append(f"{source}: repro.runtime: expected docker or podman")
-    if recipe.get("preset"):
-        from sloptriage.repro.recipes import PRESET_NAMES
-
-        if recipe["preset"] not in PRESET_NAMES:
-            errors.append(
-                f"{source}: repro.recipe.preset: {recipe['preset']!r} is not one of {', '.join(PRESET_NAMES)}"
-            )
-    if cfg.repro.limits.timeout < 1 or cfg.repro.limits.timeout > 3600:
-        errors.append(f"{source}: repro.limits.timeout: must be 1..3600 seconds")
-    if cfg.repro.limits.runs < 1 or cfg.repro.limits.runs > 10:
-        errors.append(f"{source}: repro.limits.runs: must be 1..10")
     cfg.cves_file = doc.get("cves_file")
     if errors:
         raise ConfigError(errors)

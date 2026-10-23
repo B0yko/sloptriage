@@ -2,7 +2,13 @@ from __future__ import annotations
 
 from sloptriage.extract import ExtractContext, extract
 
-CTX = ExtractContext(project="curl", aliases=("libcurl",), languages=("c",), binaries=("curl",), repo_slug="curl/curl")
+CTX = ExtractContext(
+    project="curl",
+    aliases=("libcurl",),
+    languages=("c",),
+    binaries=("curl",),
+    repo_slug="curl/curl",
+)
 
 
 def kinds(text: str, ctx: ExtractContext = CTX) -> set[tuple[str, str, str]]:
@@ -37,7 +43,10 @@ READ of size 1 at 0x602 thread T0
 ```"""
     claims = extract(text, CTX).claims
     frames = [c for c in claims if c.kind == "frame"]
-    assert [(f.frame_index, f.function, f.line) for f in frames[:2]] == [(0, "parse_header", 214), (1, "Curl_http_readwrite_headers", 3400)]
+    assert [(f.frame_index, f.function, f.line) for f in frames[:2]] == [
+        (0, "parse_header", 214),
+        (1, "Curl_http_readwrite_headers", 3400),
+    ]
     assert frames[2].module is not None
     assert any(c.kind == "sanitizer_claim" and c.value == "heap-buffer-overflow" for c in claims)
 
@@ -45,7 +54,10 @@ READ of size 1 at 0x602 thread T0
 def test_gdb_multiline_frames() -> None:
     text = "#0  0x0000555555582039 in curl_dbg_log (format=0x1,\n    x=2) at memdebug.c:383\n#1  0x00005 in foo_bar (a=1) at lib/x.c:12\n"
     frames = [c for c in extract(text, CTX).claims if c.kind == "frame"]
-    assert [(f.function, f.path, f.line) for f in frames] == [("curl_dbg_log", "memdebug.c", 383), ("foo_bar", "lib/x.c", 12)]
+    assert [(f.function, f.path, f.line) for f in frames] == [
+        ("curl_dbg_log", "memdebug.c", 383),
+        ("foo_bar", "lib/x.c", 12),
+    ]
 
 
 def test_python_traceback() -> None:
@@ -101,7 +113,9 @@ def test_cve_cwe_and_poc_defined_names() -> None:
 def test_template_function_and_lines() -> None:
     text = "File: lib/vtls/wolfssl.c\n\nFunction: wssl_strerror (lines 1542-1556)\n\nLines 741, 773, and 804"
     claims = extract(text, CTX).claims
-    assert any(c.kind == "frame" and c.function == "wssl_strerror" and c.line == 1542 for c in claims)
+    assert any(
+        c.kind == "frame" and c.function == "wssl_strerror" and c.line == 1542 for c in claims
+    )
     assert {c.line for c in claims if c.kind == "line"} >= {741, 773, 804}
 
 

@@ -111,6 +111,7 @@ class CheckResult:
     aggregate: Aggregate
     timings: dict[str, float]
     index_cached: bool
+    repository: str | None = None
 
 
 def run_reference_check(
@@ -128,13 +129,14 @@ def run_reference_check(
     resolution = resolver.resolve(first.claims, report.created_at, explicit_ref=ref)
     t1 = time.perf_counter()
     cached = iset.is_cached(resolution.commit)
+    slug = repo_slug(cfg.repository or repo.remote_url() or "")
     ctx_refs = make_context(
         iset,
         resolution.commit,
         resolution.ref_label,
         resolution.alternates,
         extract_context(cfg).names,
-        repo_slug(cfg.repository or repo.remote_url() or ""),
+        slug,
     )
     t2 = time.perf_counter()
     primary = ctx_refs.primary
@@ -155,6 +157,7 @@ def run_reference_check(
         agg,
         {"resolve": t1 - t0, "index": t2 - t1, "check": t3 - t2, "total": t3 - t0},
         cached,
+        f"https://github.com/{slug}" if slug else None,
     )
 
 

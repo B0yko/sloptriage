@@ -11,16 +11,3 @@ paths:
   ignore: []
 symbols:
   external: []
-repro:
-  enabled: false
-  recipe:
-    preset: autotools-asan
-    packages: [libpsl-dev, libssl-dev, zlib1g-dev, libnghttp2-dev]
-    configure: >-
-      autoreconf -fi && ./configure --with-openssl --enable-debug --disable-shared
-      --disable-ldap --without-libpsl --prefix=/opt/project
-  runners: [c, shell, input]
-  harness: "curl --silent --show-error --max-time 10 --config {input}"
-  limits:
-    timeout: 120
-    memory: 2g

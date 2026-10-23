@@ -827,12 +827,8 @@ def _symbol_confidence(name: str, has_parens: bool, names: NameLists) -> str | N
     )
     if has_parens:
         return "high" if (distinctive or len(name) >= 5) and not names.is_common(name) else "medium"
-    # a bare identifier is high only in the snake_case / MACRO_CASE shapes C projects use;
-    # bare camelCase is as often a reporter's own variable name as a project symbol
-    if ("_" in name.strip("_") or (name.isupper() and len(name) >= 6)) and not names.is_common(
-        name
-    ):
-        return "high"
+    # a bare identifier is as often a reporter's own label, variable or a third-party
+    # constant as a project symbol, so only the call form `name()` is high
     return "medium"
 
 

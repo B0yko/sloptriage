@@ -136,6 +136,25 @@ class Index:
         ).fetchone()
         return (row[0], row[1]) if row else None
 
+    def any_version_spans(self, path: str, name: str) -> list[tuple[str, int, int]]:
+        """(commit, start, end) of every function ``name`` in ``path`` across indexed commits."""
+        rows = self._db.execute(
+            "SELECT c.sha, d.start, d.end FROM defs d JOIN tree t ON t.blob_id=d.blob_id "
+            "JOIN paths p ON p.id=t.path_id JOIN commits c ON c.id=t.commit_id "
+            "WHERE p.path=? AND d.name=? AND d.kind IN ('function', 'method') ORDER BY c.id DESC",
+            (path, name),
+        ).fetchall()
+        return [(r[0], int(r[1]), int(r[2])) for r in rows]
+
+    def any_version_lines(self, path: str) -> list[tuple[str, int]]:
+        """(commit, line count) of ``path`` across indexed commits, newest first."""
+        rows = self._db.execute(
+            "SELECT c.sha, b.lines FROM tree t JOIN paths p ON p.id=t.path_id JOIN blobs b ON b.id=t.blob_id "
+            "JOIN commits c ON c.id=t.commit_id WHERE p.path=? ORDER BY c.id DESC",
+            (path,),
+        ).fetchall()
+        return [(r[0], int(r[1])) for r in rows]
+
     def any_version_path(self, path: str) -> str | None:
         """Commit of any indexed version that has ``path``."""
         row = self._db.execute(

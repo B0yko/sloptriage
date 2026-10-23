@@ -160,6 +160,8 @@ def in_tree_path(ctx: RefContext, cited: str) -> str | None:
     suffix_hits = ctx.primary.resolve_path(joined)
     if len(suffix_hits) == 1:
         return suffix_hits[0]
+    if _is_system_path(cited.strip()):
+        return None  # /usr/include/... is never a project file, even when "include" is a project directory
     for i, part in enumerate(parts[:-1]):
         if part in ctx.top_dirs:
             return "/".join(parts[i:])
@@ -396,6 +398,18 @@ def check_line(ctx: RefContext, claim: Claim) -> Finding | None:
                     detail,
                     [ctx.link(alt, alt_hits[0], claim.line, claim.line_end)],
                 )
+    last = max(claim.line, claim.line_end or claim.line)
+    for sha, total_then in ctx.primary.any_version_lines(path):
+        if last <= total_then:
+            detail.update({"other_ref": ctx.label_for(sha), "other_lines": total_then})
+            return Finding(
+                claim,
+                "line",
+                "in_range_at_other_version",
+                "soft",
+                detail,
+                [ctx.link(ctx.iset.get(sha), path, claim.line, claim.line_end)],
+            )
     severity = "hard" if claim.confidence == "high" else "soft"
     return Finding(claim, "line", "out_of_range", severity, detail, [ctx.link(ctx.primary, path)])
 
@@ -535,6 +549,20 @@ def _check_frame(ctx: RefContext, claim: Claim) -> list[Finding]:
                     )
                 )
                 return findings
+    for sha, start, end in ctx.primary.any_version_spans(path, func):
+        if start - 1 <= claim.line <= end + 1:
+            detail.update({"other_ref": ctx.label_for(sha)})
+            findings.append(
+                Finding(
+                    claim,
+                    "frame",
+                    "consistent_at_other_version",
+                    "soft",
+                    detail,
+                    [ctx.link(ctx.iset.get(sha), path, claim.line)],
+                )
+            )
+            return findings
     if status == "function_not_in_file":
         where = ctx.primary.definitions(func)
         if not where:

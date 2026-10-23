@@ -361,6 +361,8 @@ def _resolution_sentence(verdict: dict[str, Any]) -> str:
         "version_not_found": "the named version does not exist: the default branch as of the report date",
         "latest": "the default branch",
     }[res["reason"]]
+    if "@" not in res["ref"]:
+        reason = reason.replace(" as of the report date", "")
     text = f"Checked against {project} at {_ref(verdict)} ({commit}), {reason}."
     missing = [v for v in res.get("versions", []) if v["status"] == "not_found"]
     for v in missing[:2]:

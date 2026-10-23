@@ -27,40 +27,43 @@ reports of at most 1%. With 60 valid dev reports, 1% allows no false flag at all
 ## Sweep on the dev split (curl, 260 reports: 60 valid, 200 invalid, 17 slop-listed)
 
 `min_verified_claims` stays at 3 (it separates `refs_verified` from `refs_thin` and never fails a report).
-Run on 2026-10-23 on a Mac Studio M4 Max, 128 GB.
+Run with `uv run sloptriage bench run --split dev` on a Mac Studio M4 Max, 128 GB (final run 2026-10-24).
 
 | hard_fail_min | min_verified_share | valid flagged (of 60) | invalid flagged (of 200) | slop-listed flagged (of 17) |
 |---|---|---|---|---|
-| 1 | 0.00 | 3 | 39 | 6 |
-| 1 | 0.50 | 3 | 39 | 6 |
-| 1 | 0.60 | 3 | 39 | 6 |
-| 1 | 0.70 | 3 | 39 | 6 |
-| 1 | 0.75 | 3 | 39 | 6 |
-| 1 | 0.80 | 3 | 39 | 6 |
-| 1 | 0.90 | 3 | 39 | 6 |
-| 1 | 1.00 | 3 | 39 | 6 |
-| 2 | 0.00 | 0 | 12 | 2 |
-| 2 | 0.50 | 0 | 16 | 2 |
-| 2 | 0.60 | 0 | 18 | 4 |
-| 2 | 0.70 | 0 | 21 | 5 |
-| 2 | 0.75 | 1 | 21 | 5 |
-| 2 | 0.80 | 1 | 21 | 5 |
-| 2 | 0.90 | 2 | 30 | 6 |
-| 2 | 1.00 | 3 | 39 | 6 |
+| 1 | 0.00 | 3 | 37 | 6 |
+| 1 | 0.50 | 3 | 37 | 6 |
+| 1 | 0.60 | 3 | 37 | 6 |
+| 1 | 0.70 | 3 | 37 | 6 |
+| 1 | 0.75 | 3 | 37 | 6 |
+| 1 | 0.80 | 3 | 37 | 6 |
+| 1 | 0.90 | 3 | 37 | 6 |
+| 1 | 1.00 | 3 | 37 | 6 |
+| 2 | 0.00 | 0 | 11 | 2 |
+| 2 | 0.50 | 0 | 14 | 2 |
+| 2 | 0.60 | 0 | 16 | 4 |
+| 2 | 0.70 | 0 | 19 | 5 |
+| 2 | 0.75 | 1 | 19 | 5 |
+| 2 | 0.80 | 1 | 20 | 5 |
+| 2 | 0.90 | 2 | 29 | 6 |
+| 2 | 1.00 | 3 | 37 | 6 |
 | 3 | 0.00 | 0 | 7 | 1 |
-| 3 | 0.50 | 0 | 12 | 2 |
-| 3 | 0.60 | 0 | 14 | 4 |
-| 3 | 0.70 | 0 | 18 | 5 |
-| 3 | 0.75 | 1 | 18 | 5 |
-| 3 | 0.80 | 1 | 20 | 5 |
-| 3 | 0.90 | 2 | 30 | 6 |
-| 3 | 1.00 | 3 | 39 | 6 |
+| 3 | 0.50 | 0 | 11 | 2 |
+| 3 | 0.60 | 0 | 13 | 4 |
+| 3 | 0.70 | 0 | 16 | 5 |
+| 3 | 0.75 | 1 | 16 | 5 |
+| 3 | 0.80 | 1 | 19 | 5 |
+| 3 | 0.90 | 2 | 29 | 6 |
+| 3 | 1.00 | 3 | 37 | 6 |
+
+The sweep was repeated after fixes to the extractor that were found on the dev split and the synthetic
+set (a parenthetical in prose read as a call, file paths of installed packages); the optimum did not move.
 
 ## Decision
 
 `hard_fail_min = 2`, `min_verified_share = 0.70`.
 
-This is the setting with the highest invalid recall (21 of 200, 10.5%; 5 of 17 slop-listed) that flags no
+This is the setting with the highest invalid recall (19 of 200, 9.5%; 5 of 17 slop-listed) that flags no
 valid dev report. Raising the share to 0.75 adds no invalid report and flags one valid report.
 
 ## Consequences

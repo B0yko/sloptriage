@@ -37,8 +37,10 @@ class ConfigError(ValueError):
 
 @dataclass
 class Thresholds:
+    """Defaults chosen on the dev split only (docs/adr/0002-thresholds-chosen-on-dev-split.md)."""
+
     hard_fail_min: int = 2
-    min_verified_share: float = 0.5
+    min_verified_share: float = 0.7
     min_verified_claims: int = 3
 
 

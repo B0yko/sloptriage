@@ -4,9 +4,9 @@
 
 | Input | Modes | Default | Meaning |
 |---|---|---|---|
-| `mode` | all | required | `check` or `post` |
-| `verdict` | all | `verdict.json` | file written by `check`, read by `post` |
-| `config` | check | empty: `.sloptriage.yml` in the checked-out repository | configuration file |
+| `mode` | all | required | `check` (references only, never runs a PoC), `repro` (the same, and runs the PoC in a sandbox; needs Docker) or `post` |
+| `verdict` | all | `verdict.json` | file written by `check` or `repro`, read by `post` |
+| `config` | check, repro | empty: `.sloptriage.yml` in the checked-out repository | configuration file |
 | `token` | post | none | a token with `issues: write` (`github.token` in the workflow) |
 
 The action runs sloptriage from its own source at the referenced commit with the dependency versions in
@@ -22,7 +22,14 @@ runs on `issues: [opened, edited]`:
 | Job | Permissions | Secrets | Does |
 |---|---|---|---|
 | `check` | `contents: read` | none | checks out the repository with full history and tags, runs `sloptriage check "$GITHUB_EVENT_PATH" --format json`, uploads `verdict.json` |
-| `report` | `issues: write` | `github.token` only | downloads `verdict.json`, validates it against `schemas/verdict-v1.json`, renders the card, posts or updates one comment and the labels |
+| `repro` (optional) | none (`permissions: {}`) | none | checks out the repository, builds the release the report names with sanitizers and runs the PoC in a hardened container on the runner's Docker (`mode: repro`), uploads its own `verdict.json` as `verdict-repro` |
+| `report` | `issues: write` | `github.token` only | downloads the verdicts, uses the one from `repro` when that job succeeded, validates it against `schemas/verdict-v1.json`, renders the card, posts or updates one comment and the labels |
+
+The `check` job always passes `--no-repro`, so a project whose `.sloptriage.yml` sets `repro.enabled` still
+runs no PoC there. The `repro` job needs a build recipe in the configuration ([Reproduction](repro.md)) and
+takes a few minutes on a cold cache; delete the job (and `repro` from `needs:` in `report`) to check
+references only. The `report` job runs even when `repro` fails, using the reference verdict. On a private
+repository give `repro` `contents: read` so that it can check out the code.
 
 Why it is safe with hostile issue text:
 

@@ -1,8 +1,8 @@
 # sloptriage
 
 Check a bug or security report against the code before you spend an hour on it: every file, function,
-line, stack frame and quoted snippet the report cites is verified at the version it names. No LLM.
-CLI and GitHub Action.
+line, stack frame and quoted snippet the report cites is verified at the version it names, and the
+report's PoC can be rerun in a locked-down sanitizer sandbox. No LLM. CLI and GitHub Action.
 
 [![CI](https://github.com/B0yko/sloptriage/actions/workflows/ci.yml/badge.svg)](https://github.com/B0yko/sloptriage/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/B0yko/sloptriage)](https://github.com/B0yko/sloptriage/releases)
@@ -104,23 +104,55 @@ jobs:
           path: verdict.json
           retention-days: 7
 
-  report:
+  repro:
     needs: check
+    runs-on: ubuntu-latest
+    permissions: {}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: B0yko/sloptriage@v0.1.0
+        with:
+          mode: repro
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: verdict-repro
+          path: verdict.json
+          retention-days: 7
+
+  report:
+    needs: [check, repro]
+    if: ${{ !cancelled() && needs.check.result == 'success' }}
     runs-on: ubuntu-latest
     permissions:
       issues: write
     steps:
       - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
-          name: verdict
+          pattern: verdict*
+      - id: pick
+        run: |
+          if [ -f verdict-repro/verdict.json ]; then
+            echo "path=verdict-repro/verdict.json" >> "$GITHUB_OUTPUT"
+          else
+            echo "path=verdict/verdict.json" >> "$GITHUB_OUTPUT"
+          fi
       - uses: B0yko/sloptriage@v0.1.0
         with:
           mode: post
+          verdict: ${{ steps.pick.outputs.path }}
           token: ${{ github.token }}
 ```
 
 - **`check`** has read-only access and no secrets. It reads the issue only from the event payload file
   (`$GITHUB_EVENT_PATH`), never from an expression, and writes `verdict.json`. It renders nothing.
+- **`repro`** is optional. It checks out the code, builds the release the report names with
+  AddressSanitizer and UndefinedBehaviorSanitizer, and runs the report's PoC in a container with no
+  network, a read-only root, a non-root user and no capabilities (see [Reproduction](#reproduction-opt-in)).
+  It has `permissions: {}` and no secrets. It needs a build recipe in `.sloptriage.yml`; delete the job
+  to check references only.
 - **`report`** has `issues: write` and nothing else. It validates the downloaded verdict against the
   schema, renders the card from its fields with every report-derived string escaped, and posts or
   updates one comment marked `<!-- sloptriage -->`, so edits never duplicate it. It does not check out
@@ -128,7 +160,8 @@ jobs:
 - The action runs sloptriage from its own source at the pinned commit with the locked dependencies
   (`uv run --locked`).
 - **Labels** (configurable): `triage:refs-verified`, `triage:refs-thin`, `triage:refs-mixed`,
-  `triage:refs-failed`, `triage:needs-version`, `triage:needs-poc`.
+  `triage:refs-failed`, `triage:needs-version`, `triage:needs-poc`, `triage:reproduced`,
+  `triage:not-reproduced`.
 - **Comment policy:** by default sloptriage always labels and comments only for `refs_failed`,
   `refs_mixed`, `needs_version` and `needs_poc`. Set `comment.mode` to `label`, `comment` or `both`, and
   `comment.when` to the classes that get a comment (`always` for every report).
@@ -138,6 +171,30 @@ them, `GITHUB_TOKEN` cannot read draft advisories, and the logs and artifacts of
 world-readable. Run `sloptriage check --advisory OWNER/REPO/GHSA-xxxx-xxxx-xxxx` on your own machine
 instead, with a fine-grained token that has "Repository security advisories: read"; the result goes to
 your terminal only. See [docs/action.md](docs/action.md).
+
+## Reproduction (opt-in)
+
+`sloptriage check report.md --repo . --repro` also builds the version the report names with
+AddressSanitizer and UndefinedBehaviorSanitizer and runs the report's PoC (C, C++, shell, Python or an
+input file) up to three times in a container: no network, read-only root, non-root user, no
+capabilities, limits on processes, memory, CPU and time, and nothing mounted from your machine. The card
+says whether the PoC crashed and whether the crash is where the report says; verdicts are `reproduced`,
+`crashed_elsewhere`, `not_reproduced`, `flaky`, `poc_build_failed`, `poc_missing`, `poc_unsupported`,
+`build_failed` and `timeout`. It needs Docker or Podman, and without one it refuses; there is no mode that
+runs a PoC on the host. Only commits reachable from a release tag or the default branch are built.
+
+```bash
+sloptriage demo --repro      # builds the demo projects, runs their 30 PoCs: 20 of 20 working PoCs
+                             # reproduce, 0 of 10 low-quality ones do
+```
+
+Add a `repro:` section to `.sloptriage.yml` (presets `cmake-asan`, `autotools-asan`, `meson-asan`,
+`python-pip`; examples for [curl](examples/curl/.sloptriage.yml),
+[a CMake project](examples/parsekit/.sloptriage.yml) and
+[a Python package](examples/kvconf/.sloptriage.yml)). Everything about it, including the hardening list
+and what each flag is tested by: [docs/repro.md](docs/repro.md) and
+[ADR 0006](docs/adr/0006-container-hardening-no-host-mode.md). `reproduced` means a person should look at
+the output, not that the vulnerability is confirmed: a PoC controls what it prints.
 
 ## For reporters: check before you send
 
@@ -372,8 +429,11 @@ More in [docs/security-model.md](docs/security-model.md).
 
 - **It checks citations, not vulnerabilities.** A report with correct references and a false claim passes.
 - **A report without concrete references cannot be checked** (`refs_none`).
-- **PoCs are not run.** v0.1.0 checks references only. A PoC that overflows its own buffer or never calls
-  the library is not detected. The verdict schema keeps a `reproduction` field for later.
+- **Reproduction covers C, C++, Python and shell only**, in a container, and is off by default. PoCs that
+  need the real network, hardware or a GUI are `poc_unsupported`. Leak reports are out of scope
+  (LeakSanitizer needs `ptrace`). The container runtime is the security boundary, a PoC can print a
+  counterfeit sanitizer report, and the benchmark numbers below are for the reference check only: they do
+  not include reproduction.
 - **Macros, inlining and function pointers** make frame chains unreliable, so chains are informational.
 - **Many reports name no version.** 61% of the held-out curl reports named no usable version and were
   checked at the default branch as of the report date (9 of the 19 flagged ones). A report that read
@@ -410,7 +470,7 @@ Described from their own READMEs or pages, checked 2026-10-23:
 
 ## Roadmap
 
-- PoC reproduction in a sandbox, behind an opt-in flag.
+- Reproduction on the real curl reports (the held-out inline C and shell PoCs) and a rate for it.
 - A second benchmark project.
 - Duplicate detection across reports.
 - PyPI release (`pip install sloptriage`).

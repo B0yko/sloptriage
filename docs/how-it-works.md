@@ -5,6 +5,7 @@ flowchart LR
   R[Report] --> I[Ingest] --> E[Extract claims] --> V[Resolve version]
   V --> X[(Index per commit)] --> C[Reference checks] --> D[Verdict]
   D --> M[Markdown card] & J[JSON] & L[Labels]
+  V -.-> P[Optional: PoC in a container] -.-> D
 ```
 
 ## Claims
@@ -98,3 +99,12 @@ refs_none      nothing checkable
 
 Counts are per high-confidence claim of kind path, symbol, line, frame or quote; a claim's worst finding
 decides. Defaults: `hard_fail_min = 2`, `min_verified_share = 0.7`, `min_verified_claims = 3`.
+
+## Reproduction
+
+With `--repro`, the PoC blocks the extractor found (and text attachments) are built against the commit the
+version resolved to and run in a hardened container, up to three times each. A run ends as a sanitizer
+report, a fatal signal, an uncaught exception, a timeout or a clean exit. The verdict says whether the
+top frame inside the project is a function the report names, or whether the error type matches the claim
+in a file the report names. Details, the verdict table and the hardening list:
+[repro.md](repro.md).

@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "sloptriage"
 version = "0.1.0"
-description = "Check bug and security reports against the code before you read them: verifies every file, function, line, stack frame and quoted snippet a report cites at the version it names. No LLM. CLI and GitHub Action."
+description = "Check bug and security reports against the code before you read them: verifies every file, function, line, stack frame and quoted snippet a report cites at the version it names, and reruns its PoC in a locked-down sanitizer sandbox. No LLM. CLI and GitHub Action."
 readme = "README.md"
 license = "Apache-2.0"
 license-files = ["LICENSE", "NOTICE"]

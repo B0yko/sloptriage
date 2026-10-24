@@ -16,7 +16,7 @@ script, a request to a network host, a counterfeit sanitizer report.
    to run anything without one. There is no flag, environment variable or configuration key that runs a
    PoC on the host. Reproduction is opt-in (`--repro` or `repro.enabled: true`).
 2. **One fresh container per attempt**, started with all of these, each asserted by a test:
-   `--network none` (loopback still works); `--read-only` with one size-limited tmpfs at `/work`; a
+   `--network none` (loopback still works); `--read-only` with size-limited tmpfs mounts at `/work` and `/tmp`; a
    non-root user; `--cap-drop ALL`; `--security-opt no-new-privileges` with the runtime's default
    seccomp filter left on; `--pids-limit`; `--memory` with swap switched off; `--cpus`; `--ulimit core=0`
    and `nofile`; an init process to reap children; a wall-clock timeout that kills the container; and a

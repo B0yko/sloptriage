@@ -25,6 +25,7 @@ from dataclasses import dataclass
 
 SANDBOX_UID = 10001
 WORKDIR = "/work"
+SCRATCH = "/tmp"  # noqa: S108 - a path inside the container, not on the host
 LABEL = "sloptriage=1"
 
 
@@ -131,6 +132,9 @@ def build_run_argv(
         "--tmpfs",
         f"{WORKDIR}:rw,exec,nosuid,nodev,size={limits.tmpfs},mode=0700,"
         f"uid={SANDBOX_UID},gid={SANDBOX_UID}",
+        # PoCs write to /tmp as a matter of course; it is a second size-limited tmpfs, not the image
+        "--tmpfs",
+        f"{SCRATCH}:rw,exec,nosuid,nodev,size={limits.tmpfs},mode=1777",
         "--user",
         f"{SANDBOX_UID}:{SANDBOX_UID}",
         "--cap-drop",

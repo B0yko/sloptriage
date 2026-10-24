@@ -74,15 +74,16 @@ def test_no_network_and_read_only_root() -> None:
     assert "--read-only" in argv
 
 
-def test_writable_space_is_one_size_limited_tmpfs_at_work() -> None:
+def test_writable_space_is_two_size_limited_tmpfs_at_work_and_tmp() -> None:
     argv = argv_for(Limits(tmpfs="48m"))
-    tmpfs = flag_values(argv, "--tmpfs")
-    assert len(tmpfs) == 1
-    path, _, options = tmpfs[0].partition(":")
-    assert path == "/work"
-    opts = options.split(",")
-    assert "size=48m" in opts
-    assert {"nosuid", "nodev", "exec"} <= set(opts)
+    mounts = {}
+    for spec in flag_values(argv, "--tmpfs"):
+        path, _, options = spec.partition(":")
+        mounts[path] = options.split(",")
+    assert set(mounts) == {"/work", "/tmp"}
+    for path, opts in mounts.items():
+        assert "size=48m" in opts, path
+        assert {"nosuid", "nodev", "exec"} <= set(opts), path
 
 
 def test_runs_as_a_non_root_user() -> None:

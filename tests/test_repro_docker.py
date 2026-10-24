@@ -187,7 +187,7 @@ def test_loopback_works_but_nothing_else_is_reachable(runtime: Runtime) -> None:
     assert out.stdout.count("BLOCKED") == 3 and "NO_DNS" in out.stdout
 
 
-def test_only_work_is_writable(runtime: Runtime) -> None:
+def test_only_the_scratch_directories_are_writable(runtime: Runtime) -> None:
     out = probe(
         runtime,
         py(
@@ -204,7 +204,7 @@ def test_only_work_is_writable(runtime: Runtime) -> None:
         ),
     )
     wrote = [line.split()[1] for line in out.stdout.splitlines() if line.startswith("WROTE")]
-    assert wrote == ["/work/x"]
+    assert wrote == ["/tmp/x", "/work/x"]  # the two size-limited tmpfs mounts, nothing else
 
 
 def test_the_work_space_has_a_size_limit(runtime: Runtime) -> None:

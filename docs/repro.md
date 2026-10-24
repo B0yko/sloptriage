@@ -44,7 +44,7 @@ sloptriage check report.md --repo . --repro  # your own project (needs repro.bui
 | `flaky` | some runs crashed and some did not, or the crashes differed |
 | `poc_build_failed` | the C or C++ PoC did not compile against the project; the compiler output is in the card |
 | `poc_missing` | no PoC in the report text or attachments |
-| `poc_unsupported` | an unsupported language, a disabled runner, an input file with no harness, a commit that is not eligible, or a PoC that needs the real network or a display (recognised from name-resolution, unreachable-network and no-display failures) |
+| `poc_unsupported` | an unsupported language, a disabled runner, an input file with no harness, a commit that is not eligible, or a PoC that needs the real network, a display or a command that is not installed in the image (recognised from name-resolution, unreachable-network, no-display and "command not found" failures) |
 | `build_failed` | the project could not be built in the sandbox: a limit of the build recipe, never the reporter's fault |
 | `timeout` | the PoC did not finish within `repro.limits.timeout`, or printed more output than the limit and was stopped |
 
@@ -87,7 +87,7 @@ repro:
     memory: 512m            # swap off
     cpus: 1.0
     pids: 128
-    tmpfs: 64m              # size of /work, the writable place
+    tmpfs: 64m              # size of each of /work and /tmp, the writable places
     output_bytes: 200000    # captured per stream; a run printing far more is stopped
     runs: 3                 # repetitions per PoC
     candidates: 5           # PoCs tried per report
@@ -130,7 +130,7 @@ inside a container (`tests/test_repro_docker.py`, run where Docker is available)
 | Property | Flag or mechanism | Probe |
 |---|---|---|
 | no network (loopback works) | `--network none` | connections to public and metadata addresses fail, name resolution fails, loopback succeeds |
-| nothing writable but `/work` and `/dev/shm` | `--read-only`, tmpfs `/work` with `size=`; the runtime's default `/dev/shm` (64 MB, not executable, counted against the memory limit) | writes to `/etc`, `/usr`, `/tmp`, `/`, `/opt` are refused; filling `/work` or `/dev/shm` stops at its size |
+| nothing writable but `/work`, `/tmp` and `/dev/shm` | `--read-only`; tmpfs mounts at `/work` and `/tmp` with `size=` (PoCs write to `/tmp` as a matter of course); the runtime's default `/dev/shm` (64 MB, not executable); all of it counts against the memory limit | writes to `/etc`, `/usr`, `/`, `/opt`, `/var/tmp` are refused; filling `/work` or `/dev/shm` stops at its size |
 | non-root | `--user 10001:10001` | `id -u` is 10001 |
 | no capabilities, no privilege gain, seccomp on | `--cap-drop ALL`, `--security-opt no-new-privileges` | `CapEff` and `CapBnd` are 0, `NoNewPrivs` is 1, `Seccomp` is 2 |
 | process limit | `--pids-limit` | a bounded spawn loop is refused at the limit |

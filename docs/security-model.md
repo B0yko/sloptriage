@@ -23,7 +23,7 @@ A PoC is code written by a stranger. It is run only when you ask, and only in a 
 |---|---|
 | Running on the host | Not possible: without a Docker or Podman CLI whose daemon answers, `--repro` exits with code 3. No flag or variable switches this off. |
 | Network | `--network none`. The image stage is the only step with network; its inputs are the recipe and the dependency names the project's own manifests declare, never the report. The project stage builds under `--network none`. |
-| Filesystem | Read-only root; one size-limited tmpfs at `/work` (and the runtime's default 64 MB `/dev/shm`). No mounts, no devices, no Docker socket. Files reach the container as a tar stream of plain, flat file names that the tool builds. |
+| Filesystem | Read-only root; size-limited tmpfs mounts at `/work` and `/tmp` (and the runtime's default 64 MB `/dev/shm`). No mounts, no devices, no Docker socket. Files reach the container as a tar stream of plain, flat file names that the tool builds. |
 | Privileges | Non-root user, `--cap-drop ALL`, `no-new-privileges`, the runtime's default seccomp filter, no host namespaces. |
 | Resource abuse | Limits on processes, memory (swap off), CPU, open files, wall-clock time and captured output; a run that floods its output is killed. Each limit has a test, and the ones that can be read from inside a container have a probe. |
 | Host secrets | The environment is only the explicit `-e KEY=VALUE` pairs. Nothing is inherited. |

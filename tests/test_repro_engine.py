@@ -340,6 +340,22 @@ def test_a_setup_failure_marker_is_an_error(project) -> None:  # noqa: ANN001
         run(project, sb)
 
 
+def test_a_poc_that_needs_a_tool_the_image_lacks_is_unsupported_not_clean(project) -> None:  # noqa: ANN001
+    for text in (
+        "./poc.sh: line 2: sudo: command not found\n",
+        "./poc.sh: line 9: python3: command not found\n",
+        "sh: 1: nc: not found\n",
+    ):
+        out = run(project, Scripted([res(text, 127)]))
+        assert out["verdict"] == "poc_unsupported", text
+        assert "not installed" in out["reason"]
+
+
+def test_a_crash_wins_over_a_missing_tool_message(project) -> None:  # noqa: ANN001
+    text = "./poc.sh: line 2: nc: command not found\n" + ASAN
+    assert run(project, Scripted([res(text, 1)]))["verdict"] == "reproduced"
+
+
 def test_broken_pipes_and_terminations_are_not_crashes(project) -> None:  # noqa: ANN001
     for code in (141, 143):
         assert run(project, Scripted([res("", code)]))["verdict"] == "not_reproduced", code

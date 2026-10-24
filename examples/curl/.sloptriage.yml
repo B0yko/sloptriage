@@ -18,7 +18,7 @@ symbols:
 repro:
   build:
     preset: autotools-asan
-    packages: [libssl-dev, zlib1g-dev]
+    packages: [libssl-dev, zlib1g-dev, python3]  # python3: many PoCs start a small local server
     configure:
       - if [ ! -x ./configure ]; then autoreconf -fi; fi
       - ./configure --prefix=/opt/project --with-openssl --without-libpsl --disable-docs --disable-manual

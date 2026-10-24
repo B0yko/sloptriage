@@ -26,6 +26,7 @@ _NETWORK_RE = re.compile(
 _SANITIZER_START_RE = re.compile(
     r"shadow memory range interleaves|asan cannot proceed correctly|unexpected memory mapping", re.I
 )
+_TOOLS_RE = re.compile(r"command not found\s*$|^\S+: \d+: \S+: not found\s*$", re.M)
 _DISPLAY_RE = re.compile(
     r"cannot open display|no display name and no \$display|unable to open display", re.I
 )
@@ -111,6 +112,8 @@ def classify_run(
         base.needs = "network"
     elif _DISPLAY_RE.search(base.output):
         base.needs = "display"
+    elif _TOOLS_RE.search(base.output):
+        base.needs = "tools"
     return base
 
 
@@ -281,6 +284,11 @@ def decide(
                 )
             elif hint == "display":
                 verdict, reason = "poc_unsupported", "The PoC needs a display; none is available."
+            elif hint == "tools":
+                verdict, reason = (
+                    "poc_unsupported",
+                    ("The PoC uses a command that is not installed in the sandbox image."),
+                )
         d = Decision(verdict, reason, cand, outcomes, match)
         if best is None or _RANK[d.verdict] < _RANK[best.verdict]:
             best = d

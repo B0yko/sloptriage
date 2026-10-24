@@ -371,7 +371,7 @@ Precision for invalid: 18/19 (94.7%, 75.4–99.1%). Coverage (at least one check
 | valid reports | 20 | 0 |
 
 Reports whose only fault is the PoC (it overflows its own buffer, never calls the library or uses a normal
-input) cite code that exists, so the reference check does not flag them; PoCs are not run in v0.1.0.
+input) cite code that exists, so the reference check does not flag them; running the PoC (see Reproduction below) does.
 
 **Latency**
 
@@ -384,9 +384,25 @@ Cold index of `curl-8_17_0`: 3.3 s. Checking each of the 389 held-out reports on
 
 </details>
 
+**Reproduction (synthetic set).** `uv run sloptriage demo --repro`, measured on 2026-10-24 on a
+Mac Studio M4 Max, 128 GB, with Docker 29.5.2 in a Colima VM (arm64):
+
+| Reports with a PoC | Count | `reproduced` | `crashed_elsewhere` | `not_reproduced` | `poc_build_failed` |
+|---|---|---|---|---|---|
+| working PoC (labelled valid) | 20 | 20 | 0 | 0 | 0 |
+| low-quality | 10 | 0 | 4 | 4 | 2 |
+
+Both conditions hold here: every working PoC reproduces and no low-quality PoC does. The labels come from
+how the reports were written, so this shows that the tool agrees with the way the set was built; it is not
+an accuracy figure. **Reproduction on real curl reports has not been run** (the held-out resolved reports
+with an inline C or shell PoC, and the reports on the curl maintainers' public list that have a PoC): it
+needs a sanitizer build of curl at each affected version. There is no reproduction rate for real reports, and every benchmark number above is for
+the reference check only. The sandbox and its tests: [docs/repro.md](docs/repro.md).
+
 Reproduce: `uv run sloptriage bench fetch` (downloads the report JSON into your cache),
 `uv run sloptriage bench run --split heldout`, `uv run sloptriage bench report <rows files>`,
-`uv run python eval/latency.py`, then `uv run python scripts/render_results.py`. Details:
+`uv run python eval/latency.py`, then `uv run python scripts/render_results.py`; the reproduction table
+needs Docker or Podman: `uv run sloptriage demo --repro`. Details:
 [docs/bench.md](docs/bench.md).
 
 **Caveats.** This is one project's corpus. The labels are noisy: "informative" includes real bugs that

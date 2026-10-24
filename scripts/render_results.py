@@ -125,7 +125,7 @@ def section(res: dict[str, Any], lat: dict[str, Any], syn: dict[str, Any]) -> st
     lines += [
         "",
         "Reports whose only fault is the PoC (it overflows its own buffer, never calls the library or uses a normal",
-        "input) cite code that exists, so the reference check does not flag them; PoCs are not run in v0.1.0.",
+        "input) cite code that exists, so the reference check does not flag them; running the PoC (see Reproduction below) does.",
         "",
         "**Latency**",
         "",

@@ -27,8 +27,16 @@ _SANITIZER_START_RE = re.compile(
     r"shadow memory range interleaves|asan cannot proceed correctly|unexpected memory mapping", re.I
 )
 _TOOLS_RE = re.compile(
-    r"command not found\s*$|^\S+: \d+: \S+: not found\s*$|missing required command", re.M | re.I
+    r"command not found\s*$|^\S+: \d+: \S+: not found\s*$|missing required command|"
+    r"missing executable",
+    re.M | re.I,
 )
+_FEATURE_RE = re.compile(r"not supported or disabled|unsupported protocol", re.I)
+_ENV_EXCEPTIONS = {
+    "FileNotFoundError": "files",
+    "ModuleNotFoundError": "tools",
+    "ImportError": "tools",
+}
 _FILES_RE = re.compile(r"No such file or directory|Can't open '", re.I)
 _SERVICE_RE = re.compile(r"connection refused|couldn't connect to server", re.I)
 _SYNTAX_RE = re.compile(
@@ -108,6 +116,15 @@ def classify_run(
     if crash is not None and (
         code != 0 or (crash.tool == "UndefinedBehaviorSanitizer" and not plan.ubsan_fatal)
     ):
+        if (
+            crash.tool == "python"
+            and crash.error_type in _ENV_EXCEPTIONS
+            and top_project_frame(crash, files) is None
+        ):
+            # the PoC's own script lacks a file or module the sandbox does not have: not a finding
+            base.kind = "error_exit"
+            base.needs = _ENV_EXCEPTIONS[crash.error_type]
+            return base
         _fill(base, crash, files)
         return base
     if sig is not None:
@@ -123,6 +140,8 @@ def classify_run(
         base.needs = "tools"
     elif _SYNTAX_RE.search(base.output):
         base.needs = "syntax"
+    elif _FEATURE_RE.search(base.output):
+        base.needs = "feature"
     elif _FILES_RE.search(base.output):
         base.needs = "files"
     elif _SERVICE_RE.search(base.output):
@@ -135,7 +154,7 @@ def _fill(out: RunOutcome, crash: Crash, files: Collection[str]) -> None:
     top = top_project_frame(crash, files)
     if top is not None:
         frame, path = top
-        out.top_function, out.top_path, out.top_line = frame.function, path, frame.line
+        out.top_function, out.top_path, out.top_line = frame.function, path or None, frame.line
 
 
 def _combined(result: RunResult) -> str:
@@ -190,7 +209,7 @@ class ClaimsView:
         the report names with another error type than it claims. ``type_only`` means the type fits
         and the report names no place to compare with.
         """
-        if out.top_path is None:
+        if out.top_path is None and not out.top_function:
             return None
         type_claimed = bool(self.error_types)
         type_ok = bool(
@@ -202,7 +221,7 @@ class ClaimsView:
             return "function_and_type" if type_ok else "function_type_differs"
         if not type_ok:
             return None
-        if self.names_file(out.top_path):
+        if out.top_path and self.names_file(out.top_path):
             return "type_and_file"
         return "type_only" if not (self.files or self.functions) else None
 
@@ -228,6 +247,7 @@ _NEEDS_REASONS = {
         "or a source tree it expects to find."
     ),
     "service": "The PoC connects to a service that it does not start.",
+    "feature": "The PoC needs a protocol or feature that this build of the project does not include.",
 }
 
 _RANK = {
@@ -284,7 +304,7 @@ def decide_candidate(
             )
         if match is not None:
             return "reproduced", f"The claimed crash occurred in {n} of {n} runs.", match
-        if first.top_path is None:
+        if first.top_path is None and not first.top_function:
             return "crashed_elsewhere", "The crash is outside the project's own code.", None
         return "crashed_elsewhere", "The crash is not where the report places it.", None
     return "not_reproduced", f"No crash was observed in {n} runs.", None

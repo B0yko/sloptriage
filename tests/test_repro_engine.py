@@ -504,3 +504,60 @@ def test_a_sanitizer_that_cannot_start_on_this_host_is_an_environment_problem(pr
     assert out["verdict"] == "build_failed"
     assert "vm.mmap_rnd_bits" in out["reason"]
     assert "not of the report" in out["reason"]
+
+
+def test_a_python_error_about_a_missing_file_or_module_in_the_poc_is_not_a_crash(project) -> None:  # noqa: ANN001
+    for exc, part in (
+        ("FileNotFoundError: [Errno 2] No such file or directory: 'curl'", "file"),
+        ("ModuleNotFoundError: No module named 'requests'", "not installed"),
+    ):
+        text = (
+            "Traceback (most recent call last):\n"
+            '  File "/work/poc/poc.py", line 3, in <module>\n    run()\n' + exc + "\n"
+        )
+        out = run(project, Scripted([res(text, 1)]))
+        assert out["verdict"] == "poc_unsupported", exc
+        assert part in out["reason"]
+
+
+def test_a_python_error_inside_the_project_is_still_a_crash(project) -> None:  # noqa: ANN001
+    text = (
+        "Traceback (most recent call last):\n"
+        '  File "/work/poc/poc.py", line 3, in <module>\n    run()\n'
+        '  File "/usr/local/lib/python3.12/site-packages/src/header.c", line 2, in Curl_parse\n    x\n'
+        "FileNotFoundError: gone\n"
+    )
+    assert run(project, Scripted([res(text, 1)]))["verdict"] != "poc_unsupported"
+
+
+@pytest.mark.parametrize(
+    ("output", "reason_part"),
+    [
+        ("missing executable: /work/poc/build-poc/src/curl\n", "not installed"),
+        (
+            '* Protocol "sftp" not supported or disabled in libcurl\nrc=1 (Unsupported protocol)\n',
+            "feature",
+        ),
+    ],
+)
+def test_other_things_that_stop_a_poc_before_the_project_runs(
+    project,  # noqa: ANN001
+    output: str,
+    reason_part: str,
+) -> None:
+    out = run(project, Scripted([res(output, 1)]))
+    assert out["verdict"] == "poc_unsupported" and reason_part in out["reason"]
+
+
+def test_a_crash_in_an_installed_library_is_attributed_to_the_function_the_report_names(
+    project,  # noqa: ANN001
+) -> None:
+    text = (
+        "==1==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x1\n"
+        "    #0 0x1 in memcpy (/usr/lib/libc.so.6+0x1)\n"
+        "    #1 0x2 in pk_header_join (/opt/project/lib/libparsekit.so.1+0x23c7c) (BuildId: abc)\n"
+        "    #2 0x3 in main /work/poc/poc.c:9:3\n"
+    )
+    out = run(project, Scripted([res(text, 1)]))
+    assert out["verdict"] == "reproduced"
+    assert out["runs"][0]["top_frame"] == "pk_header_join" and out["runs"][0]["top_path"] is None

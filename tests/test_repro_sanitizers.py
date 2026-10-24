@@ -274,3 +274,41 @@ def test_hostile_lines_do_not_make_the_parser_slow() -> None:
     ):
         parse_output(text)
     assert time.monotonic() - started < 2.0
+
+
+SHARED_LIBRARY = """\
+poc.cpp:45:7: runtime error: applying non-zero offset 18446744073709551600 to null pointer
+    #0 0xc497293b06a0 in free_(void*) /work/poc/poc.cpp:45
+    #1 0xffb95b863c7c in Curl_initinfo (/opt/project/lib/libcurl.so.4+0x23c7c) (BuildId: b87d610d3f2bc1eeb1a21f70bed4bb68c4185960)
+    #2 0xffb95b85bcf8 in Curl_open (/opt/project/lib/libcurl.so.4+0x1bcf8) (BuildId: b87d610d3f2bc1eeb1a21f70bed4bb68c4185960)
+    #3 0xffb95b8665c4 in curl_easy_init (/opt/project/lib/libcurl.so.4+0x265c4) (BuildId: b87d610d3f2bc1eeb1a21f70bed4bb68c4185960)
+    #4 0xc497293b0a10 in main /work/poc/poc.cpp:60
+"""
+
+
+def test_frames_with_a_build_id_suffix_are_kept() -> None:
+    crash = parse_output(SHARED_LIBRARY)
+    assert crash is not None
+    assert [f.function for f in crash.frames][:4] == [
+        "free_",
+        "Curl_initinfo",
+        "Curl_open",
+        "curl_easy_init",
+    ]
+    assert crash.frames[1].module == "/opt/project/lib/libcurl.so.4+0x23c7c"
+
+
+def test_a_frame_in_an_installed_shared_library_counts_as_the_projects_own() -> None:
+    crash = parse_output(SHARED_LIBRARY)
+    assert crash is not None
+    top = top_project_frame(crash, {"lib/a.c"})
+    assert top is not None
+    frame, path = top
+    assert frame.function == "Curl_initinfo" and path == ""  # no source line is known
+
+
+def test_a_library_outside_the_install_prefix_is_not_the_projects() -> None:
+    text = "==1==ERROR: AddressSanitizer: SEGV on unknown address 0x0\n    #0 0x1 in memcpy (/usr/lib/libc.so.6+0x1)\n"
+    crash = parse_output(text)
+    assert crash is not None
+    assert top_project_frame(crash, {"lib/a.c"}) is None

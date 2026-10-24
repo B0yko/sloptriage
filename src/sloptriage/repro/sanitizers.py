@@ -43,7 +43,7 @@ _PY_FRAME_RE = re.compile(r'^\s*File "(?P<path>[^"]+)", line (?P<line>\d+), in (
 _PY_EXC_RE = re.compile(r"^(?P<exc>[A-Za-z_][\w.]*)(?::\s.*|:)?$")
 
 _FRAME_RE = re.compile(
-    r"^\s*#(?P<idx>\d+)\s+(?:0x[0-9a-fA-F]+\s+)?(?:in\s+)?(?P<func>[^\s(]+)?\s*"
+    r"^\s*#(?P<idx>\d+)\s+(?:0x[0-9a-fA-F]+\s+)?(?:in\s+)?(?P<func>[^\s(]+(?:\([^)]*\))?)?\s*"
     r"(?P<loc>[^\s()]+)?\s*(?:\((?P<mod>[^)]*)\))?\s*$"
 )
 _LOC_RE = re.compile(r"^(?P<path>.+?)(?::(?P<line>\d+))?(?::(?P<col>\d+))?$")
@@ -111,11 +111,16 @@ def _ubsan_type(msg: str) -> str:
     return _slug(" ".join(words)) or "undefined-behavior"
 
 
+_BUILD_ID_RE = re.compile(r"\s*\(BuildId: [0-9a-fA-F]+\)\s*$")
+
+
 def _parse_frame(line: str) -> Frame | None:
-    m = _FRAME_RE.match(line)
+    m = _FRAME_RE.match(_BUILD_ID_RE.sub("", line))
     if not m:
         return None
     func, loc, mod = m.group("func"), m.group("loc"), m.group("mod")
+    if func and "(" in func:  # a C++ signature such as free_(void*)
+        func = func.split("(", 1)[0] or None
     path: str | None = None
     lineno: int | None = None
     if func and func.startswith("("):  # "#3 0x... (/lib/x.so+0x1)" has no function name
@@ -289,10 +294,22 @@ def repo_path(
     return hits[0] if hits else None
 
 
-def top_project_frame(crash: Crash, files: Collection[str]) -> tuple[Frame, str] | None:
-    """The innermost frame that sits in the project's own source, with its repository path."""
+INSTALL_PREFIX = "/opt/project/"
+
+
+def top_project_frame(
+    crash: Crash, files: Collection[str], prefix: str = INSTALL_PREFIX
+) -> tuple[Frame, str] | None:
+    """The innermost frame that sits in the project, with its repository path.
+
+    A frame inside a shared library the project installed carries a function name but no source
+    line; it counts as the project's, with an empty path.
+    """
     for frame in crash.frames:
         mapped = repo_path(frame.path, files)
         if mapped:
             return frame, mapped
+        module = (frame.module or "").split("+", 1)[0]
+        if frame.function and module.startswith(prefix):
+            return frame, ""
     return None

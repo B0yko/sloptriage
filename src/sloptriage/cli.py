@@ -349,6 +349,15 @@ def build_parser() -> argparse.ArgumentParser:
     br.add_argument("--repo", default="https://github.com/curl/curl")
     br.add_argument("--jobs", type=int, default=0)
     br.add_argument("--out", help="where to write the per-report rows (JSON)")
+    brp = bsub.add_parser(
+        "repro", help="run the PoCs of real reports in the sandbox (needs Docker or Podman)"
+    )
+    brp.add_argument("--split", default="heldout", choices=("dev", "heldout", "all"))
+    brp.add_argument("--subset", default="both", choices=("valid", "slop", "both"))
+    brp.add_argument("--repo", default="https://github.com/curl/curl")
+    brp.add_argument("--limit", type=int, default=0, help="only the first N selected reports")
+    brp.add_argument("--hardware", default="unspecified")
+    brp.add_argument("--out", help="output path (default bench/results/repro-<date>.json)")
     bp = bsub.add_parser("report", help="aggregate rows into bench/results/<date>.json")
     bp.add_argument("rows", nargs="+", help="row files written by 'bench run'")
     bp.add_argument("--out", help="output path (default bench/results/<date>.json)")

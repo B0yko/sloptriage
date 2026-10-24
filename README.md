@@ -162,6 +162,7 @@ jobs:
 - **Labels** (configurable): `triage:refs-verified`, `triage:refs-thin`, `triage:refs-mixed`,
   `triage:refs-failed`, `triage:needs-version`, `triage:needs-poc`, `triage:reproduced`,
   `triage:not-reproduced`.
+- **A real comment**, posted by this workflow on a synthetic issue: [docs/example-comment.md](docs/example-comment.md).
 - **Comment policy:** by default sloptriage always labels and comments only for `refs_failed`,
   `refs_mixed`, `needs_version` and `needs_poc`. Set `comment.mode` to `label`, `comment` or `both`, and
   `comment.when` to the classes that get a comment (`always` for every report).

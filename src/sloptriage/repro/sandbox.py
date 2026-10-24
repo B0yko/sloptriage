@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import contextlib
 import io
 import re
 import subprocess
@@ -94,6 +95,19 @@ class ContainerSandbox:
         self.project, self.limits = _slug(project), limits
         self.progress = progress or (lambda _msg: None)
 
+    def image_tag(self, commit: str) -> str:
+        return f"sloptriage/{self.project}:{commit[:12]}-{recipe_hash(self.recipe)}"
+
+    def discard(self, commit: str) -> None:
+        """Remove the project image of one commit (the toolchain image is kept)."""
+        with contextlib.suppress(OSError, subprocess.TimeoutExpired):
+            subprocess.run(
+                [self.runtime.exe, "image", "rm", "-f", self.image_tag(commit)],
+                capture_output=True,
+                timeout=120,
+                check=False,
+            )
+
     def _manifests(self, commit: str) -> list[str]:
         if not self.recipe.python:
             return []
@@ -105,7 +119,7 @@ class ContainerSandbox:
 
     def ensure_image(self, commit: str, label: str) -> tuple[str | None, str | None]:
         rhash = recipe_hash(self.recipe)
-        tag = f"sloptriage/{self.project}:{commit[:12]}-{rhash}"
+        tag = self.image_tag(commit)
         if image_exists(self.runtime, tag):
             return tag, None
         requirements = self._manifests(commit)

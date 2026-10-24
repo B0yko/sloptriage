@@ -40,6 +40,19 @@ uv run python scripts/render_results.py           # README tables
 uv run python scripts/make_charts.py              # README chart
 ```
 
+```bash
+uv run sloptriage bench repro --split heldout --subset both \
+  --repo https://github.com/curl/curl --hardware "your machine"   # needs Docker or Podman
+```
+
+`bench repro` builds curl with sanitizers at each version the selected reports name and runs their PoCs in
+the sandbox ([reproduction](repro.md)). Two groups are tried: resolved reports of the chosen split that
+carry an inline C, C++ or shell PoC and name a version that maps to a release tag (`valid`), and reports on
+the curl maintainers' public list that carry such a PoC, in either split and with or without a version
+(`slop`; no version means the default branch as of the report date). The project image of each version is
+removed once its reports are done. `bench/results/repro-<date>.json` keeps, per report, only the id, group,
+split, era, the ref that was built and the verdict: no text, output, function names or build logs.
+
 `bench run` first resolves every report's version and indexes the commits it needs plus one tag per minor
 release, then checks the reports in parallel.
 

@@ -69,6 +69,63 @@ def bench_run(args: argparse.Namespace) -> int:
     return 0
 
 
+def bench_repro(args: argparse.Namespace) -> int:
+    from sloptriage.bench.manifest import ids_for_split, load_reports
+    from sloptriage.bench.repro import run_selected, select_subset, summarise_repro
+    from sloptriage.bench.run import _load, curl_config
+    from sloptriage.index.gitobj import open_repo
+    from sloptriage.repro.recipes import recipe_from_config
+    from sloptriage.repro.runtime import detect_runtime
+    from sloptriage.repro.sandbox import ContainerSandbox
+
+    cfg = curl_config()
+    repo = open_repo(args.repo)
+    runtime = detect_runtime(cfg.repro.runtime)
+    chosen = select_subset(
+        load_reports(),
+        _load,
+        repo,
+        cfg,
+        valid_ids=set(ids_for_split(args.split)),
+        subset=args.subset,
+    )
+    if args.limit:
+        chosen = chosen[: args.limit]
+    _log(
+        f"{len(chosen)} reports selected "
+        f"({sum(1 for s in chosen if s.group == 'valid')} valid, "
+        f"{sum(1 for s in chosen if s.group == 'slop')} listed); building curl in {runtime.name}"
+    )
+    sandbox = ContainerSandbox(
+        runtime,
+        repo,
+        recipe_from_config(cfg.repro, cfg.project),
+        cfg.project,
+        cfg.repro.limits,
+        _log,
+    )
+    rows = run_selected(chosen, repo, cfg, sandbox, split=args.split, log=_log)
+    doc = {
+        "schema": "sloptriage-bench-repro/1",
+        "date": date.today().isoformat(),
+        "tool_version": __version__,
+        "hardware": args.hardware,
+        "project": "curl",
+        "freeze_commit": FREEZE_COMMIT,
+        "valid_split": args.split,
+        "subset": args.subset,
+        "summary": summarise_repro(rows),
+        "rows": rows,
+    }
+    out = Path(args.out) if args.out else Path("bench/results") / f"repro-{doc['date']}.json"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(doc, indent=1) + "\n", encoding="utf-8")
+    for group, s in doc["summary"].items():
+        print(f"{group}: {s['reproduced']['k']} of {s['attempted']} reproduced; {s['by_verdict']}")
+    print(f"wrote {out}")
+    return 0
+
+
 def bench_report(args: argparse.Namespace) -> int:
     from sloptriage.bench.report import summarise
     from sloptriage.config import Thresholds
@@ -106,4 +163,6 @@ def bench_main(args: argparse.Namespace) -> int:
         return bench_fetch(args.split)
     if args.bench_command == "run":
         return bench_run(args)
+    if args.bench_command == "repro":
+        return bench_repro(args)
     return bench_report(args)

@@ -351,6 +351,32 @@ def test_a_poc_that_needs_a_tool_the_image_lacks_is_unsupported_not_clean(projec
         assert "not installed" in out["reason"]
 
 
+@pytest.mark.parametrize(
+    ("output", "reason_part"),
+    [
+        ("curl: Can't open 'payload.bin'\ncurl: (26) Failed to read data\n", "file"),
+        ("./poc.sh: line 10: ./build/src/curl: No such file or directory\n", "file"),
+        ("curl: (7) Failed to connect to localhost port 4433: Connection refused\n", "service"),
+        ("curl: (7) Couldn't connect to server\n", "service"),
+        ("./poc.sh: line 1: syntax error near unexpected token `('\n", "runnable"),
+        ("[!] missing required command: cmake\n", "not installed"),
+    ],
+)
+def test_a_poc_that_cannot_run_as_given_is_unsupported_with_a_reason(
+    project,  # noqa: ANN001
+    output: str,
+    reason_part: str,
+) -> None:
+    out = run(project, Scripted([res(output, 1)]))
+    assert out["verdict"] == "poc_unsupported", output
+    assert reason_part in out["reason"]
+
+
+def test_a_missing_file_message_does_not_hide_a_crash(project) -> None:  # noqa: ANN001
+    text = "cat: x: No such file or directory\n" + ASAN
+    assert run(project, Scripted([res(text, 1)]))["verdict"] == "reproduced"
+
+
 def test_a_crash_wins_over_a_missing_tool_message(project) -> None:  # noqa: ANN001
     text = "./poc.sh: line 2: nc: command not found\n" + ASAN
     assert run(project, Scripted([res(text, 1)]))["verdict"] == "reproduced"

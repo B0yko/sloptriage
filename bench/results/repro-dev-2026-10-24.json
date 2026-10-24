@@ -1,0 +1,222 @@
+{
+ "schema": "sloptriage-bench-repro/1",
+ "date": "2026-10-24",
+ "tool_version": "0.1.0",
+ "hardware": "Mac Studio M4 Max, 128 GB",
+ "project": "curl",
+ "freeze_commit": "c33cdd95c06913bb2bbf6c90dede70e91726b5a6",
+ "valid_split": "dev",
+ "subset": "valid",
+ "summary": {
+  "valid": {
+   "attempted": 12,
+   "by_verdict": {
+    "not_reproduced": 8,
+    "crashed_elsewhere": 1,
+    "build_failed": 1,
+    "poc_build_failed": 1,
+    "timeout": 1
+   },
+   "reproduced": {
+    "k": 0,
+    "n": 12,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.242494
+    ]
+   },
+   "buildable": {
+    "k": 0,
+    "n": 11,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.258833
+    ]
+   },
+   "reproduced_ids": []
+  },
+  "slop": {
+   "attempted": 0,
+   "by_verdict": {},
+   "reproduced": {
+    "k": 0,
+    "n": 0,
+    "rate": null,
+    "ci95": [
+     0.0,
+     1.0
+    ]
+   },
+   "buildable": {
+    "k": 0,
+    "n": 0,
+    "rate": null,
+    "ci95": [
+     0.0,
+     1.0
+    ]
+   },
+   "false_reproductions": []
+  }
+ },
+ "rows": [
+  {
+   "id": 3751697,
+   "group": "valid",
+   "split": "dev",
+   "era": "post2023",
+   "slop_list": false,
+   "ref": "71b7e01610",
+   "ref_assumed": false,
+   "verdict": "not_reproduced",
+   "runner": "shell",
+   "match": null,
+   "runs": 9
+  },
+  {
+   "id": 3294999,
+   "group": "valid",
+   "split": "dev",
+   "era": "post2023",
+   "slop_list": false,
+   "ref": "89490b16c736",
+   "ref_assumed": false,
+   "verdict": "crashed_elsewhere",
+   "runner": "python+shell",
+   "match": null,
+   "runs": 3
+  },
+  {
+   "id": 1223882,
+   "group": "valid",
+   "split": "dev",
+   "era": "pre2023",
+   "slop_list": false,
+   "ref": "curl-7_77_0",
+   "ref_assumed": false,
+   "verdict": "build_failed",
+   "runner": null,
+   "match": null,
+   "runs": 0
+  },
+  {
+   "id": 3797526,
+   "group": "valid",
+   "split": "dev",
+   "era": "post2023",
+   "slop_list": false,
+   "ref": "curl-8_14_0",
+   "ref_assumed": false,
+   "verdict": "not_reproduced",
+   "runner": "shell",
+   "match": null,
+   "runs": 3
+  },
+  {
+   "id": 3694390,
+   "group": "valid",
+   "split": "dev",
+   "era": "post2023",
+   "slop_list": false,
+   "ref": "curl-8_17_0",
+   "ref_assumed": false,
+   "verdict": "not_reproduced",
+   "runner": "shell",
+   "match": null,
+   "runs": 9
+  },
+  {
+   "id": 3754343,
+   "group": "valid",
+   "split": "dev",
+   "era": "post2023",
+   "slop_list": false,
+   "ref": "curl-8_20_0",
+   "ref_assumed": false,
+   "verdict": "not_reproduced",
+   "runner": "shell",
+   "match": null,
+   "runs": 3
+  },
+  {
+   "id": 3783438,
+   "group": "valid",
+   "split": "dev",
+   "era": "post2023",
+   "slop_list": false,
+   "ref": "curl-8_20_0",
+   "ref_assumed": false,
+   "verdict": "not_reproduced",
+   "runner": "shell",
+   "match": null,
+   "runs": 6
+  },
+  {
+   "id": 3916059,
+   "group": "valid",
+   "split": "dev",
+   "era": "post2023",
+   "slop_list": false,
+   "ref": "curl-8_21_0",
+   "ref_assumed": false,
+   "verdict": "poc_build_failed",
+   "runner": "c",
+   "match": null,
+   "runs": 1
+  },
+  {
+   "id": 4022070,
+   "group": "valid",
+   "split": "dev",
+   "era": "post2023",
+   "slop_list": false,
+   "ref": "curl-8_22_0",
+   "ref_assumed": false,
+   "verdict": "not_reproduced",
+   "runner": "shell",
+   "match": null,
+   "runs": 3
+  },
+  {
+   "id": 4022568,
+   "group": "valid",
+   "split": "dev",
+   "era": "post2023",
+   "slop_list": false,
+   "ref": "curl-8_22_0",
+   "ref_assumed": false,
+   "verdict": "not_reproduced",
+   "runner": "shell",
+   "match": null,
+   "runs": 3
+  },
+  {
+   "id": 3972403,
+   "group": "valid",
+   "split": "dev",
+   "era": "post2023",
+   "slop_list": false,
+   "ref": "curl-8_6_0",
+   "ref_assumed": false,
+   "verdict": "not_reproduced",
+   "runner": "shell",
+   "match": null,
+   "runs": 3
+  },
+  {
+   "id": 3793260,
+   "group": "valid",
+   "split": "dev",
+   "era": "post2023",
+   "slop_list": false,
+   "ref": "curl-8_7_1",
+   "ref_assumed": false,
+   "verdict": "timeout",
+   "runner": "python",
+   "match": null,
+   "runs": 4
+  }
+ ]
+}

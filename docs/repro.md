@@ -44,7 +44,7 @@ sloptriage check report.md --repo . --repro  # your own project (needs repro.bui
 | `flaky` | some runs crashed and some did not, or the crashes differed |
 | `poc_build_failed` | the C or C++ PoC did not compile against the project; the compiler output is in the card |
 | `poc_missing` | no PoC in the report text or attachments |
-| `poc_unsupported` | an unsupported language, a disabled runner, an input file with no harness, a commit that is not eligible, or a PoC that needs the real network, a display or a command that is not installed in the image (recognised from name-resolution, unreachable-network, no-display and "command not found" failures) |
+| `poc_unsupported` | an unsupported language, a disabled runner, an input file with no harness, a commit that is not eligible, or a PoC that could not run as given: it needs the real network, a display, a command that is not installed in the image, a file that is not in the report text (attachments of public HackerOne reports are not downloaded) or a source tree, or a service it does not start, or the block is not a runnable script (recognised from name-resolution, unreachable-network, no-display, "command not found", "No such file", "connection refused" and shell syntax failures; a crash always wins over these) |
 | `build_failed` | the project could not be built in the sandbox: a limit of the build recipe, never the reporter's fault |
 | `timeout` | the PoC did not finish within `repro.limits.timeout`, or printed more output than the limit and was stopped |
 

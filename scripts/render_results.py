@@ -74,7 +74,58 @@ def headline(res: dict[str, Any]) -> str:
     )
 
 
-def section(res: dict[str, Any], lat: dict[str, Any], syn: dict[str, Any]) -> str:
+REPRO_COLUMNS = (
+    "reproduced",
+    "not_reproduced",
+    "crashed_elsewhere",
+    "poc_unsupported",
+    "poc_build_failed",
+    "build_failed",
+)
+
+
+def repro_lines(doc: dict[str, Any]) -> list[str]:
+    """The reproduction table for real reports, from bench/results/repro-<date>.json."""
+    s = doc["summary"]
+    lines = [
+        f"**Reproduction on real curl reports** (`sloptriage bench repro`, {doc['date']}, {doc['hardware']})",
+        "",
+        "| Reports tried | Tried | " + " | ".join(f"`{c}`" for c in REPRO_COLUMNS) + " | other |",
+        "|---|---|" + "---|" * (len(REPRO_COLUMNS) + 1),
+    ]
+    names = {
+        "valid": "resolved held-out reports with an inline C or shell PoC and a named version",
+        "slop": "reports on the maintainers' public list with a PoC, any split, any version",
+    }
+    for key in ("valid", "slop"):
+        g = s[key]
+        by = g["by_verdict"]
+        other = g["attempted"] - sum(by.get(c, 0) for c in REPRO_COLUMNS)
+        cells = " | ".join(str(by.get(c, 0)) for c in REPRO_COLUMNS)
+        lines.append(f"| {names[key]} | {g['attempted']} | {cells} | {other} |")
+    v, sl = s["valid"], s["slop"]
+    lines += [
+        "",
+        f"Reproduction rate on the resolved reports: {pct(v['reproduced'])}; leaving out the reports whose "
+        f"curl could not be built or run: {pct(v['buildable'])}. Reproduced: "
+        + (", ".join(f"[#{i}](https://hackerone.com/reports/{i})" for i in v["reproduced_ids"]) or "none")
+        + f". False reproductions on the listed reports (target 0): {pct(sl['reproduced'])}"
+        + (
+            ": " + ", ".join(f"[#{i}](https://hackerone.com/reports/{i})" for i in sl["false_reproductions"])
+            if sl["false_reproductions"]
+            else "."
+        ),
+        "",
+    ]
+    return lines
+
+
+def section(
+    res: dict[str, Any],
+    lat: dict[str, Any],
+    syn: dict[str, Any],
+    repro: dict[str, Any] | None = None,
+) -> str:
     h = res["splits"]["heldout"]
     d = res["splits"]["dev"]
     era = h["by_era"]
@@ -127,6 +178,7 @@ def section(res: dict[str, Any], lat: dict[str, Any], syn: dict[str, Any]) -> st
         "Reports whose only fault is the PoC (it overflows its own buffer, never calls the library or uses a normal",
         "input) cite code that exists, so the reference check does not flag them; running the PoC (see Reproduction below) does.",
         "",
+        *(repro_lines(repro) if repro else []),
         "**Latency**",
         "",
         f"Cold index of `{lat['cold_index']['tag']}`: {lat['cold_index']['seconds']:.1f} s. Checking each of the "
@@ -157,8 +209,10 @@ def main() -> int:
     res = json.loads(latest("2*.json").read_text())
     lat = json.loads(latest("latency-*.json").read_text())
     syn = synthetic()
+    repro_files = sorted((ROOT / "bench" / "results").glob("repro-2*.json"))
+    repro = json.loads(repro_files[-1].read_text()) if repro_files else None
     text = README.read_text(encoding="utf-8")
-    new = splice(text, START, END, section(res, lat, syn))
+    new = splice(text, START, END, section(res, lat, syn, repro))
     new = splice(new, HEAD_START, HEAD_END, headline(res))
     if "--check" in sys.argv:
         if new != text:

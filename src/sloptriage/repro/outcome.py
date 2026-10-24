@@ -26,7 +26,14 @@ _NETWORK_RE = re.compile(
 _SANITIZER_START_RE = re.compile(
     r"shadow memory range interleaves|asan cannot proceed correctly|unexpected memory mapping", re.I
 )
-_TOOLS_RE = re.compile(r"command not found\s*$|^\S+: \d+: \S+: not found\s*$", re.M)
+_TOOLS_RE = re.compile(
+    r"command not found\s*$|^\S+: \d+: \S+: not found\s*$|missing required command", re.M | re.I
+)
+_FILES_RE = re.compile(r"No such file or directory|Can't open '", re.I)
+_SERVICE_RE = re.compile(r"connection refused|couldn't connect to server", re.I)
+_SYNTAX_RE = re.compile(
+    r"syntax error near unexpected token|unexpected EOF while looking for", re.I
+)
 _DISPLAY_RE = re.compile(
     r"cannot open display|no display name and no \$display|unable to open display", re.I
 )
@@ -114,6 +121,12 @@ def classify_run(
         base.needs = "display"
     elif _TOOLS_RE.search(base.output):
         base.needs = "tools"
+    elif _SYNTAX_RE.search(base.output):
+        base.needs = "syntax"
+    elif _FILES_RE.search(base.output):
+        base.needs = "files"
+    elif _SERVICE_RE.search(base.output):
+        base.needs = "service"
     return base
 
 
@@ -207,6 +220,16 @@ class Decision:
     match: str | None = None
 
 
+_NEEDS_REASONS = {
+    "tools": "The PoC uses a command that is not installed in the sandbox image.",
+    "syntax": "The block is not a runnable shell script.",
+    "files": (
+        "The PoC uses a file that is not part of the report text (attachments are not downloaded) "
+        "or a source tree it expects to find."
+    ),
+    "service": "The PoC connects to a service that it does not start.",
+}
+
 _RANK = {
     "reproduced": 0,
     "crashed_elsewhere": 1,
@@ -284,11 +307,8 @@ def decide(
                 )
             elif hint == "display":
                 verdict, reason = "poc_unsupported", "The PoC needs a display; none is available."
-            elif hint == "tools":
-                verdict, reason = (
-                    "poc_unsupported",
-                    ("The PoC uses a command that is not installed in the sandbox image."),
-                )
+            elif hint in _NEEDS_REASONS:
+                verdict, reason = "poc_unsupported", _NEEDS_REASONS[hint]
         d = Decision(verdict, reason, cand, outcomes, match)
         if best is None or _RANK[d.verdict] < _RANK[best.verdict]:
             best = d

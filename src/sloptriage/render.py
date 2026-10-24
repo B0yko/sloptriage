@@ -549,7 +549,7 @@ def repro_sentence(verdict: dict[str, Any]) -> str:
     if kind == "poc_missing":
         return "No PoC was found in the report text or attachments, so nothing was run."
     if kind == "poc_unsupported":
-        return f"The PoC was not run. {clean(repro.get('reason', ''), 200)}"
+        return f"The PoC could not be tested. {clean(repro.get('reason', ''), 200)}"
     return (
         f"{project} at {ref} could not be built or run in the sandbox. This comes from the check's "
         "environment or build recipe, not from the report."

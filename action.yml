@@ -45,6 +45,13 @@ runs:
         fi
         uv run --locked --no-dev --quiet --project "$SLOPTRIAGE_SOURCE" sloptriage "${args[@]}"
 
+    - name: Leave room for the sanitizer's shadow memory
+      if: inputs.mode == 'repro' && runner.os == 'Linux' && runner.environment == 'github-hosted'
+      shell: bash
+      run: |
+        # GitHub-hosted kernels randomise mappings too widely for AddressSanitizer to start in a container.
+        sudo sysctl -w vm.mmap_rnd_bits=28 || true
+
     - name: Check the report and run its PoC in a sandbox
       if: inputs.mode == 'repro'
       shell: bash

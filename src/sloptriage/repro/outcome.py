@@ -23,6 +23,9 @@ _NETWORK_RE = re.compile(
     r"network is unreachable|no route to host|nodename nor servname|getaddrinfo\(\) thread failed",
     re.I,
 )
+_SANITIZER_START_RE = re.compile(
+    r"shadow memory range interleaves|asan cannot proceed correctly|unexpected memory mapping", re.I
+)
 _DISPLAY_RE = re.compile(
     r"cannot open display|no display name and no \$display|unable to open display", re.I
 )
@@ -80,6 +83,11 @@ def classify_run(
         raise ReproError("the sandbox could not unpack the PoC files")
     if "compile-failed" in seen:
         base.kind = "compile_failed"
+        return base
+    if _SANITIZER_START_RE.search(base.output):
+        # The kernel's address-space randomisation leaves no room for the sanitizer's shadow memory.
+        # Every PoC would fail the same way, so this says nothing about the report.
+        base.kind = "sanitizer_unavailable"
         return base
     if result.oom:
         base.kind = "oom"
@@ -204,6 +212,7 @@ _RANK = {
     "not_reproduced": 4,
     "poc_build_failed": 5,
     "poc_unsupported": 6,
+    "build_failed": 7,
 }
 
 
@@ -216,6 +225,14 @@ def decide_candidate(
 ) -> tuple[str, str, str | None]:
     n = len(outcomes)
     kinds = [o.kind for o in outcomes]
+    if "sanitizer_unavailable" in kinds:
+        return (
+            "build_failed",
+            "The sanitizer runtime could not start on this host: its address-space randomisation is "
+            "too high (try `sudo sysctl -w vm.mmap_rnd_bits=28`). This is a limit of the environment, "
+            "not of the report.",
+            None,
+        )
     if all(k == "compile_failed" for k in kinds):
         return "poc_build_failed", "The PoC did not compile against the project.", None
     if "flood" in kinds:

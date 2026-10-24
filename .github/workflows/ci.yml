@@ -48,6 +48,8 @@ jobs:
         with:
           persist-credentials: false
       - uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
+      - name: Leave room for the sanitizer's shadow memory
+        run: sudo sysctl -w vm.mmap_rnd_bits=28
       - run: uv sync --locked
       - run: uv run pytest -q -m docker
       - name: Run the demo PoCs from an installed wheel

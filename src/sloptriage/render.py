@@ -551,8 +551,8 @@ def repro_sentence(verdict: dict[str, Any]) -> str:
     if kind == "poc_unsupported":
         return f"The PoC was not run. {clean(repro.get('reason', ''), 200)}"
     return (
-        f"{project} at {ref} could not be built in the sandbox. This comes from the check's build "
-        "recipe, not from the report."
+        f"{project} at {ref} could not be built or run in the sandbox. This comes from the check's "
+        "environment or build recipe, not from the report."
     )
 
 

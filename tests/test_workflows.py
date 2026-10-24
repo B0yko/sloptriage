@@ -175,3 +175,11 @@ def test_readme_action_snippet_matches_the_example_workflow() -> None:
     snippet = section.split("```yaml\n", 1)[1].split("```", 1)[0]
     example = yaml.safe_load((ROOT / "examples" / "workflows" / "triage-issues.yml").read_text())
     assert yaml.safe_load(snippet) == example
+
+
+def test_repro_mode_lowers_address_randomisation_only_on_github_hosted_linux() -> None:
+    doc = yaml.safe_load((ROOT / "action.yml").read_text())
+    step = next(s for s in doc["runs"]["steps"] if "vm.mmap_rnd_bits" in s.get("run", ""))
+    assert "inputs.mode == 'repro'" in step["if"]
+    assert "runner.os == 'Linux'" in step["if"]
+    assert "github-hosted" in step["if"]

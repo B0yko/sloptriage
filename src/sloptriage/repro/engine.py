@@ -168,7 +168,7 @@ def run_reproduction(
             result = sandbox.run(image, plan, conf.limits)
             outcome = classify_run(result, plan, files, cand.index)
             outcomes.append(outcome)
-            if outcome.kind in ("compile_failed", "timeout", "flood"):
+            if outcome.kind in ("compile_failed", "timeout", "flood", "sanitizer_unavailable"):
                 break
         ran.append((cand, outcomes))
     decision = decide(ran, skipped, view)

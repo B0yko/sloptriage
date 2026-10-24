@@ -25,6 +25,10 @@ runs on `issues: [opened, edited]`:
 | `repro` (optional) | none (`permissions: {}`) | none | checks out the repository, builds the release the report names with sanitizers and runs the PoC in a hardened container on the runner's Docker (`mode: repro`), uploads its own `verdict.json` as `verdict-repro` |
 | `report` | `issues: write` | `github.token` only | downloads the verdicts, uses the one from `repro` when that job succeeded, validates it against `schemas/verdict-v1.json`, renders the card, posts or updates one comment and the labels |
 
+In `repro` mode on a GitHub-hosted Linux runner the action first runs `sudo sysctl -w vm.mmap_rnd_bits=28`,
+which leaves room for AddressSanitizer's shadow memory; on a self-hosted runner it changes nothing, so set
+that value on the host if the card says the sanitizer could not start.
+
 The `check` job always passes `--no-repro`, so a project whose `.sloptriage.yml` sets `repro.enabled` still
 runs no PoC there. The `repro` job needs a build recipe in the configuration ([Reproduction](repro.md)) and
 takes a few minutes on a cold cache; delete the job (and `repro` from `needs:` in `report`) to check

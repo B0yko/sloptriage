@@ -171,6 +171,10 @@ UndefinedBehaviorSanitizer in the sandbox, and `curl --version` and a small libc
   check; the card shows the output so a person can read it.
 - The first build of a project is slow (a toolchain image, then the project with sanitizers). Later runs on
   the same commit reuse the images.
+- On a Linux host whose kernel randomises memory mappings very widely (`vm.mmap_rnd_bits` above 28 on x86-64,
+  the default on recent GitHub-hosted runners), the sanitizer runtime can fail to start inside any container,
+  because containers share the host kernel. The result is `build_failed` with the fix in its reason:
+  `sudo sysctl -w vm.mmap_rnd_bits=28`. The Action's `repro` mode does this on GitHub-hosted runners.
 - An out-of-memory kill is always `crashed_elsewhere`, even when the report claims memory exhaustion.
 - If the tool is killed abruptly, a container can outlive it for at most the time limit plus 15 s (the
   watchdog inside it). Leftovers carry the label: `docker rm -f -v $(docker ps -aq --filter label=sloptriage=1)`.

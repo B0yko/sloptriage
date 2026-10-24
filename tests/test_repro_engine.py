@@ -451,3 +451,14 @@ def test_a_poc_larger_than_the_limit_is_unsupported_not_an_error(
     huge = "int main(void) { return 0; }\n/* " + "x" * 400 + " */\n"
     out = run(project, Scripted([res()]), text=f"PoC:\n\n```c\n{huge}```\n")
     assert out["verdict"] == "poc_unsupported" and "larger" in out["reason"]
+
+
+def test_a_sanitizer_that_cannot_start_on_this_host_is_an_environment_problem(project) -> None:  # noqa: ANN001
+    msg = (
+        "==1==Shadow memory range interleaves with an existing memory mapping. "
+        "ASan cannot proceed correctly. ABORTING.\n"
+    )
+    out = run(project, Scripted([res(msg, 1)]))
+    assert out["verdict"] == "build_failed"
+    assert "vm.mmap_rnd_bits" in out["reason"]
+    assert "not of the report" in out["reason"]

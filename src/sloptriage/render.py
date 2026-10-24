@@ -63,6 +63,18 @@ def fenced(text: str, max_lines: int = MAX_OUTPUT_LINES, width: int = 200) -> st
     return f"{fence}text\n{body}\n{fence}"
 
 
+def defang(text: str) -> str:
+    """Make output that a PoC printed inert: no live links, images or tags, even in code."""
+    text = re.sub(r"(?i)\b(https?|ftp)://", lambda m: f"{m.group(1)}[:]//", text)
+    text = text.replace("![", "!\u200b[")
+    return re.sub(r"<(?=[A-Za-z/!?])", "<\u200b", text)
+
+
+def rcode(text: str, limit: int = 80) -> str:
+    """:func:`code` for a string that came out of a PoC run."""
+    return code(defang(text), limit)
+
+
 def _project_link(verdict: dict[str, Any], url: str) -> bool:
     repo = (verdict.get("project") or {}).get("repository") or ""
     m = re.match(r"^https://github\.com/([\w.-]+)/([\w.-]+?)(?:\.git)?/?$", repo)
@@ -82,7 +94,9 @@ def _claim_value(c: Claim) -> str:
     return str(c.value)
 
 
-def build_verdict(result: CheckResult, cfg: Config) -> dict[str, Any]:
+def build_verdict(
+    result: CheckResult, cfg: Config, reproduction: dict[str, Any] | None = None
+) -> dict[str, Any]:
     agg = result.aggregate
     res = result.resolution
     claims = []
@@ -150,7 +164,7 @@ def build_verdict(result: CheckResult, cfg: Config) -> dict[str, Any]:
         },
         "claims": claims,
         "chain": chain,
-        "reproduction": None,  # reserved: PoCs are not run in this version
+        "reproduction": reproduction,
         "needs": need,
         "labels": [],
         "comment": False,
@@ -188,7 +202,17 @@ def labels_for(verdict: dict[str, Any], cfg: Config) -> list[str]:
     out = [names[verdict["references"]["class"]]] if verdict["references"]["class"] in names else []
     for need in verdict.get("needs", []):
         out.append(names[need])
+    key = _repro_key(verdict)
+    if key:
+        out.append(names[key])
     return out
+
+
+def _repro_key(verdict: dict[str, Any]) -> str | None:
+    repro = verdict.get("reproduction")
+    return {"reproduced": "reproduced", "not_reproduced": "not_reproduced"}.get(
+        repro["verdict"] if repro else ""
+    )
 
 
 def should_comment(verdict: dict[str, Any], cfg: Config) -> bool:
@@ -197,7 +221,12 @@ def should_comment(verdict: dict[str, Any], cfg: Config) -> bool:
     when = set(cfg.comment.when)
     if "always" in when:
         return True
-    return verdict["references"]["class"] in when or bool(when & set(verdict.get("needs", [])))
+    key = _repro_key(verdict)
+    return (
+        verdict["references"]["class"] in when
+        or bool(when & set(verdict.get("needs", [])))
+        or (key is not None and key in when)
+    )
 
 
 def validate_verdict(verdict: Any) -> None:
@@ -453,6 +482,96 @@ def _help_lines(verdict: dict[str, Any]) -> list[str]:
     ]
 
 
+# -- reproduction ----------------------------------------------------------------------------
+_CRASHED = ("crash", "oom")
+
+
+def _repro_runs(repro: dict[str, Any]) -> tuple[list[dict[str, Any]], dict[str, Any] | None]:
+    runs: list[dict[str, Any]] = repro.get("runs") or []
+    chosen = repro.get("candidate")
+    if chosen is None:  # a verdict without the field: the candidate with the first crash
+        first = next((r for r in runs if r["outcome"] in _CRASHED), runs[0] if runs else None)
+        chosen = first.get("candidate") if first else None
+    mine = [r for r in runs if r.get("candidate") == chosen]
+    crash = next((r for r in mine if r["outcome"] in _CRASHED), None)
+    return mine, crash
+
+
+def repro_sentence(verdict: dict[str, Any]) -> str:
+    """One neutral sentence about the sandboxed run; names are code spans."""
+    repro = verdict["reproduction"]
+    kind = repro["verdict"]
+    project = clean(verdict["project"]["name"], 60)
+    ref = _ref(verdict)
+    mine, crash = _repro_runs(repro)
+    n = len(mine)
+    k = sum(1 for r in mine if r["outcome"] in _CRASHED)
+    where = ""
+    if crash and crash.get("top_frame"):
+        where = f" in {rcode(crash['top_frame'] + '()')}"
+        if crash.get("top_path"):
+            where += f" ({rcode(crash['top_path'])})"
+    what = rcode(crash["error_type"]) if crash and crash.get("error_type") else "a crash"
+    sandbox = f"in a sandbox built from {project} at {ref}"
+    if kind == "reproduced":
+        tail = {
+            "function": "It is in a function the report names.",
+            "function_type_differs": "It is in a function the report names, with a different "
+            "error type than the report claims.",
+            "type_only": "The error type is the one the report claims; the report names no place "
+            "to compare.",
+        }.get(repro.get("match") or "", "This matches what the report describes.")
+        return f"Running the PoC {sandbox}, {what} occurred{where} in {k} of {n} runs. {tail}"
+    if kind == "crashed_elsewhere":
+        if crash and crash["outcome"] == "oom":
+            return (
+                f"Running the PoC {sandbox}, it was stopped for exceeding the memory limit. "
+                "That is not the crash the report describes."
+            )
+        place = where or " outside the project's own code"
+        return (
+            f"Running the PoC {sandbox}, {what} occurred{place} in {k} of {n} runs. "
+            "This differs from what the report describes."
+        )
+    if kind == "not_reproduced":
+        return (
+            f"The PoC ran {n} times {sandbox} without a crash. This does not show that the problem "
+            "is absent: it may need a different build, input or environment."
+        )
+    if kind == "flaky":
+        return (
+            f"The PoC ended in a crash in {k} of {n} runs {sandbox}, so the result is not stable."
+        )
+    if kind == "timeout":
+        return f"The PoC did not finish within the time limit {sandbox} and was stopped."
+    if kind == "poc_build_failed":
+        return f"The PoC did not compile against {project} at {ref}; the compiler output is below."
+    if kind == "poc_missing":
+        return "No PoC was found in the report text or attachments, so nothing was run."
+    if kind == "poc_unsupported":
+        return f"The PoC was not run. {clean(repro.get('reason', ''), 200)}"
+    return (
+        f"{project} at {ref} could not be built in the sandbox. This comes from the check's build "
+        "recipe, not from the report."
+    )
+
+
+def _repro_markdown(verdict: dict[str, Any]) -> list[str]:
+    repro = verdict.get("reproduction")
+    if not repro:
+        return []
+    out = [f"**Reproduction**: {repro_sentence(verdict)}"]
+    excerpt = (repro.get("output_excerpt") or "").strip()
+    if excerpt:
+        title = (
+            "Sanitizer output"
+            if repro["verdict"] in ("reproduced", "crashed_elsewhere", "flaky")
+            else "Output"
+        )
+        out += ["", f"{title}:", "", fenced(defang(excerpt))]
+    return out
+
+
 # -- formats ---------------------------------------------------------------------------
 def _evidence(verdict: dict[str, Any], finding: dict[str, Any]) -> str:
     links = [u for u in finding.get("evidence", []) if _project_link(verdict, u)]
@@ -503,6 +622,9 @@ def render_markdown(verdict: dict[str, Any]) -> str:
             f"Call chain: the caller's code does not mention the callee for {names}. Inlining, macros and function pointers can explain this, so it is informational only.",
             "",
         ]
+    repro_lines = _repro_markdown(verdict)
+    if repro_lines:
+        parts += [*repro_lines, ""]
     help_lines = _help_lines(verdict)
     if help_lines:
         parts += [*help_lines, ""]
@@ -540,6 +662,11 @@ def render_text(verdict: dict[str, Any], *, max_ok: int = 3) -> str:
         lines.append(
             f"  ✓ and {len(ok) - max_ok} more cited items were found (--format md lists all with links)"
         )
+    if verdict.get("reproduction"):
+        lines.append("")
+        lines.append("Reproduction: " + plain(repro_sentence(verdict)))
+        excerpt = (verdict["reproduction"].get("output_excerpt") or "").strip().splitlines()
+        lines += [f"    {clean(defang(ln), 160)}" for ln in excerpt[:8]]
     lines.append("")
     lines.append(
         f"class: {verdict['references']['class']}   labels: {', '.join(verdict['labels']) or '-'}"
@@ -575,6 +702,9 @@ def render_preflight(verdict: dict[str, Any]) -> str:
         out.append("  [ ] Add a minimal reproducer (command, small program or input file).")
     if verdict["references"]["class"] == "refs_none":
         out.append("  [ ] Name the file, function and line where the problem happens.")
+    if verdict.get("reproduction"):
+        done = verdict["reproduction"]["verdict"] == "reproduced"
+        out.append(f"  [{'x' if done else ' '}] Reproduction: {plain(repro_sentence(verdict))}")
     out.append("")
     out.append(
         "This checks that your references match the code. It cannot tell whether the issue is real."

@@ -11,3 +11,14 @@ paths:
   ignore: []
 symbols:
   external: []
+# Reproduction (opt-in: sloptriage check --repro). The release tag is built with AddressSanitizer and
+# UndefinedBehaviorSanitizer and OpenSSL as the TLS backend (libssl-dev; built and run cleanly for
+# curl-8_10_1), then the report's PoC runs in a container with no network. Reports that need a real
+# server or the internet are reported as unsupported. curl has no `configure` in git, so it is generated.
+repro:
+  build:
+    preset: autotools-asan
+    packages: [libssl-dev, zlib1g-dev]
+    configure:
+      - if [ ! -x ./configure ]; then autoreconf -fi; fi
+      - ./configure --prefix=/opt/project --with-openssl --without-libpsl --disable-docs --disable-manual

@@ -92,6 +92,21 @@ def _load_report(args: argparse.Namespace) -> Any:
         raise UsageError(str(exc)) from exc
 
 
+def _wants_repro(args: argparse.Namespace, cfg: Any) -> bool:
+    if getattr(args, "no_repro", False):
+        return False
+    return bool(getattr(args, "repro", False) or cfg.repro.enabled)
+
+
+def _require_runtime(cfg: Any) -> None:
+    from sloptriage.repro.runtime import RuntimeUnavailable, detect_runtime
+
+    try:
+        detect_runtime(cfg.repro.runtime)
+    except RuntimeUnavailable as exc:
+        raise InfraError(str(exc)) from exc
+
+
 def _run_check(args: argparse.Namespace) -> tuple[dict[str, Any], Any]:
     from sloptriage.index import IndexSet
     from sloptriage.index.gitobj import GitError
@@ -99,6 +114,9 @@ def _run_check(args: argparse.Namespace) -> tuple[dict[str, Any], Any]:
     from sloptriage.verdict import run_reference_check
 
     cfg = _load_cfg(args, Path(args.repo) if args.repo and Path(args.repo).exists() else None)
+    repro = _wants_repro(args, cfg)
+    if repro:
+        _require_runtime(cfg)  # no PoC is ever run without a container runtime
     report = _load_report(args)
     repo, loc = _open_repo(args.repo, cfg)
     iset = IndexSet(repo, loc, cfg.paths_ignore)
@@ -108,7 +126,22 @@ def _run_check(args: argparse.Namespace) -> tuple[dict[str, Any], Any]:
         raise UsageError(str(exc)) from exc
     except GitError as exc:
         raise InfraError(str(exc)) from exc
-    verdict = build_verdict(result, cfg)
+    reproduction = None
+    if repro:
+        from sloptriage.repro import ReproError, run_reproduction
+
+        try:
+            reproduction = run_reproduction(
+                report,
+                result.extraction,
+                result.resolution,
+                repo,
+                cfg,
+                progress=lambda msg: _err(msg),
+            )
+        except (ReproError, GitError) as exc:
+            raise InfraError(str(exc)) from exc
+    verdict = build_verdict(result, cfg, reproduction)
     validate_verdict(verdict)
     iset.close()
     return verdict, cfg
@@ -205,8 +238,12 @@ def cmd_init(args: argparse.Namespace) -> int:
 
 def cmd_demo(args: argparse.Namespace) -> int:
     from sloptriage.demo_run import run_demo
+    from sloptriage.repro.errors import ReproError
 
-    return run_demo(show=args.show)
+    try:
+        return run_demo(show=args.show, repro=args.repro)
+    except ReproError as exc:
+        raise InfraError(str(exc)) from exc
 
 
 def cmd_bench(args: argparse.Namespace) -> int:
@@ -233,6 +270,16 @@ def build_parser() -> argparse.ArgumentParser:
             "--ref", help="check against this ref instead of the version the report names"
         )
         sp.add_argument("--config", help="path to .sloptriage.yml")
+        sp.add_argument(
+            "--repro",
+            action="store_true",
+            help="also run the report's PoC in a locked-down container (needs Docker or Podman)",
+        )
+        sp.add_argument(
+            "--no-repro",
+            action="store_true",
+            help="never run a PoC, even when repro.enabled is set in the config",
+        )
 
     c = sub.add_parser("check", help="check one report")
     c.add_argument("report", nargs="?", help="report file, '-' for stdin, or OWNER/REPO#N")
@@ -286,6 +333,11 @@ def build_parser() -> argparse.ArgumentParser:
 
     de = sub.add_parser("demo", help="run on the bundled demo projects (no network)")
     de.add_argument("--show", help="print the full card for one demo report (number or file name)")
+    de.add_argument(
+        "--repro",
+        action="store_true",
+        help="also build the demo projects and run the PoCs in containers (needs Docker or Podman)",
+    )
     de.set_defaults(func=cmd_demo)
 
     be = sub.add_parser("bench", help="benchmark on publicly disclosed curl reports")

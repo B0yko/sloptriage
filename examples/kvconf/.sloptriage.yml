@@ -5,3 +5,8 @@ project:
   binaries: [kvconf]
 version_tags: [v]
 languages: [python]
+# Reproduction (opt-in: sloptriage check --repro). Installs the package from the release tag into a
+# Python image; its declared dependencies are resolved when the base image is built.
+repro:
+  build:
+    preset: python-pip

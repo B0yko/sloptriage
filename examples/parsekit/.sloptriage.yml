@@ -6,3 +6,10 @@ project:
   binaries: [parsekit]
 version_tags: [v]             # preset: v{version}
 languages: [c]
+# Reproduction (opt-in: sloptriage check --repro). Builds the release tag with AddressSanitizer
+# and UndefinedBehaviorSanitizer in a container, then runs the report's PoC in a locked-down one.
+repro:
+  build:
+    preset: cmake-asan
+  # An input file from a report is fed to this command; {input} is replaced with its path.
+  harness: "parsekit header --file {input}"

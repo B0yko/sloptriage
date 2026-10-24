@@ -237,3 +237,18 @@ def test_committed_results_hold_only_fixed_fields() -> None:
                 "build_failed",
                 "infrastructure_error",
             }
+
+
+def test_a_row_records_the_reports_own_split_not_the_command_line_option(project) -> None:  # noqa: ANN001
+    from sloptriage.bench.manifest import load_split
+
+    repo, cfg = project
+    split = load_split()
+    dev_id, heldout_id = split["dev"][0], split["heldout"][0]
+    items = [
+        (meta(dev_id, "invalid", slop=True), "curl 8.1.0.\n\n" + SH_POC),
+        (meta(heldout_id, "invalid", slop=True), "curl 8.1.0.\n\n" + SH_POC),
+    ]
+    chosen = pick(project, items, [])
+    rows = run_selected(chosen, repo, cfg, Scripted("", 0), split="heldout", log=lambda _m: None)
+    assert {r["id"]: r["split"] for r in rows} == {dev_id: "dev", heldout_id: "heldout"}

@@ -7,8 +7,10 @@ Which reports are tried:
 - ``slop``: reports on the curl maintainers' public list that carry such a PoC, in either split and
   whatever version they name (a missing version means the default branch as of the report date).
 
-Rows keep only fixed fields: the report id, group, split, era, the ref that was built, and the
-verdict. No report text, PoC output, function name or build log is stored.
+Rows keep only fixed fields: the report id, its group (``valid`` or ``slop``), the manifest split it
+belongs to, era and list flag, the ref that was built and whether the version was assumed, the runner,
+the verdict, how the crash matched the report, and the number of runs. No report text, PoC output,
+function name or build log is stored.
 """
 
 from __future__ import annotations
@@ -18,6 +20,7 @@ from collections.abc import Callable
 from dataclasses import dataclass
 from typing import Any
 
+from sloptriage.bench.manifest import load_split
 from sloptriage.bench.stats import proportion
 from sloptriage.config import Config
 from sloptriage.extract import Extraction, extract
@@ -92,12 +95,19 @@ def select_subset(
     return out
 
 
-def _row(sel: Selected, split: str, result: dict[str, Any] | None) -> dict[str, Any]:
+def _split_of(report_id: int, splits: dict[str, Any]) -> str:
+    """The manifest split a report belongs to (not the option the command was given)."""
+    if report_id in splits["dev"]:
+        return "dev"
+    return "heldout" if report_id in splits["heldout"] else "unlisted"
+
+
+def _row(sel: Selected, splits: dict[str, Any], result: dict[str, Any] | None) -> dict[str, Any]:
     meta = sel.meta
     return {
         "id": int(meta["id"]),
         "group": sel.group,
-        "split": split,
+        "split": _split_of(int(meta["id"]), splits),
         "era": meta["era"],
         "slop_list": bool(meta.get("slop_list")),
         "ref": sel.resolution.ref_label,
@@ -115,10 +125,11 @@ def run_selected(
     cfg: Config,
     sandbox: Sandbox,
     *,
-    split: str = "heldout",
+    split: str = "heldout",  # kept for callers; each row records the report's own split
     log: Callable[[str], None] = lambda _m: None,
 ) -> list[dict[str, Any]]:
     """Run every selected report; remove each version's image once its reports are done."""
+    splits = load_split()
     ordered = sorted(selected, key=lambda s: (s.resolution.ref_label, int(s.meta["id"])))
     discard = getattr(sandbox, "discard", None)
     rows: list[dict[str, Any]] = []
@@ -129,7 +140,7 @@ def run_selected(
             )
         except ReproError:
             result = None
-        row = _row(sel, split, result)
+        row = _row(sel, splits, result)
         rows.append(row)
         log(f"{i + 1}/{len(ordered)} report {row['id']} at {row['ref']}: {row['verdict']}")
         last_of_commit = (

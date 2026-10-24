@@ -163,7 +163,7 @@
   {
    "id": 3100073,
    "group": "slop",
-   "split": "heldout",
+   "split": "dev",
    "era": "post2023",
    "slop_list": true,
    "ref": "curl-8_13_0",
@@ -384,7 +384,7 @@
   {
    "id": 3125820,
    "group": "slop",
-   "split": "heldout",
+   "split": "dev",
    "era": "post2023",
    "slop_list": true,
    "ref": "master@2025-05-04",
@@ -397,7 +397,7 @@
   {
    "id": 3158093,
    "group": "slop",
-   "split": "heldout",
+   "split": "dev",
    "era": "post2023",
    "slop_list": true,
    "ref": "master@2025-05-22",
@@ -501,7 +501,7 @@
   {
    "id": 3466896,
    "group": "slop",
-   "split": "heldout",
+   "split": "dev",
    "era": "post2023",
    "slop_list": true,
    "ref": "master@2025-12-16",
@@ -553,7 +553,7 @@
   {
    "id": 3516202,
    "group": "slop",
-   "split": "heldout",
+   "split": "dev",
    "era": "post2023",
    "slop_list": true,
    "ref": "master@2026-01-19",

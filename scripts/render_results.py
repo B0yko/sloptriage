@@ -94,7 +94,7 @@ def repro_lines(doc: dict[str, Any]) -> list[str]:
         "|---|---|" + "---|" * (len(REPRO_COLUMNS) + 1),
     ]
     names = {
-        "valid": "resolved held-out reports with an inline C or shell PoC and a named version",
+        "valid": "resolved held-out reports with an inline C, C++ or shell PoC and a named version",
         "slop": "reports on the maintainers' public list with a PoC, any split, any version",
     }
     for key in ("valid", "slop"):
@@ -173,6 +173,7 @@ def section(
     for mode, (k, n) in syn["modes"].items():
         lines.append(f"| `{mode}` | {n} | {k} |")
     lines.append(f"| valid reports | {syn['valid'][1]} | {syn['valid'][0]} |")
+    lines += ["", "A report with several failure modes appears in each of its rows."]
     lines += [
         "",
         "Reports whose only fault is the PoC (it overflows its own buffer, never calls the library or uses a normal",

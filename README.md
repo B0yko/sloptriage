@@ -310,12 +310,16 @@ The reports were split 40% dev / 60% held-out, stratified by label and by disclo
 thresholds.
 
 **Held-out evaluations: two.** The first run (code at `2b38a84`) classed 10 of 90 valid reports as
-`refs_failed`. The thresholds were not changed. The causes were defect classes already seen on the dev
-split: bare backticked identifiers that are reporters' own labels or third-party constants, a system
-path (`/usr/include/...`) mapped onto a project directory, and frames from an older release. One fix
-(`e036d44`) addressed them; the dev split stayed at 0 of 60 false flags, and the second held-out run
-produced the numbers below. They are therefore not a pristine first-look estimate. The rows of the first
-run are in [`bench/results/rows-heldout-run1-2026-10-24.json`](bench/results/rows-heldout-run1-2026-10-24.json).
+`refs_failed`. The thresholds were not changed. The causes were three defect classes: bare backticked
+identifiers that are reporters' own labels or third-party constants (the fix's commit message ties this
+one to dev-split reports), a system path (`/usr/include/...`) mapped onto a project directory, and frames
+from an older release (for these two I did not record whether they were visible on the dev split, so treat
+the fix as informed by the held-out failures). One fix (`e036d44`) addressed them; the dev split stayed at
+0 of 60 false flags, and the second held-out run produced the numbers below. They are therefore not a
+pristine first-look estimate. The check also ran over the same held-out reports a further time to measure
+latency (`eval/latency.py`); that pass produced timings, not classification numbers. The rows of the first
+run were added to the repository later (`c41f32d`) and are in
+[`bench/results/rows-heldout-run1-2026-10-24.json`](bench/results/rows-heldout-run1-2026-10-24.json).
 
 <details>
 <summary>All result tables</summary>
@@ -371,6 +375,8 @@ Precision for invalid: 18/19 (94.7%, 75.4–99.1%). Coverage (at least one check
 | `version_never_released` | 3 | 2 |
 | valid reports | 20 | 0 |
 
+A report with several failure modes appears in each of its rows.
+
 Reports whose only fault is the PoC (it overflows its own buffer, never calls the library or uses a normal
 input) cite code that exists, so the reference check does not flag them; running the PoC (see Reproduction below) does.
 
@@ -378,7 +384,7 @@ input) cite code that exists, so the reference check does not flag them; running
 
 | Reports tried | Tried | `reproduced` | `not_reproduced` | `crashed_elsewhere` | `poc_unsupported` | `poc_build_failed` | `build_failed` | other |
 |---|---|---|---|---|---|---|---|---|
-| resolved held-out reports with an inline C or shell PoC and a named version | 17 | 0 | 3 | 1 | 10 | 1 | 1 | 1 |
+| resolved held-out reports with an inline C, C++ or shell PoC and a named version | 17 | 0 | 3 | 1 | 10 | 1 | 1 | 1 |
 | reports on the maintainers' public list with a PoC, any split, any version | 21 | 0 | 9 | 3 | 5 | 1 | 0 | 3 |
 
 Reproduction rate on the resolved reports: 0/17 (0.0%, 0.0–18.4%); leaving out the reports whose curl could not be built or run: 0/16 (0.0%, 0.0–19.4%). Reproduced: none. False reproductions on the listed reports (target 0): 0/21 (0.0%, 0.0–15.5%).
@@ -394,7 +400,8 @@ Cold index of `curl-8_17_0`: 3.3 s. Checking each of the 389 held-out reports on
 
 </details>
 
-**Reproduction (synthetic set).** `uv run sloptriage demo --repro`, measured on 2026-10-24 on a
+**Reproduction (synthetic set).** `uv run sloptriage demo --repro`, measured on 2026-10-24 (again after the
+last sandbox change) on a
 Mac Studio M4 Max, 128 GB, with Docker 29.5.2 in a Colima VM (arm64):
 
 | Reports with a PoC | Count | `reproduced` | `crashed_elsewhere` | `not_reproduced` | `poc_build_failed` |
@@ -407,15 +414,16 @@ how the reports were written, so this shows that the tool agrees with the way th
 an accuracy figure.
 
 **Reproduction on real curl reports** (`uv run sloptriage bench repro`; the full table is under "All
-result tables"). Tried: the 17 resolved held-out reports that carry an inline C or shell PoC and name a
-release version, and the 21 reports on the curl maintainers' public list that carry a PoC. Result: **0 of
+result tables"). Tried: the 17 resolved held-out reports that carry an inline C, C++ or shell PoC and name a
+release version, and the 21 reports on the curl maintainers' public list that carry a PoC, in either split (16 of those 21
+name no version and were built at the default branch as of the report date). Result: **0 of
 17** resolved reports reproduced (95% CI 0–18%), and **0 of 21** listed reports reproduced, so there were
 no false reproductions. This describes running these PoCs as written, in a clean sandbox with no network,
 against curl built from the stated version. Ten of the 17 resolved reports could not be tested at all
 (`poc_unsupported`: the PoC needs a file, tool, service, protocol or network that the sandbox does not
 have, or is not a runnable script), one curl version did not build, and one block that the extractor took
-for a PoC was a code fragment. It is not evidence that the reports were wrong; it shows that most real
-PoCs are not self-contained. The run was done three times on the same reports. After the first (0 of 17)
+for a PoC was a code fragment. It is not evidence that the reports were wrong; it shows that many real
+PoCs are not self-contained (10 of the 17 resolved reports, and 5 of the 21 listed ones). The run was done three times on the same reports. After the first (0 of 17)
 I gave the sandbox a `/tmp` and `python3` and made it say why a PoC could
 not be tested; after the second I fixed how stack frames of installed libraries and a PoC's own
 missing-file errors are read. I looked at what happened to individual reports, held-out ones included,
@@ -473,8 +481,7 @@ More in [docs/security-model.md](docs/security-model.md).
 - **Reproduction covers C, C++, Python and shell only**, in a container, and is off by default. PoCs that
   need the real network, hardware or a GUI are `poc_unsupported`. Leak reports are out of scope
   (LeakSanitizer needs `ptrace`). The container runtime is the security boundary, a PoC can print a
-  counterfeit sanitizer report, and the benchmark numbers below are for the reference check only: they do
-  not include reproduction.
+  counterfeit sanitizer report, and the reference-check numbers in Results do not include reproduction.
 - **Macros, inlining and function pointers** make frame chains unreliable, so chains are informational.
 - **Many reports name no version.** 61% of the held-out curl reports named no usable version and were
   checked at the default branch as of the report date (9 of the 19 flagged ones). A report that read
@@ -511,7 +518,7 @@ Described from their own READMEs or pages, checked 2026-10-23:
 
 ## Roadmap
 
-- Reproduction on the real curl reports (the held-out inline C and shell PoCs) and a rate for it.
+- Reproduction that can run PoCs which need a built source tree, attachments or a server.
 - A second benchmark project.
 - Duplicate detection across reports.
 - PyPI release (`pip install sloptriage`).

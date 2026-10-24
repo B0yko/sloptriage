@@ -46,7 +46,7 @@ sloptriage check report.md --repo . --repro  # your own project (needs repro.bui
 | `poc_missing` | no PoC in the report text or attachments |
 | `poc_unsupported` | an unsupported language, a disabled runner, an input file with no harness, a commit that is not eligible, or a PoC that could not run as given: it needs the real network, a display, a command that is not installed in the image, a file that is not in the report text (attachments of public HackerOne reports are not downloaded) or a source tree, or a service it does not start, or the block is not a runnable script (recognised from name-resolution, unreachable-network, no-display, "command not found", "No such file", "connection refused" and shell syntax failures; a crash always wins over these) |
 | `build_failed` | the project could not be built in the sandbox: a limit of the build recipe, never the reporter's fault |
-| `timeout` | the PoC did not finish within `repro.limits.timeout`, or printed more output than the limit and was stopped |
+| `timeout` | the PoC did not finish within `repro.limits.timeout`, or printed far more output than the limit and was stopped |
 
 A report text that only contains a sanitizer report is not a crash. A PoC that prints one and exits 0 is a
 clean run: a sanitizer report counts only together with a non-zero exit status. The exception is a recipe

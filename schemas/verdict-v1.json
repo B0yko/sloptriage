@@ -625,6 +625,19 @@
             "image": {
               "type": "string",
               "maxLength": 200
+            },
+            "candidate": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "match": {
+              "enum": [
+                "function_and_type",
+                "function",
+                "function_type_differs",
+                "type_and_file",
+                "type_only"
+              ]
             }
           }
         }

@@ -12,6 +12,8 @@ from typing import Any
 
 import yaml
 
+from sloptriage.repro.config import SCHEMA as REPRO_SCHEMA
+from sloptriage.repro.config import ReproConfig, parse_repro
 from sloptriage.versions import PRESETS
 
 DEFAULT_LABELS = {
@@ -21,6 +23,8 @@ DEFAULT_LABELS = {
     "refs_failed": "triage:refs-failed",
     "needs_version": "triage:needs-version",
     "needs_poc": "triage:needs-poc",
+    "reproduced": "triage:reproduced",
+    "not_reproduced": "triage:not-reproduced",
 }
 LANGUAGES = ("c", "cpp", "python", "javascript", "typescript", "go", "rust")
 COMMENT_WHEN_DEFAULT = ("refs_failed", "refs_mixed", "needs_version", "needs_poc")
@@ -60,6 +64,7 @@ class Config:
     thresholds: Thresholds = field(default_factory=Thresholds)
     labels: dict[str, str] = field(default_factory=lambda: dict(DEFAULT_LABELS))
     comment: CommentPolicy = field(default_factory=CommentPolicy)
+    repro: ReproConfig = field(default_factory=ReproConfig)
     cves_file: str | None = None
     source: str = "<defaults>"
     base_dir: Path = field(default_factory=Path.cwd)
@@ -86,6 +91,7 @@ _SCHEMA: dict[str, Any] = {
     "thresholds": {"hard_fail_min": int, "min_verified_share": float, "min_verified_claims": int},
     "labels": dict.fromkeys(DEFAULT_LABELS, str),
     "comment": {"mode": str, "when": [str]},
+    "repro": REPRO_SCHEMA,
     "cves_file": str,
 }
 
@@ -181,6 +187,7 @@ def parse_config(doc: Any, source: str = "<config>", base_dir: Path | None = Non
     for i, w in enumerate(cfg.comment.when):
         if w not in (*DEFAULT_LABELS, "always"):
             errors.append(f"{source}: comment.when[{i}]: {w!r} is not a class or label key")
+    cfg.repro = parse_repro(doc.get("repro") or {}, source, errors)
     cfg.cves_file = doc.get("cves_file")
     if errors:
         raise ConfigError(errors)

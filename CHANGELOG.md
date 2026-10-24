@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased
+
+- `sloptriage bench repro`: runs the PoCs of real curl reports (17 resolved held-out reports and 21 on the
+  public list) in the sandbox. None reproduced; ten of the 17 resolved reports could not be tested. Results
+  in `bench/results/repro-*.json`.
+- Sandbox: `/tmp` is a second size-limited tmpfs; a PoC that needs a file, service, tool, protocol or
+  runnable script it does not have is `poc_unsupported` with that reason; frames of installed shared
+  libraries and build-id suffixes are read; a sanitizer that cannot start on the host is `build_failed`.
+- The Action's `repro` mode lowers `vm.mmap_rnd_bits` on GitHub-hosted runners so that the sanitizer can start.
+
 ## 0.1.0 (2026-10-24)
 
 First release.

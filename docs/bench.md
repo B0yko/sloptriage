@@ -56,6 +56,24 @@ split, era, the ref that was built and the verdict: no text, output, function na
 `bench run` first resolves every report's version and indexes the commits it needs plus one tag per minor
 release, then checks the reports in parallel.
 
+## Reproduction runs
+
+`bench repro` was run three times on the same 38 reports (17 resolved held-out with an inline C or shell
+PoC and a named version, 21 on the public list with a PoC), plus once on the 12 resolved dev reports.
+The three runs are in `bench/results/repro-run1-2026-10-24.json`, `repro-run2-2026-10-24.json` and
+`repro-2026-10-24.json` (the published one); the dev run is `repro-dev-2026-10-24.json`.
+
+| Run | Code change before it | Resolved held-out (17) | Listed (21) |
+|---|---|---|---|
+| 1 | none | 0 reproduced; 14 `not_reproduced`, 1 `crashed_elsewhere`, 1 `poc_build_failed`, 1 `build_failed` | 0 reproduced; 20 `not_reproduced`, 1 `crashed_elsewhere` |
+| dev (12 resolved dev reports) | `/tmp` and `python3` in the sandbox, missing tools reported as `poc_unsupported` | 0 reproduced; 8 `not_reproduced`, 1 `crashed_elsewhere`, 1 `build_failed`, 1 `poc_build_failed`, 1 `timeout` | not run |
+| 2 | reasons for PoCs that cannot run as given (file, service, syntax, tools) | 0 reproduced; 7 `poc_unsupported`, 5 `not_reproduced`, 2 `crashed_elsewhere`, 1 each `timeout`, `poc_build_failed`, `build_failed` | 0 reproduced; 9 `not_reproduced`, 5 `crashed_elsewhere`, 3 `poc_unsupported`, 3 `timeout`, 1 `poc_build_failed` |
+| 3 (published) | frames of installed shared libraries, a PoC's own missing file or module, missing executables and features | 0 reproduced; 10 `poc_unsupported`, 3 `not_reproduced`, 1 `crashed_elsewhere`, 1 each `timeout`, `poc_build_failed`, `build_failed` | 0 reproduced; 9 `not_reproduced`, 5 `poc_unsupported`, 3 `crashed_elsewhere`, 3 `timeout`, 1 `poc_build_failed` |
+
+Run 1 was the only run before any change. The changes were chosen after looking at what happened to
+individual reports, held-out ones included, so the published numbers are not a blind first look. They did
+not change which reports reproduced (none did in any run); they changed how the failures are described.
+
 ## Metrics
 
 - Positive class: invalid. Prediction: `refs_failed`.

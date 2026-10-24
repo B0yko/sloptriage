@@ -374,6 +374,15 @@ Precision for invalid: 18/19 (94.7%, 75.4–99.1%). Coverage (at least one check
 Reports whose only fault is the PoC (it overflows its own buffer, never calls the library or uses a normal
 input) cite code that exists, so the reference check does not flag them; running the PoC (see Reproduction below) does.
 
+**Reproduction on real curl reports** (`sloptriage bench repro`, 2026-10-24, Mac Studio M4 Max, 128 GB)
+
+| Reports tried | Tried | `reproduced` | `not_reproduced` | `crashed_elsewhere` | `poc_unsupported` | `poc_build_failed` | `build_failed` | other |
+|---|---|---|---|---|---|---|---|---|
+| resolved held-out reports with an inline C or shell PoC and a named version | 17 | 0 | 3 | 1 | 10 | 1 | 1 | 1 |
+| reports on the maintainers' public list with a PoC, any split, any version | 21 | 0 | 9 | 3 | 5 | 1 | 0 | 3 |
+
+Reproduction rate on the resolved reports: 0/17 (0.0%, 0.0–18.4%); leaving out the reports whose curl could not be built or run: 0/16 (0.0%, 0.0–19.4%). Reproduced: none. False reproductions on the listed reports (target 0): 0/21 (0.0%, 0.0–15.5%).
+
 **Latency**
 
 Cold index of `curl-8_17_0`: 3.3 s. Checking each of the 389 held-out reports one at a time against an indexed ref: p50 0.30 s, p95 3.21 s (Mac Studio M4 Max, 128 GB, 2026-10-24).
@@ -395,10 +404,25 @@ Mac Studio M4 Max, 128 GB, with Docker 29.5.2 in a Colima VM (arm64):
 
 Both conditions hold here: every working PoC reproduces and no low-quality PoC does. The labels come from
 how the reports were written, so this shows that the tool agrees with the way the set was built; it is not
-an accuracy figure. **Reproduction on real curl reports has not been run** (the held-out resolved reports
-with an inline C or shell PoC, and the reports on the curl maintainers' public list that have a PoC): it
-needs a sanitizer build of curl at each affected version. There is no reproduction rate for real reports, and every benchmark number above is for
-the reference check only. The sandbox and its tests: [docs/repro.md](docs/repro.md).
+an accuracy figure.
+
+**Reproduction on real curl reports** (`uv run sloptriage bench repro`; the full table is under "All
+result tables"). Tried: the 17 resolved held-out reports that carry an inline C or shell PoC and name a
+release version, and the 21 reports on the curl maintainers' public list that carry a PoC. Result: **0 of
+17** resolved reports reproduced (95% CI 0–18%), and **0 of 21** listed reports reproduced, so there were
+no false reproductions. This describes running these PoCs as written, in a clean sandbox with no network,
+against curl built from the stated version. Ten of the 17 resolved reports could not be tested at all
+(`poc_unsupported`: the PoC needs a file, tool, service, protocol or network that the sandbox does not
+have, or is not a runnable script), one curl version did not build, and one block that the extractor took
+for a PoC was a code fragment. It is not evidence that the reports were wrong; it shows that most real
+PoCs are not self-contained. The run was done three times on the same reports. After the first (0 of 17)
+I gave the sandbox a `/tmp` and `python3` and made it say why a PoC could
+not be tested; after the second I fixed how stack frames of installed libraries and a PoC's own
+missing-file errors are read. I looked at what happened to individual reports, held-out ones included,
+when deciding those changes, and I ran the 12 resolved dev reports once as well, so these numbers are not a
+blind first look. All rows are in [`bench/results/`](bench/results) (`repro-*.json`: ids, versions and
+verdicts, no text). The reference-check numbers above do not depend on reproduction. The sandbox and its
+tests: [docs/repro.md](docs/repro.md).
 
 Reproduce: `uv run sloptriage bench fetch` (downloads the report JSON into your cache),
 `uv run sloptriage bench run --split heldout`, `uv run sloptriage bench report <rows files>`,

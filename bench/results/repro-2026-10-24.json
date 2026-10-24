@@ -11,9 +11,9 @@
   "valid": {
    "attempted": 17,
    "by_verdict": {
-    "crashed_elsewhere": 2,
-    "not_reproduced": 5,
-    "poc_unsupported": 7,
+    "poc_unsupported": 10,
+    "crashed_elsewhere": 1,
+    "not_reproduced": 3,
     "timeout": 1,
     "poc_build_failed": 1,
     "build_failed": 1
@@ -41,9 +41,9 @@
   "slop": {
    "attempted": 21,
    "by_verdict": {
-    "poc_unsupported": 3,
-    "crashed_elsewhere": 5,
+    "poc_unsupported": 5,
     "not_reproduced": 9,
+    "crashed_elsewhere": 3,
     "timeout": 3,
     "poc_build_failed": 1
    },
@@ -77,7 +77,7 @@
    "slop_list": false,
    "ref": "0b09132877",
    "ref_assumed": false,
-   "verdict": "crashed_elsewhere",
+   "verdict": "poc_unsupported",
    "runner": "shell",
    "match": null,
    "runs": 6
@@ -90,7 +90,7 @@
    "slop_list": false,
    "ref": "507cf6a13d",
    "ref_assumed": false,
-   "verdict": "not_reproduced",
+   "verdict": "poc_unsupported",
    "runner": "c",
    "match": null,
    "runs": 3
@@ -181,7 +181,7 @@
    "slop_list": true,
    "ref": "curl-8_13_0",
    "ref_assumed": false,
-   "verdict": "crashed_elsewhere",
+   "verdict": "poc_unsupported",
    "runner": "shell+python",
    "match": null,
    "runs": 9
@@ -324,7 +324,7 @@
    "slop_list": false,
    "ref": "e5e1c356107e",
    "ref_assumed": false,
-   "verdict": "not_reproduced",
+   "verdict": "poc_unsupported",
    "runner": "shell",
    "match": null,
    "runs": 3
@@ -390,7 +390,7 @@
    "ref": "master@2025-05-04",
    "ref_assumed": true,
    "verdict": "crashed_elsewhere",
-   "runner": "python+shell",
+   "runner": "python+python",
    "match": null,
    "runs": 9
   },
@@ -558,8 +558,8 @@
    "slop_list": true,
    "ref": "master@2026-01-19",
    "ref_assumed": true,
-   "verdict": "crashed_elsewhere",
-   "runner": "python",
+   "verdict": "poc_unsupported",
+   "runner": "shell",
    "match": null,
    "runs": 15
   }

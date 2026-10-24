@@ -157,7 +157,8 @@ working PoC reproduce, and 0 of the 10 low-quality reports with a PoC do. Of tho
 seconds once the images existed; the first run, which built them, took 58 seconds on that machine (the
 base images were partly present already, so a fresh machine also pays for pulling them). These labels come from how the reports
 were written, so this checks that the tool agrees with the construction; it is not an accuracy figure for
-real reports, which were not run. curl 8.10.1 builds with OpenSSL under AddressSanitizer and
+real reports. On real curl reports none reproduced (0 of 17 resolved held-out, 0 of 21 listed; ten of the
+17 could not be tested at all), see the README and `docs/bench.md`. curl 8.10.1 builds with OpenSSL under AddressSanitizer and
 UndefinedBehaviorSanitizer in the sandbox, and `curl --version` and a small libcurl program run in it.
 
 ## Limits

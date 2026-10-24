@@ -85,6 +85,7 @@ class Extraction:
     claims: list[Claim]
     fences: list[Fence]
     poc_names: frozenset[str] = frozenset()
+    poc_blocks: list[PocBlock] = field(default_factory=list)
 
     def by_kind(self, kind: str) -> list[Claim]:
         return [c for c in self.claims if c.kind == kind]
@@ -98,6 +99,15 @@ class Fence:
     body_end: int
     info: str
     body: str
+
+
+@dataclass(frozen=True)
+class PocBlock:
+    """A fenced block read as a PoC. Unlike the ``poc`` claims, equal kinds are not merged."""
+
+    fence: Fence
+    kind: str  # c, cpp, python, shell or input
+    lang: str
 
 
 # -- low-level helpers ------------------------------------------------------------
@@ -389,6 +399,7 @@ class _Builder:
         self.claims: list[Claim] = []
         self._seen: set[tuple[object, ...]] = set()
         self.poc_defined: set[str] = set()
+        self.poc_blocks: list[PocBlock] = []
         self._trace = 0
 
     def add(self, claim: Claim) -> None:
@@ -426,7 +437,7 @@ def extract(text: str, ctx: ExtractContext | None = None) -> Extraction:
             )
     claims = _drop_poc_names(b)
     claims.sort(key=lambda c: (c.start, c.kind))
-    return Extraction(claims, fences, frozenset(b.poc_defined))
+    return Extraction(claims, fences, frozenset(b.poc_defined), b.poc_blocks)
 
 
 def _drop_poc_names(b: _Builder) -> list[Claim]:
@@ -619,6 +630,7 @@ def _classify_fences(
         poc_kind = _poc_kind(body, lang, before, info_l, binaries)
         if poc_kind:
             kinds.append("poc")
+            b.poc_blocks.append(PocBlock(f, poc_kind, lang))
             b.add(
                 Claim(
                     "poc",
@@ -1211,6 +1223,45 @@ def _extract_sanitizer(b: _Builder, text: str, prose: str) -> None:
                     error_type=etype,
                 )
             )
+
+
+_OTHER_POC_LANGS = {
+    "go",
+    "rust",
+    "javascript",
+    "typescript",
+    "java",
+    "ruby",
+    "rb",
+    "php",
+    "perl",
+    "lua",
+    "kotlin",
+    "swift",
+    "csharp",
+    "cs",
+    "powershell",
+    "ps1",
+    "bat",
+    "batch",
+}
+
+
+def unsupported_poc_fences(text: str, extraction: Extraction) -> list[tuple[Fence, str]]:
+    """Fenced blocks introduced as a PoC in a language the reproduction runners do not cover."""
+    claimed = {c.start for c in extraction.claims if c.kind == "poc"}
+    out: list[tuple[Fence, str]] = []
+    for fence in extraction.fences:
+        if fence.start in claimed or not fence.body.strip():
+            continue
+        tag = fence.info.split()[0].lower() if fence.info.split() else ""
+        lang = tag if tag in _OTHER_POC_LANGS else _guess_lang(fence.info, fence.body)
+        if lang not in _OTHER_POC_LANGS:
+            continue
+        before = _context_before(text, fence.start)
+        if _POC_WORDS.search(before[-200:]) or _POC_WORDS.search(fence.info):
+            out.append((fence, lang))
+    return out
 
 
 def iter_symbols(claims: Iterable[Claim]) -> Iterator[Claim]:

@@ -37,7 +37,29 @@ jobs:
       - run: uv sync --locked --python "${PYTHON_VERSION}"
         env:
           PYTHON_VERSION: ${{ matrix.python }}
-      - run: uv run pytest -q -m "not network"
+      - run: uv run pytest -q -m "not network and not docker"
+
+  repro:
+    # Reproduction against a real container runtime: the sandbox probes (network, writes, process and
+    # memory bombs, endless loops and output, symlinks, capabilities) and the 30 demo PoCs.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
+      - run: uv sync --locked
+      - run: uv run pytest -q -m docker
+      - name: Run the demo PoCs from an installed wheel
+        run: |
+          set -euo pipefail
+          uv build --wheel --out-dir "$RUNNER_TEMP/dist"
+          cd "$RUNNER_TEMP"
+          uv venv clean
+          uv pip install --python clean/bin/python dist/*.whl
+          clean/bin/sloptriage demo --repro | tee demo-repro.txt
+          grep -q "Reports with a working PoC: 20 of 20 reproduced" demo-repro.txt
+          grep -q "Low-quality reports with a PoC: 0 of 10 reproduced" demo-repro.txt
 
   wheel:
     runs-on: ubuntu-latest

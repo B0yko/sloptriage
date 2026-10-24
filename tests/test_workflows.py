@@ -74,6 +74,36 @@ def test_example_job_permissions() -> None:
         assert "secrets." not in json.dumps(doc["jobs"]["check"])
 
 
+def test_repro_job_is_unprivileged_and_reporting_survives_without_it() -> None:
+    doc = yaml.safe_load((ROOT / "examples" / "workflows" / "triage-issues.yml").read_text())
+    repro = doc["jobs"]["repro"]
+    assert repro["permissions"] == {}
+    assert repro["needs"] == "check"
+    assert "secrets." not in json.dumps(repro)
+    assert repro["steps"][0]["with"]["fetch-depth"] == 0
+    modes = [s["with"]["mode"] for s in repro["steps"] if "B0yko/sloptriage@" in s.get("uses", "")]
+    assert modes == ["repro"]
+    report = doc["jobs"]["report"]
+    assert sorted(report["needs"]) == ["check", "repro"]
+    assert "!cancelled()" in report["if"] and "needs.check.result" in report["if"]
+    assert not any(s.get("uses", "").startswith("actions/checkout") for s in report["steps"])
+
+
+def test_action_modes_never_mix_checking_and_running_pocs() -> None:
+    doc = yaml.safe_load((ROOT / "action.yml").read_text())
+    by_mode = {
+        s["if"].split("'")[1]: s["run"]
+        for s in doc["runs"]["steps"]
+        if str(s.get("if", "")).startswith("inputs.mode == '") and "run" in s
+    }
+    assert "--no-repro" in by_mode["check"] and "--repro" not in by_mode["check"].replace(
+        "--no-repro", ""
+    )
+    assert "--repro" in by_mode["repro"] and "--no-repro" not in by_mode["repro"]
+    guard = next(s for s in doc["runs"]["steps"] if s["name"] == "Reject unknown modes")
+    assert "repro" in guard["if"] and "repro" in guard["run"]
+
+
 def _run_block(mode: str) -> str:
     doc = yaml.safe_load((ROOT / "action.yml").read_text())
     step = next(s for s in doc["runs"]["steps"] if s.get("if") == f"inputs.mode == '{mode}'")

@@ -7,7 +7,7 @@ branding:
 
 inputs:
   mode:
-    description: "check: write verdict.json for the issue in the triggering event. post: comment and label from a verdict file."
+    description: "check: write verdict.json for the issue in the triggering event, never running a PoC. repro: the same, and also run the report's PoC in a locked-down container (needs Docker). post: comment and label from a verdict file."
     required: true
   verdict:
     description: Path of the verdict JSON file (written in check mode, read in post mode).
@@ -39,7 +39,22 @@ runs:
         SLOPTRIAGE_CONFIG: ${{ inputs.config }}
       run: |
         set -euo pipefail
-        args=(check "$GITHUB_EVENT_PATH" --repo "$GITHUB_WORKSPACE" --format json --output "$SLOPTRIAGE_VERDICT")
+        args=(check "$GITHUB_EVENT_PATH" --repo "$GITHUB_WORKSPACE" --no-repro --format json --output "$SLOPTRIAGE_VERDICT")
+        if [ -n "$SLOPTRIAGE_CONFIG" ]; then
+          args+=(--config "$SLOPTRIAGE_CONFIG")
+        fi
+        uv run --locked --no-dev --quiet --project "$SLOPTRIAGE_SOURCE" sloptriage "${args[@]}"
+
+    - name: Check the report and run its PoC in a sandbox
+      if: inputs.mode == 'repro'
+      shell: bash
+      env:
+        SLOPTRIAGE_SOURCE: ${{ github.action_path }}
+        SLOPTRIAGE_VERDICT: ${{ inputs.verdict }}
+        SLOPTRIAGE_CONFIG: ${{ inputs.config }}
+      run: |
+        set -euo pipefail
+        args=(check "$GITHUB_EVENT_PATH" --repo "$GITHUB_WORKSPACE" --repro --format json --output "$SLOPTRIAGE_VERDICT")
         if [ -n "$SLOPTRIAGE_CONFIG" ]; then
           args+=(--config "$SLOPTRIAGE_CONFIG")
         fi
@@ -57,8 +72,8 @@ runs:
         uv run --locked --no-dev --quiet --project "$SLOPTRIAGE_SOURCE" sloptriage post --verdict "$SLOPTRIAGE_VERDICT" --event "$GITHUB_EVENT_PATH"
 
     - name: Reject unknown modes
-      if: inputs.mode != 'check' && inputs.mode != 'post'
+      if: inputs.mode != 'check' && inputs.mode != 'repro' && inputs.mode != 'post'
       shell: bash
       run: |
-        echo "sloptriage: mode must be check or post" >&2
+        echo "sloptriage: mode must be check, repro or post" >&2
         exit 2

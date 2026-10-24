@@ -1,10 +1,12 @@
 # Check new and edited issues against the code, then label and comment.
 #
 # The check job reads the issue only from the event payload file, has read-only
-# repository access and no secrets, and renders nothing. The report job gets
-# issues:write, downloads the verdict, validates it against the schema and
-# renders the card from its fields; it does not check out the repository and
-# never runs anything from the issue.
+# repository access and no secrets, and renders nothing. The optional repro job
+# builds the project with sanitizers and runs the report's PoC in a locked-down
+# container (no network, read-only root, no capabilities); it has no token
+# permissions at all. The report job gets issues:write, downloads the verdict,
+# validates it against the schema and renders the card from its fields; it does
+# not check out the repository and never runs anything from the issue.
 name: Triage issues
 
 on:
@@ -39,16 +41,47 @@ jobs:
           path: verdict.json
           retention-days: 7
 
-  report:
+  # Optional: delete this job (and "repro" from the report job's needs) to check references only.
+  # It needs a repository with a reproduction recipe in .sloptriage.yml (repro.build). On a private
+  # repository give it "contents: read" so that it can check out the code.
+  repro:
     needs: check
+    runs-on: ubuntu-latest
+    permissions: {}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: B0yko/sloptriage@v0.1.0
+        with:
+          mode: repro
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: verdict-repro
+          path: verdict.json
+          retention-days: 7
+
+  report:
+    needs: [check, repro]
+    if: ${{ !cancelled() && needs.check.result == 'success' }}
     runs-on: ubuntu-latest
     permissions:
       issues: write
     steps:
       - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
-          name: verdict
+          pattern: verdict*
+      # Prefer the verdict that includes the reproduction result when that job succeeded.
+      - id: pick
+        run: |
+          if [ -f verdict-repro/verdict.json ]; then
+            echo "path=verdict-repro/verdict.json" >> "$GITHUB_OUTPUT"
+          else
+            echo "path=verdict/verdict.json" >> "$GITHUB_OUTPUT"
+          fi
       - uses: B0yko/sloptriage@v0.1.0
         with:
           mode: post
+          verdict: ${{ steps.pick.outputs.path }}
           token: ${{ github.token }}

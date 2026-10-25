@@ -87,8 +87,12 @@ network).
 
 ## For maintainers: the GitHub Action
 
-Copy [`examples/workflows/triage-issues.yml`](examples/workflows/triage-issues.yml) into
-`.github/workflows/`:
+One workflow, three jobs: a read-only `check`, an optional sandboxed `repro` and a `report` job that
+posts the comment. Copy [`examples/workflows/triage-issues.yml`](examples/workflows/triage-issues.yml) into
+`.github/workflows/`, or open the file here:
+
+<details>
+<summary>triage-issues.yml</summary>
 
 ```yaml
 name: Triage issues
@@ -164,6 +168,8 @@ jobs:
           verdict: ${{ steps.pick.outputs.path }}
           token: ${{ github.token }}
 ```
+
+</details>
 
 - **`check`** has read-only access and no secrets. It reads the issue only from the event payload file
   (`$GITHUB_EVENT_PATH`), never from an expression, and writes `verdict.json`. It renders nothing.

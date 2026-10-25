@@ -1,12 +1,25 @@
-# sloptriage
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/img/banner-dark.svg">
+    <img alt="sloptriage: check bug and security reports against the code before you read them" src="docs/img/banner-light.svg" width="720">
+  </picture>
+</p>
 
-Check a bug or security report against the code before you spend an hour on it: every file, function,
-line, stack frame and quoted snippet the report cites is verified at the version it names, and the
-report's PoC can be rerun in a locked-down sanitizer sandbox. No LLM. CLI and GitHub Action.
+<p align="center">
+  <a href="https://github.com/B0yko/sloptriage/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/B0yko/sloptriage/actions/workflows/ci.yml/badge.svg"></a>
+  <a href="https://github.com/B0yko/sloptriage/releases"><img alt="Release" src="https://img.shields.io/github/v/release/B0yko/sloptriage"></a>
+  <a href="LICENSE"><img alt="License: Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-blue"></a>
+  <img alt="Python 3.11 or newer" src="https://img.shields.io/badge/python-3.11%2B-blue">
+</p>
 
-[![CI](https://github.com/B0yko/sloptriage/actions/workflows/ci.yml/badge.svg)](https://github.com/B0yko/sloptriage/actions/workflows/ci.yml)
-[![Release](https://img.shields.io/github/v/release/B0yko/sloptriage)](https://github.com/B0yko/sloptriage/releases)
-[![License](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
+<p align="center">
+  <a href="#quickstart-under-5-minutes">Quickstart</a> ·
+  <a href="#for-maintainers-the-github-action">GitHub Action</a> ·
+  <a href="#reproduction-opt-in">Reproduction</a> ·
+  <a href="#how-it-works">How it works</a> ·
+  <a href="#results">Results</a> ·
+  <a href="#limitations">Limitations</a>
+</p>
 
 <!-- headline:start -->
 On 299 held-out curl reports that were closed as not applicable, informative or spam, sloptriage found cited references that do not exist in curl's code (at the version the report names, or the default branch on the report date when it names none) in 18 (6.0%, 95% CI 3.8–9.3%); it flagged 1 of 90 resolved reports. When it flags a report, the report was closed as not valid 18 times out of 19.
@@ -21,6 +34,13 @@ uvx --from git+https://github.com/B0yko/sloptriage sloptriage demo
 
 The demo runs offline on two small bundled projects and 60 labelled reports and prints its result in a
 few seconds.
+
+| | |
+|---|---|
+| **Reference check** | Verifies every file, function, line, stack frame and quoted snippet a report cites, at the version it names, straight from git objects. Seconds, no network beyond the repository. |
+| **Reproduction** (opt-in) | Reruns the report's PoC with sanitizers in a locked-down container: no network, read-only root, no capabilities. No mode runs a PoC on your machine. |
+| **Result** | A neutral card with permalinks, a JSON verdict and labels. It never closes, deletes or rejects anything, and never says who wrote a report. |
+| **Where** | CLI, a GitHub Action for new issues, and `preflight` for reporters who want to check before they send. |
 
 ## Why
 
@@ -462,6 +482,9 @@ More in [docs/security-model.md](docs/security-model.md).
 
 ## Benchmark sources and terms
 
+<details>
+<summary>Where the reports and the code come from, and the terms</summary>
+
 - Report JSON: `https://hackerone.com/reports/<id>.json`, public, no login. On 2026-10-23
   [robots.txt](https://hackerone.com/robots.txt) contained only a sitemap line, and HackerOne's
   [General](https://www.hackerone.com/terms/general) and
@@ -473,6 +496,8 @@ More in [docs/security-model.md](docs/security-model.md).
   revision `95a02e1`.
 - Code: curl's public git repository, cloned into the cache and never committed.
 - Synthetic set: `demo/`, written for this project (Apache-2.0).
+
+</details>
 
 ## Limitations
 

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="190" viewBox="0 0 880 190" role="img" aria-label="sloptriage: check bug and security reports against the code before you read them">
+<g transform="translate(0,24) scale(1.125)">
+<rect width="64" height="64" rx="14" fill="#3987e5"/>
+<rect x="13" y="16" width="30" height="6" rx="3" fill="#fff"/>
+<rect x="13" y="28" width="22" height="6" rx="3" fill="#fff"/>
+<rect x="13" y="40" width="14" height="6" rx="3" fill="#fff"/>
+<circle cx="45" cy="44" r="13" fill="#fff" stroke="#3987e5" stroke-width="2.5"/>
+<path d="M39.5 44.5 L43.5 48.5 L51 39.5" fill="none" stroke="#3987e5" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<text x="92" y="76" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="54" font-weight="700" letter-spacing="-1" fill="#f0efec">sloptriage</text>
+<text x="94" y="112" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="20" fill="#a9a89f">Check bug and security reports against the code before you read them.</text>
+<rect x="94.0" y="136" width="73.4" height="28" rx="14" fill="none" stroke="#3a3a36" stroke-width="1.5"/><text x="107.0" y="155" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#a9a89f">no LLM</text><rect x="177.4" y="136" width="176.1" height="28" rx="14" fill="none" stroke="#3a3a36" stroke-width="1.5"/><text x="190.4" y="155" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#a9a89f">CLI + GitHub Action</text><rect x="363.5" y="136" width="247.2" height="28" rx="14" fill="none" stroke="#3a3a36" stroke-width="1.5"/><text x="376.5" y="155" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#a9a89f">optional sandboxed PoC rerun</text>
+</svg>

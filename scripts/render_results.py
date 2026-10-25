@@ -65,12 +65,12 @@ def headline(res: dict[str, Any]) -> str:
     h = res["splits"]["heldout"]
     rec, ff, prec = h["recall_invalid"], h["false_flag_rate_valid"], h["precision_invalid"]
     return (
-        f"On {rec['n']} held-out curl reports that were closed as not applicable, informative or spam, sloptriage "
+        f"> On {rec['n']} held-out curl reports that were closed as not applicable, informative or spam, sloptriage "
         f"found cited references that do not exist in curl's code (at the version the report names, or the default "
         f"branch on the report date when it names none) in {rec['k']} "
         f"({100 * rec['rate']:.1f}%, 95% CI {100 * rec['ci95'][0]:.1f}–{100 * rec['ci95'][1]:.1f}%); it flagged "
         f"{ff['k']} of {ff['n']} resolved reports. When it flags a report, the report was closed as not valid "
-        f"{prec['k']} times out of {prec['n']}."
+        f"{prec['k']} times out of {prec['n']}. ([How this was measured](#results).)"
     )
 
 

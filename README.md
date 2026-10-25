@@ -22,9 +22,8 @@
 </p>
 
 <!-- headline:start -->
-On 299 held-out curl reports that were closed as not applicable, informative or spam, sloptriage found cited references that do not exist in curl's code (at the version the report names, or the default branch on the report date when it names none) in 18 (6.0%, 95% CI 3.8–9.3%); it flagged 1 of 90 resolved reports. When it flags a report, the report was closed as not valid 18 times out of 19.
+> On 299 held-out curl reports that were closed as not applicable, informative or spam, sloptriage found cited references that do not exist in curl's code (at the version the report names, or the default branch on the report date when it names none) in 18 (6.0%, 95% CI 3.8–9.3%); it flagged 1 of 90 resolved reports. When it flags a report, the report was closed as not valid 18 times out of 19. ([How this was measured](#results).)
 <!-- headline:end -->
-([How this was measured](#results).)
 
 ![sloptriage demo and check on the bundled demo reports](docs/img/demo.svg)
 
@@ -35,7 +34,7 @@ uvx --from git+https://github.com/B0yko/sloptriage sloptriage demo
 The demo runs offline on two small bundled projects and 60 labelled reports and prints its result in a
 few seconds.
 
-| | |
+| Part | What it does |
 |---|---|
 | **Reference check** | Verifies every file, function, line, stack frame and quoted snippet a report cites, at the version it names, straight from git objects. Seconds, no network beyond the repository. |
 | **Reproduction** (opt-in) | Reruns the report's PoC with sanitizers in a locked-down container: no network, read-only root, no capabilities. No mode runs a PoC on your machine. |

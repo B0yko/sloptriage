@@ -303,6 +303,8 @@ def run_sandboxed(
         proc.wait()
         for t in threads:
             t.join(timeout=5)
+        # A process that ended on its own right after printing past the threshold is a flood as well.
+        flooded = flooded or tripped.is_set()
         oom = False
         try:
             info = _cli(rt, "inspect", "--format", "{{json .State}}", name, timeout=20)

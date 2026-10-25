@@ -315,3 +315,19 @@ def test_control_characters_in_output_are_kept_out_of_the_result(cli: FakeContai
     cli.set(stdout="ok\x1b[31mred\x00\n")
     result = run_sandboxed(runtime_for(cli), "img:1", "x", b"", Limits(), ENV, name="sloptriage-t7")
     assert "\x1b" not in result.stdout and "\x00" not in result.stdout
+
+
+def test_output_beyond_the_kill_threshold_counts_as_a_flood_even_if_the_process_ended_first(
+    cli: FakeContainerCli,
+) -> None:
+    cli.set(stdout="X" * 600_000)
+    result = run_sandboxed(
+        runtime_for(cli),
+        "img:1",
+        "x",
+        b"",
+        Limits(output_bytes=1_000, output_kill_bytes=200_000),
+        ENV,
+        name="sloptriage-tf",
+    )
+    assert result.flooded is True and result.truncated is True

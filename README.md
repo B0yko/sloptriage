@@ -320,6 +320,12 @@ Every validation error names the file and the key path, and unknown keys are err
   <img alt="Share of held-out curl reports classed refs_failed, by outcome label" src="docs/img/heldout-light.svg">
 </picture>
 
+The held-out split was evaluated twice (a fix came between the runs), so these are not first-look numbers; the
+details are in the first block below.
+
+<details>
+<summary>Data, split and how many times the held-out set was evaluated</summary>
+
 **Data.** curl discloses every report sent to its HackerOne programme, valid or not
 ([policy](https://curl.se/dev/vuln-disclosure.html)). On 2026-10-23, HackerOne's public hacktivity search
 listed 658 disclosed curl reports; each one's public JSON was fetched once (658 requests, at most one per
@@ -339,6 +345,8 @@ pristine first-look estimate. The check also ran over the same held-out reports 
 latency (`eval/latency.py`); that pass produced timings, not classification numbers. The rows of the first
 run were added to the repository later (`c41f32d`) and are in
 [`bench/results/rows-heldout-run1-2026-10-24.json`](bench/results/rows-heldout-run1-2026-10-24.json).
+
+</details>
 
 <details>
 <summary>All result tables</summary>
@@ -442,13 +450,23 @@ against curl built from the stated version. Ten of the 17 resolved reports could
 (`poc_unsupported`: the PoC needs a file, tool, service, protocol or network that the sandbox does not
 have, or is not a runnable script), one curl version did not build, and one block that the extractor took
 for a PoC was a code fragment. It is not evidence that the reports were wrong; it shows that many real
-PoCs are not self-contained (10 of the 17 resolved reports, and 5 of the 21 listed ones). The run was done three times on the same reports. After the first (0 of 17)
+PoCs are not self-contained (10 of the 17 resolved reports, and 5 of the 21 listed ones). The run was
+repeated three times with changes in between, so these numbers are not a blind first look either.
+
+<details>
+<summary>The run was repeated three times: what changed</summary>
+
+The run was done three times on the same reports. After the first (0 of 17)
 I gave the sandbox a `/tmp` and `python3` and made it say why a PoC could
 not be tested; after the second I fixed how stack frames of installed libraries and a PoC's own
 missing-file errors are read. I looked at what happened to individual reports, held-out ones included,
 when deciding those changes, and I ran the 12 resolved dev reports once as well, so these numbers are not a
 blind first look. All rows are in [`bench/results/`](bench/results) (`repro-*.json`: ids, versions and
-verdicts, no text). The reference-check numbers above do not depend on reproduction. The sandbox and its
+verdicts, no text).
+
+</details>
+
+The reference-check numbers above do not depend on reproduction. The sandbox and its
 tests: [docs/repro.md](docs/repro.md).
 
 Reproduce: `uv run sloptriage bench fetch` (downloads the report JSON into your cache),

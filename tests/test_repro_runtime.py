@@ -289,7 +289,9 @@ def test_output_is_truncated_at_the_cap(cli: FakeContainerCli) -> None:
 
 
 def test_an_output_flood_kills_the_container(cli: FakeContainerCli) -> None:
-    cli.set(flood_bytes=50_000_000)
+    # Stay alive after crossing the threshold so this exercises killing a running container,
+    # not the separate case where a finite output burst ends before the next runtime poll.
+    cli.set(flood_bytes=600_000, hang=True)
     result = run_sandboxed(
         runtime_for(cli),
         "img:1",
@@ -301,6 +303,7 @@ def test_an_output_flood_kills_the_container(cli: FakeContainerCli) -> None:
     )
     assert result.truncated is True
     assert result.flooded is True
+    assert result.timed_out is False
     assert ["kill", "sloptriage-t5"] in cli.calls()
 
 

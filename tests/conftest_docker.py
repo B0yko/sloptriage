@@ -30,11 +30,6 @@ elif verb == "run":
     data = sys.stdin.buffer.read()
     (state / "stdin.bin").write_bytes(data)
     (state / "run_args.json").write_text(json.dumps(args))
-    if behaviour.get("hang"):
-        deadline = time.time() + 60
-        while time.time() < deadline and not (state / "killed").exists():
-            time.sleep(0.05)
-        sys.exit(137)
     out = behaviour.get("stdout", "")
     err = behaviour.get("stderr", "")
     flood = behaviour.get("flood_bytes", 0)
@@ -53,6 +48,11 @@ elif verb == "run":
         sent += len(chunk)
         if (state / "killed").exists():
             sys.exit(137)
+    if behaviour.get("hang"):
+        deadline = time.time() + 60
+        while time.time() < deadline and not (state / "killed").exists():
+            time.sleep(0.05)
+        sys.exit(137)
     sys.exit(behaviour.get("exit_code", 0))
 elif verb == "inspect":
     print(json.dumps({{"OOMKilled": bool(behaviour.get("oom")), "ExitCode": behaviour.get("exit_code", 0)}}))

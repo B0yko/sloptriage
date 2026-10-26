@@ -576,6 +576,12 @@ Described from their own READMEs or pages, checked 2026-10-23:
 Same "claims versus evidence" idea, other domains: [agent-claimcheck](https://github.com/B0yko/agent-claimcheck),
 [proof-of-done](https://github.com/B0yko/proof-of-done).
 
+## Author
+
+Created by [Andrii Boiko](https://boiko.ai/).
+
+[Project overview](https://boiko.ai/work/sloptriage/) · [LinkedIn](https://www.linkedin.com/in/andriyboyko/)
+
 ## License
 
 Apache-2.0. See [LICENSE](LICENSE) and [NOTICE](NOTICE). Copyright 2026 Andrii Boiko.

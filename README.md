@@ -1,8 +1,5 @@
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="docs/img/banner-dark.svg">
-    <img alt="sloptriage: check bug and security reports against the code before you read them" src="docs/img/banner-light.svg" width="720">
-  </picture>
+  <img src=".github/social-preview.png" alt="sloptriage: check the report before you read it" width="880">
 </p>
 
 <p align="center">

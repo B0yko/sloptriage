@@ -129,7 +129,7 @@ inside a container (`tests/test_repro_docker.py`, run where Docker is available)
 
 | Property | Flag or mechanism | Probe |
 |---|---|---|
-| no network (loopback works) | `--network none` | connections to public and metadata addresses fail, name resolution fails, loopback succeeds |
+| no network (loopback works) | `--network none` | connections to public and metadata addresses fail, name resolution fails, loopback succeeds; a project-stage build that tries to connect fails, the same build with network succeeds |
 | nothing writable but `/work`, `/tmp` and `/dev/shm` | `--read-only`; tmpfs mounts at `/work` and `/tmp` with `size=` (PoCs write to `/tmp` as a matter of course); the runtime's default `/dev/shm` (64 MB, not executable); all of it counts against the memory limit | writes to `/etc`, `/usr`, `/`, `/opt`, `/var/tmp` are refused; filling `/work` or `/dev/shm` stops at its size |
 | non-root | `--user 10001:10001` | `id -u` is 10001 |
 | no capabilities, no privilege gain, seccomp on | `--cap-drop ALL`, `--security-opt no-new-privileges` | `CapEff` and `CapBnd` are 0, `NoNewPrivs` is 1, `Seccomp` is 2 |

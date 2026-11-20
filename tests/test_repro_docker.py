@@ -228,6 +228,31 @@ def test_the_work_space_has_a_size_limit(runtime: Runtime) -> None:
     assert int(out.stdout.split()[-1]) <= 32
 
 
+def test_the_project_build_stage_really_has_no_network(runtime: Runtime) -> None:
+    """A build with ``network=False`` cannot reach the network; the same build with network can."""
+    import uuid
+
+    from sloptriage.repro.recipes import DOCKERFILE
+    from sloptriage.repro.runtime import build_image
+    from sloptriage.repro.sandbox import artefact_context
+
+    nonce = uuid.uuid4().hex  # a fresh layer, never a cached result of an earlier probe
+    dockerfile = (
+        f"FROM {IMAGE}\n"
+        f'RUN echo {nonce} && python3 -c "import socket; '
+        "socket.create_connection(('1.1.1.1', 53), timeout=5)\"\n"
+    )
+    context = artefact_context({DOCKERFILE: dockerfile.encode()})
+    tag = "sloptriage-probe/build-network:latest"
+    try:
+        ok, log = build_image(runtime, tag, DOCKERFILE, context, network=False, timeout=180)
+        assert not ok, "a build with --network none reached the network"
+        ok, log = build_image(runtime, tag, DOCKERFILE, context, network=True, timeout=180)
+        assert ok, log
+    finally:
+        subprocess.run([runtime.exe, "image", "rm", "-f", tag], capture_output=True, check=False)
+
+
 def test_host_environment_and_docker_socket_are_invisible(
     runtime: Runtime, monkeypatch: pytest.MonkeyPatch
 ) -> None:

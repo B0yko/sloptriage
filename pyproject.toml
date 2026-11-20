@@ -40,7 +40,8 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/B0yko/sloptriage"
+Homepage = "https://boiko.ai/work/sloptriage/"
+Repository = "https://github.com/B0yko/sloptriage"
 Issues = "https://github.com/B0yko/sloptriage/issues"
 Changelog = "https://github.com/B0yko/sloptriage/blob/main/CHANGELOG.md"
 

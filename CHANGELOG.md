@@ -9,6 +9,7 @@
   runnable script it does not have is `poc_unsupported` with that reason; frames of installed shared
   libraries and build-id suffixes are read; a sanitizer that cannot start on the host is `build_failed`.
 - The Action's `repro` mode lowers `vm.mmap_rnd_bits` on GitHub-hosted runners so that the sanitizer can start.
+- Sandbox tests: a live probe that a project-stage build with `--network none` cannot reach the network.
 
 ## 0.1.0 (2026-10-24)
 
